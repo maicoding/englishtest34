@@ -19,6 +19,8 @@ const areas = {
     READING_EVIDENCE: "Reading/Listening Beleg",
     GENRE_READING: "Genres und Atmosphaere",
     WRITING_STRUCTURE: "Writing Struktur",
+    WRITING_PHRASES: "Useful phrases",
+    WRITING_GRAMMAR: "Grammatik fuer Writing",
     CONTINUATION_WRITING: "Fortsetzung schreiben"
   },
   math: {
@@ -728,6 +730,167 @@ const tasks = {
     },
     {
       type: "WRITING_STRUCTURE",
+      title: "U3 internship report",
+      prompt: "Which detail makes the report stronger?",
+      sentence: "My internship experience was with the Mob Museum in Las Vegas.",
+      options: [
+        "I worked 3 days a week and learned how to put together an exhibit.",
+        "It was nice and good and I liked it.",
+        "There were many things and people."
+      ],
+      answer: "I worked 3 days a week and learned how to put together an exhibit.",
+      ok: "Correct. A good report gives concrete tasks and what the writer learned.",
+      help: "The model solutions give place, time, tasks, difficulties, learning and a short career thought.",
+      rule: "Ein guter report ist konkret: where/when, tasks, one difficulty, what I learned, opinion or future idea."
+    },
+    {
+      type: "WRITING_PHRASES",
+      title: "Useful phrase: report opening",
+      prompt: "Which opening fits an internship report best?",
+      sentence: "You write about work experience in New Mexico.",
+      options: [
+        "My internship experience was with a company in New Mexico called New Mexico Adventure Bike Tours.",
+        "Hello everybody, this is my random text.",
+        "I was there and it was very nice."
+      ],
+      answer: "My internship experience was with a company in New Mexico called New Mexico Adventure Bike Tours.",
+      ok: "Correct. It names the text type, place and organisation clearly.",
+      help: "Start a report by answering where and with whom. Avoid vague openings like it was nice.",
+      rule: "Report opening: My internship experience was with ... / I worked at ... / It was a unique internship because ..."
+    },
+    {
+      type: "WRITING_PHRASES",
+      title: "Useful phrase: tasks",
+      prompt: "Which phrase introduces tasks clearly?",
+      sentence: "You want to explain what you did during an internship.",
+      options: [
+        "My main task was writing social media posts.",
+        "There were some things.",
+        "I had stuff to do."
+      ],
+      answer: "My main task was writing social media posts.",
+      ok: "Correct. My main task was ... is clear and sounds like the model solutions.",
+      help: "A good writing answer replaces stuff/things with exact tasks.",
+      rule: "Useful task phrases: My main task was ... / I also helped ... / I spent a lot of time ... / I had to ..."
+    },
+    {
+      type: "WRITING_PHRASES",
+      title: "Useful phrase: opinion",
+      prompt: "Which sentence gives an opinion with a reason?",
+      sentence: "You write about whether the internship helped you.",
+      options: [
+        "It was a great experience for me because I got very good at writing online posts.",
+        "It was great.",
+        "I do not know what to say."
+      ],
+      answer: "It was a great experience for me because I got very good at writing online posts.",
+      ok: "Correct. It gives an opinion and explains it with because.",
+      help: "The teacher can reward the idea better when the reason is attached.",
+      rule: "Opinion + reason: It was a great experience because ... / I liked it because ... / I found it difficult because ..."
+    },
+    {
+      type: "WRITING_PHRASES",
+      title: "Useful phrase: mediation",
+      prompt: "Which sentence fits the start of a mediation message?",
+      sentence: "A friend asks about visiting a national park.",
+      options: [
+        "You asked me recently about national parks in Germany.",
+        "This text is German and I translate it.",
+        "There are words in the article."
+      ],
+      answer: "You asked me recently about national parks in Germany.",
+      ok: "Correct. It answers the friend's situation and starts naturally.",
+      help: "Mediation starts with audience and purpose, not with a translation comment.",
+      rule: "Mediation opening: You asked me about ... / I found some useful information about ... / I think the place you might enjoy most is ..."
+    },
+    {
+      type: "WRITING_PHRASES",
+      title: "Useful phrase: contrast",
+      prompt: "Which sentence links a difficulty and a positive result well?",
+      sentence: "You write about giving presentations during an internship.",
+      options: [
+        "It was hard to remember all the details, but I got a lot of positive feedback.",
+        "It was hard. Feedback.",
+        "Because it was hard, but feedback."
+      ],
+      answer: "It was hard to remember all the details, but I got a lot of positive feedback.",
+      ok: "Correct. but connects difficulty and positive result in one clear sentence.",
+      help: "Use but/however to show two sides of the experience.",
+      rule: "Contrast in writing: It was hard to ..., but ... / However, ... / At first ..., but after ..."
+    },
+    {
+      type: "WRITING_PHRASES",
+      title: "Idiomatic phrase",
+      prompt: "Which phrase is useful and natural in a report?",
+      sentence: "You want to say that you may improve later.",
+      options: [
+        "I will get better at it over time.",
+        "I become good maybe sometime.",
+        "I make better in the time."
+      ],
+      answer: "I will get better at it over time.",
+      ok: "Correct. get better at it over time is a useful idiomatic chunk.",
+      help: "Learn chunks, not single words: get better at something, over time.",
+      rule: "Useful idioms/chunks: get better at it over time; get the chance; make me want to; work out; in front of a group."
+    },
+    {
+      type: "WRITING_GRAMMAR",
+      title: "Grammar for writing: past perfect",
+      prompt: "Which sentence uses past perfect correctly?",
+      sentence: "Eating in the dark: first they gave away their phones, then they were led to the table.",
+      options: [
+        "Once we had done that, we were led to our table.",
+        "Once we did that, we had were led to our table.",
+        "Once we have done that, we were lead to our table."
+      ],
+      answer: "Once we had done that, we were led to our table.",
+      ok: "Correct. had done shows what happened before they were led to the table.",
+      help: "Use past perfect when you tell what had already happened before the next past action.",
+      rule: "Writing-Grammatik: past perfect = had + past participle. It helps make the order of events clear."
+    },
+    {
+      type: "WRITING_GRAMMAR",
+      title: "Grammar for writing: conditional 2",
+      prompt: "Which sentence sounds like the U3 internship model?",
+      sentence: "You imagine a possible internship.",
+      options: [
+        "If I could do an internship anywhere, I would choose to work at a museum.",
+        "If I can did an internship, I would chose a museum.",
+        "If I had do an internship, I will choose a museum."
+      ],
+      answer: "If I could do an internship anywhere, I would choose to work at a museum.",
+      ok: "Correct. This is conditional 2 for an imagined situation.",
+      help: "For imagined choices, use if + simple past/could and would + infinitive.",
+      rule: "Conditional 2 in writing: If I could ..., I would ... / If I got ..., I would ... / If I had ..., I would ..."
+    },
+    {
+      type: "WRITING_GRAMMAR",
+      title: "Grammar for writing: conditional 3",
+      prompt: "Which sentence reflects on a past situation correctly?",
+      sentence: "Tayen did not go hiking much because it was too hot.",
+      options: [
+        "If it had not been so hot, Tayen would have gone hiking more often.",
+        "If it was not so hot, Tayen will have gone hiking.",
+        "If it had not so hot, Tayen would went hiking."
+      ],
+      answer: "If it had not been so hot, Tayen would have gone hiking more often.",
+      ok: "Correct. This is conditional 3: past situation, different possible result.",
+      help: "Use conditional 3 to reflect on something that did not happen in the past.",
+      rule: "Conditional 3 in writing: If + had + past participle, would have + past participle."
+    },
+    {
+      type: "WRITING_GRAMMAR",
+      title: "Grammar for writing: linking",
+      prompt: "Which linking word fits the model texts?",
+      sentence: "I was nervous at first. ___, after we had finished eating, we couldn't stop talking.",
+      options: ["However", "Because", "In order to"],
+      answer: "However",
+      ok: "Correct. However shows a contrast between nervous at first and later talking.",
+      help: "Choose linking words by function: reason, contrast, purpose, time or result.",
+      rule: "Useful linking: because = reason, however/but = contrast, so = result, in order to = purpose, after/once = time."
+    },
+    {
+      type: "WRITING_STRUCTURE",
       title: "Mediation / short answer",
       prompt: "What makes a short answer strong?",
       sentence: "You have to explain information from a text to a friend.",
@@ -1318,6 +1481,272 @@ const tasks = {
   ]
 };
 
+const englishU3ExpansionTasks = [
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 school and work",
+    prompt: "Which word best completes the sentence?",
+    sentence: "In ___, students learn how people live together in a society.",
+    options: ["social studies", "spring break", "pressure"],
+    answer: "social studies",
+    ok: "Correct. social studies is the school subject about society and relationships.",
+    help: "The clue is learn how people live together in a society.",
+    rule: "social studies ist ein Schulfach. Nicht mit social media verwechseln."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 school and work",
+    prompt: "Which word best completes the sentence?",
+    sentence: "Many American students have one week without classes during ___.",
+    options: ["spring break", "social studies", "retire"],
+    answer: "spring break",
+    ok: "Correct. spring break is a short school holiday in spring.",
+    help: "The clue is one week without classes.",
+    rule: "spring break ist die Ferienwoche im Fruehjahr."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 school and work",
+    prompt: "Which word best completes the sentence?",
+    sentence: "People usually ___ when they finish their professional career.",
+    options: ["retire", "struggle", "attract"],
+    answer: "retire",
+    ok: "Correct. retire means to stop working at the end of a career.",
+    help: "The clue is finish their professional career.",
+    rule: "retire ist ein Verb: retire from a job / retire at 65."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 people in the West",
+    prompt: "Which person is described?",
+    sentence: "This person works underground or in rocks to find gold, silver or other materials.",
+    options: ["miner", "judge", "dentist"],
+    answer: "miner",
+    ok: "Correct. A miner works in a mine and looks for valuable materials.",
+    help: "The clue is gold, silver or other materials.",
+    rule: "mine = Bergwerk; miner = Person, die in einer Mine arbeitet."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 people in the West",
+    prompt: "Which person is described?",
+    sentence: "This person treats people's teeth.",
+    options: ["dentist", "smuggler", "rancher"],
+    answer: "dentist",
+    ok: "Correct. A dentist treats teeth.",
+    help: "The clue is teeth.",
+    rule: "dentist ist eine Person. tooth/teeth gehoeren zum Bedeutungsfeld."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 people in the West",
+    prompt: "Which person is described?",
+    sentence: "This person brings goods into a country illegally.",
+    options: ["smuggler", "policeman", "rider"],
+    answer: "smuggler",
+    ok: "Correct. A smuggler transports things illegally.",
+    help: "The clue is illegally.",
+    rule: "smuggler gehoert zum Wortfeld crime/law."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 people in the West",
+    prompt: "Which person is described?",
+    sentence: "This person has done something against the law.",
+    options: ["criminal", "judge", "witness"],
+    answer: "criminal",
+    ok: "Correct. A criminal has committed a crime.",
+    help: "The clue is against the law.",
+    rule: "criminal = Taeter/in oder kriminelle Person; crime = Verbrechen."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 people in the West",
+    prompt: "Which person is described?",
+    sentence: "This person decides in court whether someone is guilty.",
+    options: ["judge", "rancher", "miner"],
+    answer: "judge",
+    ok: "Correct. A judge makes decisions in court.",
+    help: "The clue is court and guilty.",
+    rule: "judge gehoert zum Wortfeld law/court."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "Tombstone is close to the ___ border.",
+    options: ["Mexican", "scandalous", "unimportant"],
+    answer: "Mexican",
+    ok: "Correct. Mexican describes the border with Mexico.",
+    help: "The clue is border.",
+    rule: "Mexican ist hier ein Adjektiv: the Mexican border."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "A ___ is a place where people can be safe from danger or bad weather.",
+    options: ["shelter", "gunfight", "novel"],
+    answer: "shelter",
+    ok: "Correct. A shelter is a safe place.",
+    help: "The clue is safe from danger or bad weather.",
+    rule: "shelter kann Schutz oder Unterkunft bedeuten."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "A tourist show with actors in old clothes can be called a ___.",
+    options: ["living history show", "territory", "crater"],
+    answer: "living history show",
+    ok: "Correct. A living history show presents history with actors.",
+    help: "The clues are tourist show, actors and old clothes.",
+    rule: "living history show als ganzer Chunk lernen."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "Museums and shows ___ thousands of visitors every year.",
+    options: ["attract", "regret", "contradict"],
+    answer: "attract",
+    ok: "Correct. attract visitors means bring visitors to a place.",
+    help: "The clue is visitors every year.",
+    rule: "attract ist ein Verb: a place attracts tourists."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "Stories about crime and shocking behaviour can sound ___.",
+    options: ["scandalous", "southern", "geological"],
+    answer: "scandalous",
+    ok: "Correct. scandalous means shocking or morally wrong.",
+    help: "The clue is crime and shocking behaviour.",
+    rule: "scandalous ist ein Adjektiv und beschreibt Verhalten oder Geschichten."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Verb + preposition",
+    prompt: "Choose the correct phrase.",
+    sentence: "Some plants can help people ___ health problems.",
+    options: ["heal from", "accuse of", "adapt to"],
+    answer: "heal from",
+    ok: "Correct. heal from a health problem means recover from it.",
+    help: "The clue is health problems.",
+    rule: "heal from gehoert als Chunk zusammen."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Verb + preposition",
+    prompt: "Choose the correct verb.",
+    sentence: "A new historical report can ___ an older story about the Wild West.",
+    options: ["contradict", "warn about", "work out"],
+    answer: "contradict",
+    ok: "Correct. contradict means say the opposite or not agree with something.",
+    help: "The clue is new report versus older story.",
+    rule: "contradict braucht hier keine Praeposition."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Verb + preposition",
+    prompt: "Choose the correct phrase.",
+    sentence: "Teenagers can ___ conservation programmes to protect national parks.",
+    options: ["become involved in", "relate to", "accuse of"],
+    answer: "become involved in",
+    ok: "Correct. become involved in means take part in something.",
+    help: "The clue is take part in programmes.",
+    rule: "become involved in als ganzer Chunk lernen."
+  },
+  {
+    type: "VOCAB_CATEGORY",
+    title: "U3 word categories",
+    prompt: "Which category fits best?",
+    sentence: "covered wagons / railroad / air-conditioning / saddle",
+    options: ["things created by humans", "natural environment", "people and relationships"],
+    answer: "things created by humans",
+    ok: "Correct. These are objects or inventions made by people.",
+    help: "Sort by meaning before translating every word.",
+    rule: "Kategorisieren hilft beim Reading: Dinge, Natur, Personen/Beziehungen."
+  },
+  {
+    type: "VOCAB_CATEGORY",
+    title: "U3 word categories",
+    prompt: "Which category fits best?",
+    sentence: "temperature / heat / cactus / wildlife / arid",
+    options: ["natural environment", "school and work", "crime and law"],
+    answer: "natural environment",
+    ok: "Correct. These words describe nature or desert conditions.",
+    help: "temperature, heat and arid point to climate; cactus and wildlife point to nature.",
+    rule: "Ein Wortfeld muss man oft nur erkennen, nicht perfekt uebersetzen."
+  },
+  {
+    type: "VOCAB_CATEGORY",
+    title: "U3 odd one out",
+    prompt: "Which word does not fit?",
+    sentence: "army / gunfighter / patrol / policeman",
+    options: ["gunfighter", "army", "patrol"],
+    answer: "gunfighter",
+    ok: "Correct. army, patrol and policeman can belong to official protection/law; gunfighter is not official.",
+    help: "Say the shared category first, then choose the outsider.",
+    rule: "Odd-one-out braucht Begruendung: Welche drei Woerter teilen eine Kategorie?"
+  },
+  {
+    type: "READING_EVIDENCE",
+    title: "Reading: internship programme",
+    prompt: "What is the best answer?",
+    sentence: "Text: A museum in Arizona offers a summer programme for teenagers. They help prepare small exhibits, write short labels for photos and talk to visitors once a week. The programme is not paid, but students get useful work experience and feedback from museum staff. Question: Why can the programme still be useful although it is unpaid?",
+    options: [
+      "because students get work experience and feedback",
+      "because students become full-time museum directors",
+      "because visitors write all the labels"
+    ],
+    answer: "because students get work experience and feedback",
+    ok: "Correct. The evidence is work experience and feedback from museum staff.",
+    help: "Although unpaid creates a contrast. Look for the positive reason after but.",
+    rule: "Bei why-Fragen mit although/but suchst du den Grund, der den Gegensatz erklaert."
+  },
+  {
+    type: "READING_EVIDENCE",
+    title: "Reading: Tombstone",
+    prompt: "Which statement is true?",
+    sentence: "Text: The town of Silver Creek was a boomtown in the 1880s. Today, tourists do not see real gunfights there, but actors perform a living history show every afternoon. Some stories are based on facts, while others were made more dramatic in novels. Statement: All stories about Silver Creek are completely factual.",
+    options: ["false", "true", "not in the text"],
+    answer: "false",
+    ok: "Correct. The text says some stories are factual, but others were made more dramatic.",
+    help: "Watch out for all. One counterexample makes the statement false.",
+    rule: "True/false: Signalwoerter wie all, only, never, always genau pruefen."
+  },
+  {
+    type: "READING_EVIDENCE",
+    title: "Reading: national park",
+    prompt: "Which heading fits best?",
+    sentence: "Text: Every spring, rangers invite local students to help with conservation work. The teenagers learn how desert animals adapt to heat, why visitors must stay on the trails and how signs can warn people about flash floods. They also write short posts for the park website. Heading?",
+    options: ["Teenagers help protect a desert park", "A dangerous gunfight in town", "A new restaurant in Las Vegas"],
+    answer: "Teenagers help protect a desert park",
+    ok: "Correct. Students, rangers, conservation and desert park are the main ideas.",
+    help: "Do not choose a heading because of one word. Choose the main idea.",
+    rule: "Heading-Aufgabe: Wer? Was tun sie? Wo? Zweck?"
+  },
+  {
+    type: "WRITING_PHRASES",
+    title: "Writing from reading",
+    prompt: "Which sentence could use information from the national park text in a short answer?",
+    sentence: "You answer: What did the teenagers learn in the programme?",
+    options: [
+      "They learned how desert animals adapt to heat and how to warn visitors about flash floods.",
+      "They learned many things and it was good.",
+      "The text is about a park."
+    ],
+    answer: "They learned how desert animals adapt to heat and how to warn visitors about flash floods.",
+    ok: "Correct. The sentence gives exact information from the text.",
+    help: "Short answers need precise content, not vague words.",
+    rule: "Reading-to-writing: Antwort = Frage aufnehmen + genaue Info + passendes Verb."
+  }
+];
+
+tasks.english.push(...englishU3ExpansionTasks);
+
 const vocab = {
   latin: [
     {
@@ -1539,6 +1968,123 @@ const vocab = {
       hint: "Phrase meaning: did not succeed."
     },
     {
+      lesson: "U3",
+      word: "social studies",
+      meaning: "Sozialkunde / Gesellschaftslehre",
+      category: "School and work",
+      sentence: "In ___, students learn about society.",
+      solution: "social studies",
+      hint: "School subject about society."
+    },
+    {
+      lesson: "U3",
+      word: "spring break",
+      meaning: "Fruehjahrsferien",
+      category: "School and work",
+      sentence: "They visited Arizona during ___.",
+      solution: "spring break",
+      hint: "One-week school holiday in spring."
+    },
+    {
+      lesson: "U3",
+      word: "retire",
+      meaning: "in Rente gehen / aus dem Beruf ausscheiden",
+      category: "School and work",
+      sentence: "My grandfather will ___ from his job next year.",
+      solution: "retire",
+      hint: "Finish a professional career."
+    },
+    {
+      lesson: "U3",
+      word: "miner",
+      meaning: "Bergarbeiter/in",
+      category: "People in the West",
+      sentence: "A ___ looked for silver near the town.",
+      solution: "miner",
+      hint: "Person who works in a mine."
+    },
+    {
+      lesson: "U3",
+      word: "smuggler",
+      meaning: "Schmuggler/in",
+      category: "People in the West",
+      sentence: "The ___ carried goods across the border illegally.",
+      solution: "smuggler",
+      hint: "Person connected with illegal transport."
+    },
+    {
+      lesson: "U3",
+      word: "judge",
+      meaning: "Richter/in",
+      category: "People in the West",
+      sentence: "The ___ listened to the witness in court.",
+      solution: "judge",
+      hint: "Person who makes decisions in court."
+    },
+    {
+      lesson: "U3",
+      word: "shelter",
+      meaning: "Schutz / Unterkunft",
+      category: "Tombstone",
+      sentence: "The old building gave travellers ___ during the storm.",
+      solution: "shelter",
+      hint: "Safe place."
+    },
+    {
+      lesson: "U3",
+      word: "living history show",
+      meaning: "Geschichtsvorfuehrung mit Schauspielern",
+      category: "Tombstone",
+      sentence: "Actors perform a ___ every afternoon.",
+      solution: "living history show",
+      hint: "Tourist show that presents history."
+    },
+    {
+      lesson: "U3",
+      word: "attract",
+      meaning: "anziehen / anlocken",
+      category: "Tombstone",
+      sentence: "The museum can ___ many visitors.",
+      solution: "attract",
+      hint: "Bring visitors to a place."
+    },
+    {
+      lesson: "U3",
+      word: "scandalous",
+      meaning: "skandaloes / schockierend",
+      category: "Tombstone",
+      sentence: "The newspaper told a ___ story about the gunfight.",
+      solution: "scandalous",
+      hint: "Shocking or morally wrong."
+    },
+    {
+      lesson: "U3",
+      word: "become involved in",
+      meaning: "sich beteiligen an",
+      category: "Verb + preposition",
+      sentence: "Students can become involved ___ conservation programmes.",
+      solution: "in",
+      hint: "Verb chunk: become involved in."
+    },
+    {
+      lesson: "U3",
+      word: "heal from",
+      meaning: "sich erholen von / heilen von",
+      category: "Verb + preposition",
+      sentence: "Some plants helped people heal ___ injuries.",
+      solution: "from",
+      hint: "Verb chunk: heal from."
+    },
+    {
+      lesson: "U3",
+      word: "relate to",
+      meaning: "sich beziehen auf / nachvollziehen koennen",
+      category: "Verb + preposition",
+      sentence: "Many teenagers can relate ___ feeling pressure at school.",
+      solution: "to",
+      hint: "Verb chunk: relate to."
+    },
+    {
       lesson: "U4",
       word: "challenging",
       meaning: "herausfordernd",
@@ -1689,6 +2235,61 @@ const paperTasks = [
       "Verbessere danach nur das Deutsch.",
       "Markiere am Ende alle Perfektinfinitive."
     ]
+  },
+  {
+    title: "Englisch: internship report",
+    steps: [
+      "Waehle ein Praktikum: museum, national park, bike tour company oder school project.",
+      "Schreibe zuerst vier Notizen: where/when, tasks, one difficulty, what I learned.",
+      "Schreibe 80-120 Woerter.",
+      "Nutze mindestens vier Bausteine: My internship experience was with ..., My main task was ..., It was hard to ..., I learned that ...",
+      "Pruefe danach: konkrete Details, past tense, mindestens ein because/but/so."
+    ],
+    solution: "Kontrollschema: Der Text nennt Ort/Organisation, Aufgaben, ein konkretes Detail, eine Schwierigkeit oder Erfahrung und eine kurze Bewertung. Gute Bausteine: My internship experience was with ...; My main task was ...; I also helped ...; It was a great experience because ..."
+  },
+  {
+    title: "Englisch: mediation message",
+    steps: [
+      "Lies die Aufgabe und markiere: Wer fragt? Was braucht die Person?",
+      "Schreibe keine Wort-fuer-Wort-Uebersetzung.",
+      "Beginne mit: You asked me about ... oder I found some useful information about ...",
+      "Schreibe 5-7 Saetze mit nur relevanten Informationen.",
+      "Schliesse mit einem hilfreichen Satz: I think you might enjoy ... / Hopefully this helps."
+    ],
+    solution: "Kontrollschema: Zielperson angesprochen? Nur relevante Infos? Klarer Anfang? Keine deutschen Satzstrukturen? Gute Bausteine: You asked me recently about ...; The most important information is ...; You should know that ...; I think the place you might enjoy most is ..."
+  },
+  {
+    title: "Englisch: Reading mini test - internship",
+    steps: [
+      "Lies den Text: A museum in Arizona offers a summer programme for teenagers. They help prepare small exhibits, write short labels for photos and talk to visitors once a week. The programme is not paid, but students get useful work experience and feedback from museum staff.",
+      "Beantworte: Why can the programme still be useful although it is unpaid?",
+      "Beantworte: What are two tasks the teenagers do?",
+      "Markiere im Text je ein Belegwort fuer jede Antwort.",
+      "Schreibe danach einen eigenen Satz: I would/would not like this programme because ..."
+    ],
+    solution: "Moegliche Loesung: It is useful because students get work experience and feedback. Two tasks are preparing exhibits and writing labels for photos / talking to visitors. Belege: work experience, feedback, prepare small exhibits, write short labels, talk to visitors."
+  },
+  {
+    title: "Englisch: Reading mini test - Tombstone style",
+    steps: [
+      "Lies den Text: The town of Silver Creek was a boomtown in the 1880s. Today, tourists do not see real gunfights there, but actors perform a living history show every afternoon. Some stories are based on facts, while others were made more dramatic in novels.",
+      "Entscheide true/false: All stories about Silver Creek are completely factual.",
+      "Erklaere kurz, warum.",
+      "Finde drei U3-Woerter aus dem Tombstone-Wortfeld.",
+      "Schreibe einen Website-Satz mit attract oder living history show."
+    ],
+    solution: "Loesung: false. The text says some stories are based on facts, while others were made more dramatic in novels. U3-Woerter: boomtown, gunfights, living history show, novels. Beispiel: The living history show attracts many visitors."
+  },
+  {
+    title: "Englisch: Reading mini test - national park",
+    steps: [
+      "Lies den Text: Every spring, rangers invite local students to help with conservation work. The teenagers learn how desert animals adapt to heat, why visitors must stay on the trails and how signs can warn people about flash floods. They also write short posts for the park website.",
+      "Waehle eine passende Ueberschrift.",
+      "Beantworte: What do the teenagers learn about animals?",
+      "Beantworte: Why are signs important?",
+      "Schreibe danach zwei Saetze fuer einen internship report mit My main task was ... und I learned that ..."
+    ],
+    solution: "Moegliche Ueberschrift: Teenagers help protect a desert park. Animals: They learn how desert animals adapt to heat. Signs: Signs warn people about flash floods. Writing: My main task was helping with conservation work. I learned that desert animals adapt to heat."
   },
   {
     title: "Englisch: argumentierendes Schreiben",
@@ -2340,6 +2941,8 @@ const basics = {
   READING_EVIDENCE: "Bei Lese- und Hoeraufgaben braucht jede Antwort einen kleinen Beleg.",
   GENRE_READING: "Genre und Atmosphaere erkennst du an setting, Figuren, Woertern fuer Spannung und typischen Handlungen.",
   WRITING_STRUCTURE: "Ein Schreibtext braucht Plan: Aussage, Grund, Beispiel, Abschluss.",
+  WRITING_PHRASES: "Useful phrases werden als ganze Bausteine gelernt: opening, task, reason, contrast, result.",
+  WRITING_GRAMMAR: "Writing-Grammatik bedeutet: Zeitformen und Satzmuster gezielt benutzen, damit der Text klarer wird.",
   CONTINUATION_WRITING: "Beim Fortsetzen muessen Perspektive, Zeitform, Ort und Atmosphaere gleich bleiben."
 };
 
@@ -2488,15 +3091,16 @@ function englishPaperPrompt(task, paperContext = null) {
   const vocabTypes = ["VOCAB_FORM", "VOCAB_ACTIVE", "VOCAB_CATEGORY", "VERB_PREP"];
   const grammarTypes = ["GRAMMAR_CONDITIONALS", "GRAMMAR_PAST_PERFECT", "GRAMMAR_GERUND_INF", "LINKING"];
   const readingTypes = ["READING_EVIDENCE", "GENRE_READING"];
-  const writingTypes = ["WRITING_STRUCTURE", "CONTINUATION_WRITING"];
+  const writingTypes = ["WRITING_STRUCTURE", "WRITING_PHRASES", "WRITING_GRAMMAR", "CONTINUATION_WRITING"];
 
   if (paperContext === "writing") {
     return {
       title: "Writing auf Papier vorbereiten",
       steps: [
-        "Schreibe erst einen Plan: opinion, reason, example, conclusion.",
+        "Schreibe erst den Texttyp auf: report, mediation, answer oder continuation.",
+        "Notiere vier Bausteine: place/topic, task/information, detail/example, opinion/result.",
         "Formuliere vier englische Saetze auf Papier.",
-        "Baue mindestens eine useful phrase und eine passende Grammatikform ein."
+        "Baue mindestens eine useful phrase und eine passende Grammatikform ein: past perfect, conditional oder linking word."
       ]
     };
   }
@@ -2561,7 +3165,8 @@ function englishPaperPrompt(task, paperContext = null) {
     return {
       title: "Mini-Absatz vorbereiten",
       steps: [
-        "Schreibe erst einen Plan: opinion, reason, example, conclusion.",
+        "Schreibe erst den Texttyp auf: report, mediation, answer oder continuation.",
+        "Notiere vier Bausteine: place/topic, task/information, detail/example, opinion/result.",
         "Formuliere vier englische Saetze auf Papier.",
         "Markiere useful phrases und pruefe die Verben."
       ]
@@ -2645,7 +3250,7 @@ function renderEnglishModule(module = "exam") {
   }
 
   if (module === "writing") {
-    renderEnglishFilteredTask(["WRITING_STRUCTURE", "CONTINUATION_WRITING", "LINKING", "GRAMMAR_CONDITIONALS"], module);
+    renderEnglishWritingModule();
     return;
   }
 
@@ -2661,6 +3266,30 @@ function renderEnglishFilteredTask(types, module) {
   const pool = likelyEnglishTasks().filter((task) => types.includes(task.type));
   const task = pool[Math.floor(Math.random() * pool.length)];
   renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, () => renderEnglishModule(module), module);
+}
+
+function renderEnglishWritingModule() {
+  const types = ["WRITING_STRUCTURE", "WRITING_PHRASES", "WRITING_GRAMMAR", "CONTINUATION_WRITING", "GRAMMAR_CONDITIONALS", "GRAMMAR_PAST_PERFECT"];
+  const pool = likelyEnglishTasks().filter((task) => types.includes(task.type));
+  const task = pool[Math.floor(Math.random() * pool.length)];
+  const node = document.getElementById("englishTask");
+  renderChoiceTaskNode(node, "english", task, () => renderEnglishModule("writing"), "writing");
+  node.insertAdjacentHTML("afterbegin", `
+    <section class="writingCoach">
+      <div>
+        <div class="taskMeta">Writing-Kompass nach den Musterloesungen</div>
+        <p>Guter Text: klare Textsorte, konkrete Details, passende linking words, richtige Zeitformen.</p>
+      </div>
+      <div class="phraseGrid">
+        <span>My internship experience was with ...</span>
+        <span>My main task was ...</span>
+        <span>It was a great experience because ...</span>
+        <span>At first ..., but after ...</span>
+        <span>Once we had ..., we ...</span>
+        <span>If I could ..., I would ...</span>
+      </div>
+    </section>
+  `);
 }
 
 function renderEnglishReserveModule() {
