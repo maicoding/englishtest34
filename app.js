@@ -1747,6 +1747,151 @@ const englishU3ExpansionTasks = [
 
 tasks.english.push(...englishU3ExpansionTasks);
 
+const englishU3FinalCoverageTasks = [
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "A ___ is a fight in which people shoot at each other.",
+    options: ["gunfight", "shelter", "resort"],
+    answer: "gunfight",
+    ok: "Correct. A gunfight is a fight with guns.",
+    help: "The clue is shoot at each other.",
+    rule: "gunfight ist ein Nomen aus gun + fight."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "In the 19th century, Arizona was still a ___ before it became a state.",
+    options: ["Territory", "novel", "shelter"],
+    answer: "Territory",
+    ok: "Correct. A Territory was an area that was not yet a state.",
+    help: "The clue is before it became a state.",
+    rule: "Territory ist hier ein historischer Begriff: Gebiet vor dem Bundesstaat."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "Tombstone is in the ___ part of Arizona.",
+    options: ["southern", "scandalous", "unimportant"],
+    answer: "southern",
+    ok: "Correct. southern means in the south.",
+    help: "The clue is part of Arizona.",
+    rule: "southern ist ein Adjektiv: the southern part of ..."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "You will not ___ visiting the museum because it is really interesting.",
+    options: ["regret", "attack", "contradict"],
+    answer: "regret",
+    ok: "Correct. regret means feel sorry about something later.",
+    help: "The clue is you will not feel sorry after visiting.",
+    rule: "regret + -ing ist haeufig: You won't regret visiting ..."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 Tombstone",
+    prompt: "Which word best completes the sentence?",
+    sentence: "A long fictional book is a ___.",
+    options: ["novel", "territory", "patrol"],
+    answer: "novel",
+    ok: "Correct. A novel is a fictional book.",
+    help: "The clue is fictional book.",
+    rule: "novel = Roman; nicht mit new verwechseln."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 people in the West",
+    prompt: "Which person is described?",
+    sentence: "This person works for the police and protects people.",
+    options: ["policeman", "criminal", "smuggler"],
+    answer: "policeman",
+    ok: "Correct. A policeman works for the police.",
+    help: "The clue is works for the police.",
+    rule: "policeman gehoert zum Wortfeld law/protection."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Verb + preposition",
+    prompt: "Choose the correct verb.",
+    sentence: "A wild animal may ___ if it feels threatened.",
+    options: ["attack", "accuse", "retire"],
+    answer: "attack",
+    ok: "Correct. attack means try to hurt someone or something.",
+    help: "The clue is wild animal and feels threatened.",
+    rule: "attack braucht hier keine Praeposition."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 word category",
+    prompt: "Which word best completes the sentence?",
+    sentence: "A ___ is a seat used when riding a horse.",
+    options: ["saddle", "crater", "settlement"],
+    answer: "saddle",
+    ok: "Correct. A saddle is used for riding a horse.",
+    help: "The clue is riding a horse.",
+    rule: "saddle gehoert zu horses/ranching."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 word category",
+    prompt: "Which word best completes the sentence?",
+    sentence: "A ___ is a place where people have started to live.",
+    options: ["settlement", "bomb", "marriage"],
+    answer: "settlement",
+    ok: "Correct. A settlement is a place where people settle and live.",
+    help: "The clue is people have started to live.",
+    rule: "settlement kommt von settle = sich ansiedeln."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "U3 word category",
+    prompt: "Which word best completes the sentence?",
+    sentence: "A ___ is a person who fights bravely, often in a traditional group.",
+    options: ["warrior", "resort", "railroad"],
+    answer: "warrior",
+    ok: "Correct. A warrior is a fighter.",
+    help: "The clue is fights bravely.",
+    rule: "warrior gehoert zum Personen-/Geschichtswortfeld."
+  },
+  {
+    type: "READING_EVIDENCE",
+    title: "Reading: exact statement",
+    prompt: "Which evidence makes the statement false?",
+    sentence: "Text: The old town attracts many tourists. Some visitors come for the museums, while others come for the living history show. The town is popular, but it is not important for modern business. Statement: The town is unimportant for tourists.",
+    options: [
+      "attracts many tourists",
+      "not important for modern business",
+      "old town"
+    ],
+    answer: "attracts many tourists",
+    ok: "Correct. This evidence directly contradicts the statement about tourists.",
+    help: "Do not grab the word unimportant too quickly. Check what it refers to.",
+    rule: "Reading-Falle: Ein Wort kann stimmen, aber zu einem anderen Bezug gehoeren."
+  },
+  {
+    type: "WRITING_STRUCTURE",
+    title: "Writing checklist",
+    prompt: "Which checklist would help most before handing in a text?",
+    sentence: "You wrote an internship report.",
+    options: [
+      "task answered, concrete details, useful phrases, verb forms, word order",
+      "nice handwriting only",
+      "as many difficult words as possible"
+    ],
+    answer: "task answered, concrete details, useful phrases, verb forms, word order",
+    ok: "Correct. This is the safest final check for a test text.",
+    help: "A good text is clear, correct and concrete. Difficult words only help if they are right.",
+    rule: "Final check: Aufgabe beantwortet? Details? Phrasen? Verben? Wortstellung?"
+  }
+];
+
+tasks.english.push(...englishU3FinalCoverageTasks);
+
 const vocab = {
   latin: [
     {
