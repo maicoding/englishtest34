@@ -2979,16 +2979,55 @@ const paperTasks = [
   },
   {
     title: "Englisch: schriftlicher Vokabeltest",
+    priority: "basis",
     steps: [
-      "Lasse dir 20 deutsche Bedeutungen diktieren oder abschreiben.",
-      "Schreibe die englischen Woerter zuerst auf Papier.",
-      "Kontrolliere danach Rechtschreibung und Wortart.",
-      "Jedes falsche Wort: dreimal schreiben und einen eigenen Satz bilden."
+      "Lasse dir 20 deutsche Bedeutungen aus U3/Across Cultures 3 diktieren oder abschreiben.",
+      "Schreibe die englischen Woerter zuerst auf Papier, ohne in die App zu schauen.",
+      "Kontrolliere danach Rechtschreibung, Bedeutung und Wortart.",
+      "Jedes falsche Wort: dreimal schreiben, Bedeutung daneben, dann einen eigenen Satz bilden.",
+      "Am Ende fuenf Woerter erneut aus dem Kopf schreiben."
     ],
     solution: "Kontrollschema: Bedeutung richtig? Rechtschreibung richtig? Wortart richtig? Eigener Satz sinnvoll? Bei Nein: Wort dreimal schreiben, dann einen neuen Satz bilden."
   },
   {
+    title: "Englisch: Conditionals schriftlich automatisieren",
+    priority: "basis",
+    steps: [
+      "Schreibe je drei Saetze zu Conditional 1, Conditional 2 und Conditional 3.",
+      "Markiere in jedem Satz den if-clause blau und den main clause gruen.",
+      "Schreibe unter jeden Satz die Struktur: Type 1 = present + will; Type 2 = past + would; Type 3 = past perfect + would have.",
+      "Schreibe drei gemischte Saetze noch einmal, aber mit neuen U3/AC3-Vokabeln.",
+      "Kontrolliere: Beide Satzteile muessen zum selben Typ passen."
+    ],
+    solution: "Kontrollschema: Type 1: If I learn the words, I will answer faster. Type 2: If I had more time, I would write a better text. Type 3: If they had had enough food, fewer people would have suffered. Entscheidend sind immer beide Satzteile."
+  },
+  {
+    title: "Englisch: Grammar-Basics schriftlich sichern",
+    priority: "basis",
+    steps: [
+      "Schreibe drei past-perfect-Saetze: had + past participle.",
+      "Schreibe daneben, welches Ereignis zuerst passiert ist.",
+      "Schreibe drei simple-past-Saetze und vergleiche sie mit den past-perfect-Saetzen.",
+      "Schreibe zwei Saetze mit because/although/however.",
+      "Unterstreiche alle Verben und linking words."
+    ],
+    solution: "Kontrollschema: Past perfect zeigt, was vor einem anderen Ereignis in der Vergangenheit passiert war. Beispiel: After the family had sold the house, they moved west. Simple past: They moved west. Linking: because = Grund, although/however = Gegensatz."
+  },
+  {
+    title: "Englisch: Vokabeln in Writing-Saetze verwandeln",
+    priority: "basis",
+    steps: [
+      "Waehle zehn U3/AC3-Woerter aus der App.",
+      "Schreibe zu jedem Wort einen einfachen englischen Satz.",
+      "Mindestens drei Saetze muessen Across Cultures 3 erklaeren.",
+      "Mindestens drei Saetze muessen mit because, but oder however verbunden werden.",
+      "Lies die Saetze laut und verbessere nur Wortstellung und Verben."
+    ],
+    solution: "Beispiele: Indigenous peoples lived in North America long before Europeans arrived. Some costumes can be disrespectful because they turn a real culture into fun. A reservation is an area where some Indigenous people live today."
+  },
+  {
     title: "Englisch: Across Cultures 3 mediation",
+    priority: "basis",
     steps: [
       "Schreibe zuerst den Adressaten auf: an English-speaking friend.",
       "Notiere vier Pflichtwoerter: Indigenous peoples, culture, costume, respect.",
@@ -2999,6 +3038,7 @@ const paperTasks = [
   },
   {
     title: "Englisch: Across Cultures 3 Fakten sichern",
+    priority: "basis",
     steps: [
       "Schreibe sechs kurze Fakten auf Englisch.",
       "Nutze diese Starter: Indigenous peoples ... / Some reservations ... / The Trail of Tears ... / Assimilation means ... / Treaties were ... / Some costumes can be ...",
@@ -3009,6 +3049,7 @@ const paperTasks = [
   },
   {
     title: "Englisch: Wortfamilien auf Papier",
+    priority: "basis",
     steps: [
       "Zeichne vier Spalten: noun, verb, adjective, example sentence.",
       "Trage acht U3-Woerter ein, zum Beispiel recruiter, pressure, struggle, witness, legendary.",
@@ -3833,7 +3874,8 @@ function englishPaperPrompt(task, paperContext = null) {
         "Schreibe den richtigen Satz vollstaendig ab.",
         "Markiere den if-clause blau und den main clause gruen.",
         "Schreibe die Zeiten daneben: present + will, past + would oder past perfect + would have.",
-        "Erfinde einen zweiten Satz mit neuen Woertern aus U3."
+        "Erfinde einen zweiten Satz mit neuen Woertern aus U3.",
+        "Sprich die Regel einmal laut und schreibe sie darunter."
       ]
     };
   }
@@ -3843,19 +3885,24 @@ function englishPaperPrompt(task, paperContext = null) {
       title: "Wort aktiv sichern",
       steps: [
         `Schreibe die richtige Loesung: ${task.answer}.`,
+        "Schreibe das Wort oder den Chunk dreimal sauber.",
+        "Schreibe die deutsche Bedeutung daneben.",
         "Schreibe einen eigenen englischen Satz mit diesem Wort oder Chunk.",
-        "Markiere die Stelle, die du leicht verwechseln koenntest."
+        "Markiere die Stelle, die du leicht verwechseln koenntest.",
+        "Decke die Loesung ab und schreibe sie noch einmal aus dem Kopf."
       ]
     };
   }
 
   if (grammarTypes.includes(task.type)) {
     return {
-      title: "Regel in eigenen Satz uebertragen",
+      title: "Grammatik schriftlich sichern",
       steps: [
         "Schreibe die Regel in einem kurzen deutschen Satz.",
+        "Schreibe den richtigen englischen Satz vollstaendig ab.",
         "Schreibe einen neuen englischen Beispielsatz mit anderer Situation.",
-        "Unterstreiche den Ausloeser und die richtige Form."
+        "Unterstreiche den Ausloeser und die richtige Form.",
+        "Schreibe darunter: Warum ist genau diese Form richtig?"
       ]
     };
   }
@@ -4365,7 +4412,9 @@ function renderEnglishVocabModule() {
       <ol>
         <li>Schreibe die richtige Loesung: ${escapeHtml(item.solution)}.</li>
         <li>Schreibe die Bedeutung: ${escapeHtml(item.meaning)}.</li>
+        <li>Schreibe das Wort oder den Chunk dreimal sauber.</li>
         <li>Schreibe einen eigenen Satz mit dem Wort.</li>
+        <li>Decke die Loesung ab und schreibe sie noch einmal aus dem Kopf.</li>
       </ol>
     </aside>`;
   attachChoiceHandlers(node, "english", "VOCAB_ACTIVE", item.solution, `Richtig. ${item.hint}`, item.hint, renderEnglishVocabModule, item.rule);
@@ -4373,7 +4422,9 @@ function renderEnglishVocabModule() {
 
 function renderEnglishPaperModule() {
   const englishTasks = paperTasks.filter((task) => task.title.startsWith("Englisch:"));
-  const task = englishTasks[Math.floor(Math.random() * englishTasks.length)];
+  const basisTasks = englishTasks.filter((task) => task.priority === "basis");
+  const weightedTasks = [...basisTasks, ...basisTasks, ...basisTasks, ...englishTasks];
+  const task = weightedTasks[Math.floor(Math.random() * weightedTasks.length)];
   document.getElementById("englishTask").innerHTML = `
     <div class="paperBox">
       <div class="taskMeta">${task.title}</div>
