@@ -4,7 +4,7 @@ Stand: 2026-05-16
 
 ## Prioritaet
 
-Die Schuelerinnen und Schueler sind nach aktuellem Stand erst bei Ende U3. Die App trainiert deshalb im normalen Englischpfad konsequent U3-Ende: Wortschatz, Reading-Strategien, Writing-Bausteine, Conditional 1-3 und past perfect. U4-Aufgaben sind technisch als Reserve vorhanden, erscheinen aber nicht im normalen Trainingsfluss.
+Die Schuelerinnen und Schueler sind nach aktuellem Stand erst bei Ende U3. Die App trainiert deshalb im normalen Englischpfad konsequent U3-Ende: Wortschatz, Reading-Strategien, Writing-Bausteine, Conditional 1-3 und past perfect. U4-Aufgaben sind im Zusatzteil vorhanden, erscheinen aber nicht im normalen Trainingsfluss.
 
 Listening war in der letzten Arbeit bereits ein Schwerpunkt und wird nicht als Hauptpfad automatisiert. Reading-Aufgaben trainieren aber dieselben Belegstrategien: Schluesselwoerter markieren, Aussage pruefen, kurze evidence notieren.
 
@@ -27,8 +27,8 @@ Listening war in der letzten Arbeit bereits ein Schwerpunkt und wird nicht als H
 
 | Bereich | Grund |
 |---|---|
-| U4 Check-in und Station 1: word families, technology vocabulary, gerund/infinitive patterns | nur Reserve, weil aktuell Ende U3 |
-| U4 Station 2/3: internship feedback, synonyms/antonyms, British/American English, California argument, longer mediation | nur Reserve, vermutlich noch zu weit |
+| U4 nach Station 1: word families, technology vocabulary, gerund/infinitive patterns | im Zusatzteil, nur falls die Lehrkraft diese Inhalte eine Woche vorher nennt |
+| U4 Station 2/3: internship feedback, synonyms/antonyms, British/American English, California argument, longer mediation | im Zusatzteil, vermutlich noch zu weit |
 | Vollstaendige freie Writing-Korrektur in der App | ueber Scaffold, Papierauftrag und Musterlogik vorbereitet; automatische Bewertung waere ein eigener KI-Schritt |
 
 ## Didaktische Steuerung

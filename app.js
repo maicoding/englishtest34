@@ -2416,6 +2416,10 @@ function likelyEnglishTasks() {
   return tasks.english.filter((task) => task.stage !== "u4_later");
 }
 
+function reserveEnglishTasks() {
+  return tasks.english.filter((task) => task.stage === "u4_later");
+}
+
 function renderTask(domain, preferredType = null) {
   const task = chooseTask(domain, preferredType);
   const node = document.getElementById(`${domain}Task`);
@@ -2645,6 +2649,11 @@ function renderEnglishModule(module = "exam") {
     return;
   }
 
+  if (module === "reserve") {
+    renderEnglishReserveModule();
+    return;
+  }
+
   renderEnglishPaperModule();
 }
 
@@ -2652,6 +2661,30 @@ function renderEnglishFilteredTask(types, module) {
   const pool = likelyEnglishTasks().filter((task) => types.includes(task.type));
   const task = pool[Math.floor(Math.random() * pool.length)];
   renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, () => renderEnglishModule(module), module);
+}
+
+function renderEnglishReserveModule() {
+  const pool = reserveEnglishTasks();
+  const task = pool[Math.floor(Math.random() * pool.length)];
+  const node = document.getElementById("englishTask");
+  node.innerHTML = `
+    <div class="reserveIntro">
+      <div>
+        <div class="taskMeta">Zusatzteil U4 nach Station 1</div>
+        <div class="prompt">Nur nutzen, wenn diese Inhalte in der letzten Woche vor der Klausur wirklich genannt werden.</div>
+      </div>
+      <button class="quiet feedbackAction" id="newReserveTask">Andere Zusatzaufgabe</button>
+    </div>
+    <div id="reserveTaskSlot"></div>
+  `;
+  renderChoiceTaskNode(
+    document.getElementById("reserveTaskSlot"),
+    "english",
+    task,
+    renderEnglishReserveModule,
+    "reserve"
+  );
+  document.getElementById("newReserveTask").addEventListener("click", renderEnglishReserveModule);
 }
 
 function renderConditionalTrainer() {
