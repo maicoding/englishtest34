@@ -616,6 +616,7 @@ const tasks = {
     },
     {
       type: "VOCAB_ACTIVE",
+      stage: "u4_later",
       title: "Internship feedback",
       prompt: "Which phrase fits the feedback dialogue?",
       sentence: "My manager is happy because I follow ___ carefully.",
@@ -627,6 +628,7 @@ const tasks = {
     },
     {
       type: "VOCAB_ACTIVE",
+      stage: "u4_later",
       title: "Internship feedback",
       prompt: "Which phrase fits best?",
       sentence: "She is from Germany and cannot accept paid work because of her ___.",
@@ -638,6 +640,7 @@ const tasks = {
     },
     {
       type: "VOCAB_ACTIVE",
+      stage: "u4_later",
       title: "Synonyms and antonyms",
       prompt: "Choose the antonym.",
       sentence: "The opposite of accepted is ___.",
@@ -649,6 +652,7 @@ const tasks = {
     },
     {
       type: "VOCAB_ACTIVE",
+      stage: "u4_later",
       title: "Synonyms and antonyms",
       prompt: "Choose the phrase with a similar meaning.",
       sentence: "easy to see = ___.",
@@ -660,6 +664,7 @@ const tasks = {
     },
     {
       type: "VOCAB_CATEGORY",
+      stage: "u4_later",
       title: "Odd one out",
       prompt: "Which word does not fit?",
       sentence: "park / countryside / suburban / urban",
@@ -671,6 +676,7 @@ const tasks = {
     },
     {
       type: "VOCAB_CATEGORY",
+      stage: "u4_later",
       title: "British and American English",
       prompt: "Choose the American English word.",
       sentence: "BE: mobile phone. AE: ___",
@@ -761,6 +767,7 @@ const tasks = {
     },
     {
       type: "LINKING",
+      stage: "u4_later",
       title: "Adverbial clauses",
       prompt: "Which linking word fits?",
       sentence: "Actors may choose rural homes ___ their children can have more privacy.",
@@ -772,6 +779,7 @@ const tasks = {
     },
     {
       type: "LINKING",
+      stage: "u4_later",
       title: "Adverbial clauses",
       prompt: "Which linking phrase fits?",
       sentence: "They went to ___ many auditions ___ it was easier to live in L.A.",
@@ -813,6 +821,7 @@ const tasks = {
     },
     {
       type: "WRITING_STRUCTURE",
+      stage: "u4_later",
       title: "Mediation",
       prompt: "What is the best first sentence for a presentation mediation?",
       sentence: "You explain a German brand story to exchange students.",
@@ -828,6 +837,7 @@ const tasks = {
     },
     {
       type: "WRITING_STRUCTURE",
+      stage: "u4_later",
       title: "Writing: California argument",
       prompt: "Which sentence starts a balanced paragraph well?",
       sentence: "Topic: the different sides of life in California.",
@@ -2083,7 +2093,7 @@ function statusClass(domain, type) {
 }
 
 function chooseTask(domain, preferredType = null) {
-  const domainTasks = tasks[domain];
+  const domainTasks = domain === "english" ? likelyEnglishTasks() : tasks[domain];
   if (preferredType) {
     const pool = domainTasks.filter((task) => task.type === preferredType);
     if (pool.length) return pool[Math.floor(Math.random() * pool.length)];
@@ -2096,6 +2106,10 @@ function chooseTask(domain, preferredType = null) {
     })[0];
   const pool = domainTasks.filter((task) => task.type === weakest);
   return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function likelyEnglishTasks() {
+  return tasks.english.filter((task) => task.stage !== "u4_later");
 }
 
 function renderTask(domain, preferredType = null) {
@@ -2331,7 +2345,7 @@ function renderEnglishModule(module = "exam") {
 }
 
 function renderEnglishFilteredTask(types, module) {
-  const pool = tasks.english.filter((task) => types.includes(task.type));
+  const pool = likelyEnglishTasks().filter((task) => types.includes(task.type));
   const task = pool[Math.floor(Math.random() * pool.length)];
   renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, () => renderEnglishModule(module), module);
 }
