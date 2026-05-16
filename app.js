@@ -1011,7 +1011,8 @@ const paperTasks = [
       "Nutze mindestens vier Starter: I think, One reason, For example, In conclusion.",
       "Unterstreiche alle linking words.",
       "Korrigiere danach nur Verben und Wortstellung."
-    ]
+    ],
+    solution: "Musterstruktur: I think that ... One reason is that ... For example, ... However, ... In conclusion, ... Kontrolliere danach: Meinung, zwei Gruende, ein Beispiel, mindestens vier linking words, Verben und Wortstellung."
   },
   {
     title: "Englisch: Reading/Listening Belege",
@@ -1020,7 +1021,8 @@ const paperTasks = [
       "Schreibe die Antwort nicht allein auf.",
       "Notiere daneben ein Schluesselwort als Beleg.",
       "Wenn du keinen Beleg findest, markiere die Aufgabe gelb."
-    ]
+    ],
+    solution: "Musterkontrolle: Jede Antwort braucht ein Schluesselwort aus der Frage und ein Belegwort aus Text oder Audio. Eine Antwort ohne Beleg ist noch nicht fertig."
   },
   {
     title: "Englisch: schriftlicher Vokabeltest",
@@ -1029,7 +1031,8 @@ const paperTasks = [
       "Schreibe die englischen Woerter zuerst auf Papier.",
       "Kontrolliere danach Rechtschreibung und Wortart.",
       "Jedes falsche Wort: dreimal schreiben und einen eigenen Satz bilden."
-    ]
+    ],
+    solution: "Kontrollschema: Bedeutung richtig? Rechtschreibung richtig? Wortart richtig? Eigener Satz sinnvoll? Bei Nein: Wort dreimal schreiben, dann einen neuen Satz bilden."
   },
   {
     title: "Englisch: Wortfamilien auf Papier",
@@ -1038,7 +1041,8 @@ const paperTasks = [
       "Trage acht Wortfamilien ein.",
       "Schreibe zu jeder Familie einen kurzen englischen Satz.",
       "Markiere, welche Form im Satz wirklich gebraucht wird."
-    ]
+    ],
+    solution: "Beispiel: science -> scientist -> scientific. The scientist worked on robotics. Regel: Erst pruefen, welche Wortart die Luecke braucht."
   },
   {
     title: "Englisch: Genre und Atmosphaere",
@@ -1056,7 +1060,8 @@ const paperTasks = [
       "Schreibe 50-100 Woerter weiter.",
       "Bleibe in derselben Erzaehlperspektive und Zeit.",
       "Baue mindestens drei Atmosphaere-Woerter ein."
-    ]
+    ],
+    solution: "Kontrollschema: Gleiche Perspektive? Gleiche Zeitform? Atmosphaere erhalten? Problem weitergefuehrt? Mindestens drei passende Atmosphaere-Woerter?"
   },
   {
     title: "Mathe: Decoder fuer lineare Textaufgaben",
@@ -1416,8 +1421,12 @@ function statusClass(domain, type) {
   return "red";
 }
 
-function chooseTask(domain) {
+function chooseTask(domain, preferredType = null) {
   const domainTasks = tasks[domain];
+  if (preferredType) {
+    const pool = domainTasks.filter((task) => task.type === preferredType);
+    if (pool.length) return pool[Math.floor(Math.random() * pool.length)];
+  }
   const weakest = [...new Set(domainTasks.map((task) => task.type))]
     .sort((a, b) => {
       const sa = scoreFor(domain, a);
@@ -1428,13 +1437,13 @@ function chooseTask(domain) {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-function renderTask(domain) {
-  const task = chooseTask(domain);
+function renderTask(domain, preferredType = null) {
+  const task = chooseTask(domain, preferredType);
   const node = document.getElementById(`${domain}Task`);
   renderChoiceTaskNode(node, domain, task);
 }
 
-function renderChoiceTaskNode(node, domain, task) {
+function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderTask(domain, task.type)) {
   node.innerHTML = `
     <div class="taskMeta">${task.title}</div>
     <div class="prompt">${task.prompt}</div>
@@ -1448,21 +1457,60 @@ function renderChoiceTaskNode(node, domain, task) {
     button.addEventListener("click", () => {
       const correct = button.dataset.answer === task.answer;
       record(domain, task.type, correct);
+      lockAnswers(node, button, task.answer);
       const feedback = node.querySelector(".feedback");
       feedback.hidden = false;
       feedback.className = correct ? "feedback" : "feedback warn";
-      feedback.textContent = correct
-        ? task.ok
-        : `${task.help} Grundlage: ${basics[task.type] || "Erst die Regel nennen, dann die Aufgabe loesen."} Danach kommt automatisch mehr Uebung zu: ${areas[domain][task.type]}.`;
+      feedback.innerHTML = buildFeedback({
+        correct,
+        domain,
+        type: task.type,
+        answer: task.answer,
+        ok: task.ok,
+        help: task.help,
+        selected: button.dataset.answer
+      });
+      const repeat = feedback.querySelector("[data-repeat-type]");
+      repeat.addEventListener("click", repeatCallback);
     });
   });
+}
+
+function lockAnswers(node, selectedButton, answer) {
+  node.querySelectorAll(".answerButton").forEach((button) => {
+    button.disabled = true;
+    if (button.dataset.answer === answer) button.classList.add("isCorrect");
+    if (button === selectedButton && button.dataset.answer !== answer) button.classList.add("isWrong");
+  });
+}
+
+function buildFeedback({ correct, domain, type, answer, ok, help, selected }) {
+  const rule = basics[type] || "Erst die Regel nennen, dann die Aufgabe loesen.";
+  const label = areas[domain][type] || "Grundlage";
+  const correction = correct
+    ? `<p><strong>Richtig.</strong> ${escapeHtml(ok)}</p>`
+    : `<p><strong>Korrektur:</strong> Richtig ist <span class="answerInline">${escapeHtml(answer)}</span>. Deine Wahl war <span class="answerInline">${escapeHtml(selected)}</span>.</p>`;
+  const explanation = correct
+    ? `<p><strong>Regel noch einmal:</strong> ${escapeHtml(rule)}</p>`
+    : `<p><strong>Warum?</strong> ${escapeHtml(help)} <strong>Regel:</strong> ${escapeHtml(rule)}</p>`;
+  const next = correct
+    ? "Noch eine Aufgabe aus diesem Bereich festigen"
+    : "Gleichen Bereich sofort noch einmal ueben";
+  return `
+    <div class="feedbackBlock">
+      ${correction}
+      ${explanation}
+      <p><strong>Merkschritt:</strong> Sag die Regel einmal laut und loese dann eine aehnliche Aufgabe.</p>
+      <button class="quiet feedbackAction" data-repeat-type="${escapeHtml(type)}">${next}: ${escapeHtml(label)}</button>
+    </div>
+  `;
 }
 
 function renderGrammarTask() {
   const focus = document.getElementById("grammarFocus").value;
   const pool = tasks.english.filter((task) => task.type === focus);
   const task = pool[Math.floor(Math.random() * pool.length)];
-  renderChoiceTaskNode(document.getElementById("grammarTask"), "english", task);
+  renderChoiceTaskNode(document.getElementById("grammarTask"), "english", task, renderGrammarTask);
 }
 
 function renderDashboard() {
@@ -1512,8 +1560,19 @@ function renderPaperTask() {
       <div class="taskMeta">${task.title}</div>
       <ol>${task.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
       <div class="feedback">Dieser Teil soll bewusst handschriftlich gemacht werden, weil die Arbeit Schreiben und Struktur verlangt.</div>
+      ${task.solution ? `
+        <button class="quiet revealSolution">Musterloesung / Kontrollblick zeigen</button>
+        <div class="feedback solutionBox" hidden>${escapeHtml(task.solution)}</div>
+      ` : ""}
     </div>
   `;
+  const reveal = document.querySelector("#paperTask .revealSolution");
+  if (reveal) {
+    reveal.addEventListener("click", () => {
+      document.querySelector("#paperTask .solutionBox").hidden = false;
+      reveal.disabled = true;
+    });
+  }
 }
 
 function chooseVocab(subject) {
@@ -1609,10 +1668,20 @@ function attachChoiceHandlers(node, subject, type, answer, ok, help) {
     button.addEventListener("click", () => {
       const correct = button.dataset.answer === answer;
       record(subject, type, correct);
+      lockAnswers(node, button, answer);
       const feedback = node.querySelector(".feedback");
       feedback.hidden = false;
       feedback.className = correct ? "feedback" : "feedback warn";
-      feedback.textContent = correct ? ok : `${help} Dieses Wort kommt spaeter wieder.`;
+      feedback.innerHTML = buildFeedback({
+        correct,
+        domain: subject,
+        type,
+        answer,
+        ok,
+        help,
+        selected: button.dataset.answer
+      });
+      feedback.querySelector("[data-repeat-type]").addEventListener("click", renderVocabTask);
     });
   });
 }

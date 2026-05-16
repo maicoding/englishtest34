@@ -314,6 +314,25 @@ select {
   text-align: left;
 }
 
+.answerButton:disabled {
+  cursor: default;
+  opacity: 0.82;
+}
+
+.answerButton.isCorrect {
+  border-color: #9bd4ad;
+  background: #e8f6ec;
+  color: #174b34;
+  font-weight: 800;
+}
+
+.answerButton.isWrong {
+  border-color: #efb2a8;
+  background: #fff0ed;
+  color: #8d2c22;
+  font-weight: 800;
+}
+
 .feedback {
   margin-top: 18px;
   padding: 14px;
@@ -326,6 +345,29 @@ select {
 .feedback.warn {
   background: #fff7e5;
   border-color: #f0d49a;
+}
+
+.feedbackBlock {
+  display: grid;
+  gap: 10px;
+}
+
+.feedbackBlock p {
+  line-height: 1.5;
+}
+
+.answerInline {
+  display: inline-block;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 2px 7px;
+  font-weight: 800;
+}
+
+.feedbackAction {
+  justify-self: start;
+  margin-top: 4px;
 }
 
 .paperBox {
