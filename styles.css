@@ -532,6 +532,43 @@ select {
   margin-top: 4px;
 }
 
+.inlinePaper {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid #d9d1bf;
+  border-radius: 8px;
+  background: #fffaf0;
+}
+
+.inlinePaper > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.paperLabel {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid #d9c79f;
+  border-radius: 8px;
+  background: white;
+  color: #7a5622;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.inlinePaper ol {
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.55;
+}
+
 .paperBox {
   display: grid;
   gap: 14px;

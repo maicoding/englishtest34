@@ -1449,7 +1449,7 @@ function renderTask(domain, preferredType = null) {
   renderChoiceTaskNode(node, domain, task);
 }
 
-function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderTask(domain, task.type)) {
+function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderTask(domain, task.type), paperContext = null) {
   node.innerHTML = `
     <div class="taskMeta">${task.title}</div>
     <div class="prompt">${task.prompt}</div>
@@ -1458,6 +1458,7 @@ function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderT
       ${task.options.map((option) => `<button class="answerButton" data-answer="${escapeHtml(option)}">${option}</button>`).join("")}
     </div>
     <div class="feedback" hidden></div>
+    ${paperPromptForTask(domain, task, paperContext)}
   `;
   node.querySelectorAll(".answerButton").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1481,6 +1482,96 @@ function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderT
       repeat.addEventListener("click", repeatCallback);
     });
   });
+}
+
+function paperPromptForTask(domain, task, paperContext = null) {
+  if (domain !== "english") return "";
+  const prompt = englishPaperPrompt(task, paperContext);
+  if (!prompt) return "";
+  return `
+    <aside class="inlinePaper">
+      <div>
+        <span class="paperLabel">Papier</span>
+        <strong>${escapeHtml(prompt.title)}</strong>
+      </div>
+      <ol>${prompt.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+    </aside>
+  `;
+}
+
+function englishPaperPrompt(task, paperContext = null) {
+  const vocabTypes = ["VOCAB_FORM", "VOCAB_ACTIVE", "VOCAB_CATEGORY", "VERB_PREP"];
+  const grammarTypes = ["GRAMMAR_CONDITIONALS", "GRAMMAR_PAST_PERFECT", "GRAMMAR_GERUND_INF", "LINKING"];
+  const readingTypes = ["READING_EVIDENCE", "GENRE_READING"];
+  const writingTypes = ["WRITING_STRUCTURE", "CONTINUATION_WRITING"];
+
+  if (paperContext === "writing") {
+    return {
+      title: "Writing auf Papier vorbereiten",
+      steps: [
+        "Schreibe erst einen Plan: opinion, reason, example, conclusion.",
+        "Formuliere vier englische Saetze auf Papier.",
+        "Baue mindestens eine useful phrase und eine passende Grammatikform ein."
+      ]
+    };
+  }
+
+  if (paperContext === "reading") {
+    return {
+      title: "Beleg notieren",
+      steps: [
+        "Schreibe die Frageart auf: who, why, how, what oder evidence.",
+        "Notiere ein Schluesselwort aus der Aufgabe.",
+        "Schreibe eine moegliche Belegstelle als kurzen Ausdruck."
+      ]
+    };
+  }
+
+  if (vocabTypes.includes(task.type)) {
+    return {
+      title: "Wort aktiv sichern",
+      steps: [
+        `Schreibe die richtige Loesung: ${task.answer}.`,
+        "Schreibe einen eigenen englischen Satz mit diesem Wort oder Chunk.",
+        "Markiere die Stelle, die du leicht verwechseln koenntest."
+      ]
+    };
+  }
+
+  if (grammarTypes.includes(task.type)) {
+    return {
+      title: "Regel in eigenen Satz uebertragen",
+      steps: [
+        "Schreibe die Regel in einem kurzen deutschen Satz.",
+        "Schreibe einen neuen englischen Beispielsatz mit anderer Situation.",
+        "Unterstreiche den Ausloeser und die richtige Form."
+      ]
+    };
+  }
+
+  if (readingTypes.includes(task.type)) {
+    return {
+      title: "Beleg notieren",
+      steps: [
+        "Schreibe die Frageart auf: who, why, how, what oder evidence.",
+        "Notiere ein Schluesselwort aus der Aufgabe.",
+        "Schreibe eine moegliche Belegstelle als kurzen Ausdruck."
+      ]
+    };
+  }
+
+  if (writingTypes.includes(task.type)) {
+    return {
+      title: "Mini-Absatz vorbereiten",
+      steps: [
+        "Schreibe erst einen Plan: opinion, reason, example, conclusion.",
+        "Formuliere vier englische Saetze auf Papier.",
+        "Markiere useful phrases und pruefe die Verben."
+      ]
+    };
+  }
+
+  return null;
 }
 
 function lockAnswers(node, selectedButton, answer) {
@@ -1561,13 +1652,24 @@ function renderEnglishModule(module = "exam") {
 function renderEnglishFilteredTask(types, module) {
   const pool = tasks.english.filter((task) => types.includes(task.type));
   const task = pool[Math.floor(Math.random() * pool.length)];
-  renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, () => renderEnglishModule(module));
+  renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, () => renderEnglishModule(module), module);
 }
 
 function renderEnglishVocabModule() {
   const item = chooseVocab("english");
   const node = document.getElementById("englishTask");
-  node.innerHTML = buildChoiceTask("english", "VOCAB_FORM", item, "Welche Form oder Bedeutung passt?", item.sentence, item.solution);
+  node.innerHTML = `${buildChoiceTask("english", "VOCAB_FORM", item, "Welche Form oder Bedeutung passt?", item.sentence, item.solution)}
+    <aside class="inlinePaper">
+      <div>
+        <span class="paperLabel">Papier</span>
+        <strong>Vokabel wirklich koennen</strong>
+      </div>
+      <ol>
+        <li>Schreibe die richtige Loesung: ${escapeHtml(item.solution)}.</li>
+        <li>Schreibe die Bedeutung: ${escapeHtml(item.meaning)}.</li>
+        <li>Schreibe einen eigenen Satz mit dem Wort.</li>
+      </ol>
+    </aside>`;
   attachChoiceHandlers(node, "english", "VOCAB_FORM", item.solution, `Richtig. ${item.hint}`, item.hint, renderEnglishVocabModule, item.rule);
 }
 
