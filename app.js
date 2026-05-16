@@ -1110,6 +1110,75 @@ const paperTasks = [
   }
 ];
 
+const conditionalSituations = [
+  {
+    type: "type1",
+    title: "Conditional type 1",
+    prompt: "Choose the correct ending for a realistic situation.",
+    sentence: "If I practise the U4 words every day, ...",
+    answer: "I will remember them in the test.",
+    wrong: ["I would remembered them in the test.", "I had remembered them in the test."],
+    ok: "Type 1 fits because daily practice is a realistic condition with a possible future result.",
+    help: "This is realistic, so use if + simple present and will/can + infinitive.",
+    rule: "Type 1: If + simple present, will/can/should + infinitive. Use it for realistic conditions and possible results."
+  },
+  {
+    type: "type1",
+    title: "Conditional type 1",
+    prompt: "Choose the correct form.",
+    sentence: "If the reading text gives evidence, I ___ the answer.",
+    answer: "can check",
+    wrong: ["would checked", "had checked"],
+    ok: "Type 1 fits: the evidence can really help you check the answer.",
+    help: "After if + simple present, the main clause can use can/will + infinitive.",
+    rule: "Type 1 stays close to real life: If something happens, something can/will happen."
+  },
+  {
+    type: "type1",
+    title: "Conditional type 1",
+    prompt: "Choose the correct if-clause.",
+    sentence: "___, she will learn useful tech skills.",
+    answer: "If she joins the internship",
+    wrong: ["If she joined the internship", "If she had joined the internship"],
+    ok: "This is a realistic future possibility, so the if-clause uses simple present.",
+    help: "For type 1, do not use would in the if-clause.",
+    rule: "Type 1: If she joins ..., she will learn ... The if-clause uses simple present."
+  },
+  {
+    type: "type2",
+    title: "Conditional type 2",
+    prompt: "Choose the correct form for a hypothetical situation.",
+    sentence: "If I ___ in California, I would visit the desert.",
+    answer: "lived",
+    wrong: ["live", "will live"],
+    ok: "Type 2 fits because the sentence imagines a situation that is not real now.",
+    help: "Hypothetical condition: if + simple past, would + infinitive.",
+    rule: "Type 2: If + simple past, would/could + infinitive. Use it for imagined or unlikely situations."
+  },
+  {
+    type: "type2",
+    title: "Conditional type 2",
+    prompt: "Choose the correct ending.",
+    sentence: "If more girls joined the coding club, ...",
+    answer: "they would get more practice.",
+    wrong: ["they will got more practice.", "they had got more practice."],
+    ok: "The sentence imagines a possible change, so type 2 uses would + infinitive.",
+    help: "Do not write would got. After would, use the infinitive: would get.",
+    rule: "After would/could, use the infinitive without to: would get, would learn, could practise."
+  },
+  {
+    type: "type2",
+    title: "Conditional type 2",
+    prompt: "Which sentence is correct?",
+    sentence: "Hypothetical: I do not have enough time now.",
+    answer: "If I had more time, I would write a better text.",
+    wrong: ["If I have more time, I would wrote a better text.", "If I will have more time, I write a better text."],
+    ok: "This sentence imagines a different present situation.",
+    help: "Type 2 uses simple past in the if-clause and would + infinitive in the main clause.",
+    rule: "Type 2 does not mean past time here. The simple past form shows distance from reality."
+  }
+];
+
 const understandingTasks = [
   {
     subject: "Mathe",
@@ -1527,6 +1596,17 @@ function englishPaperPrompt(task, paperContext = null) {
     };
   }
 
+  if (paperContext === "conditionals") {
+    return {
+      title: "Conditionals automatisieren",
+      steps: [
+        "Schreibe den richtigen Satz vollstaendig ab.",
+        "Schreibe daneben: type 1 realistisch oder type 2 hypothetisch.",
+        "Erfinde einen zweiten Satz mit neuen Woertern aus U3/U4."
+      ]
+    };
+  }
+
   if (vocabTypes.includes(task.type)) {
     return {
       title: "Wort aktiv sichern",
@@ -1631,6 +1711,11 @@ function renderEnglishModule(module = "exam") {
     return;
   }
 
+  if (module === "conditionals") {
+    renderConditionalTrainer();
+    return;
+  }
+
   if (module === "grammar") {
     renderEnglishFilteredTask(["GRAMMAR_CONDITIONALS", "GRAMMAR_PAST_PERFECT", "GRAMMAR_GERUND_INF", "LINKING", "VOCAB_FORM"], module);
     return;
@@ -1653,6 +1738,22 @@ function renderEnglishFilteredTask(types, module) {
   const pool = tasks.english.filter((task) => types.includes(task.type));
   const task = pool[Math.floor(Math.random() * pool.length)];
   renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, () => renderEnglishModule(module), module);
+}
+
+function renderConditionalTrainer() {
+  const base = conditionalSituations[Math.floor(Math.random() * conditionalSituations.length)];
+  const task = {
+    type: "GRAMMAR_CONDITIONALS",
+    title: base.title,
+    prompt: base.prompt,
+    sentence: base.sentence,
+    options: shuffle([base.answer, ...base.wrong]),
+    answer: base.answer,
+    ok: base.ok,
+    help: base.help,
+    rule: base.rule
+  };
+  renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, renderConditionalTrainer, "conditionals");
 }
 
 function renderEnglishVocabModule() {
