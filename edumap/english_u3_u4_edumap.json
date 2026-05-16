@@ -1,126 +1,348 @@
 {
-  "title": "Englisch U3/U4 Lernpfad",
-  "version": 1,
-  "language": "de",
-  "goal": "Sichere Vorbereitung auf moegliche U3/U4-Aufgaben ohne Originalaufgaben zu kopieren.",
-  "sections": [
+  "mapdata": {
+    "title": "Englisch U3 U4 Anfang Klausurtraining",
+    "tags": "Englisch,U3,U4,Writing,Grammar,Vocabulary,Reading",
+    "grade": null,
+    "mapbg": "i11",
+    "mapfont": "0",
+    "mapformat": "0",
+    "flags": "3",
+    "password": null,
+    "language": "de",
+    "extras": null
+  },
+  "paths": [
     {
-      "id": "startdiagnose",
-      "title": "Startdiagnose",
-      "cards": [
+      "title": "Start",
+      "showdate": null,
+      "annotation": "Orientierung und Reihenfolge",
+      "color": "#243447",
+      "flags": "2",
+      "extras": null,
+      "boxes": [
         {
-          "type": "check",
-          "title": "Was klappt schon?",
-          "items": [
-            "Ich kann wichtige U3/U4-Woerter erklaeren.",
-            "Ich erkenne Verb + Preposition.",
-            "Ich finde im Reading eine passende Textstelle.",
-            "Ich plane ein Writing, bevor ich schreibe."
-          ]
+          "title": "Start und Lernweg",
+          "content": "Ziel\nSicher in die naechste Englisch-Arbeit gehen.\nDie Map trainiert U3-Reste und den Anfang von U4.\n\nReihenfolge\n1 Vocabulary sichern {!#en_vocab_start}\n2 Grammar als Werkzeug verstehen {!#en_grammar_start}\n3 Reading mit Beleg trainieren {!#en_reading_decoder}\n4 Writing planen und schreiben {!#en_writing_plan}\n5 Fehler in neue richtige Beispiele verwandeln {!#en_feedback_loop}\n\nWichtig\nEs werden nur Woerter und Phrases aus U1 bis U4 Anfang genutzt, mit Schwerpunkt auf Woertern, die in den vorliegenden Klausurmaterialien und U3/U4-Uebungen wichtig sind.\n\n!#en_start\n\n",
+          "subject": null,
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#243447",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
+          "title": "Mini Diagnose",
+          "content": "Mache vor dem Lernen 10 Minuten Diagnose.\n\nKreuze an\n[ ] Ich kann ein Wortfeld erkennen.\n[ ] Ich kann Verb plus Preposition richtig verbinden.\n[ ] Ich weiss, wann type 1 oder type 2 passt.\n[ ] Ich erkenne past perfect.\n[ ] Ich finde im Reading einen Beleg.\n[ ] Ich kann einen Writing-Absatz planen.\n\nAuswertung\n0 bis 2 sicher: erst Grundlagenkarten bearbeiten.\n3 bis 4 sicher: Grundlagen plus kurze Aufgaben.\n5 bis 6 sicher: Writing und Reading vertiefen.\n\n!#en_diagnose\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#243447",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         }
       ]
     },
     {
-      "id": "vocabulary",
       "title": "Vocabulary",
-      "cards": [
+      "showdate": null,
+      "annotation": "Klausurwortschatz aktivieren",
+      "color": "#205D6B",
+      "flags": "66",
+      "extras": null,
+      "boxes": [
         {
-          "type": "practice",
+          "title": "Vocabulary Start",
+          "content": "Lernziel\nWoerter nicht nur wiedererkennen, sondern passend benutzen.\n\nMethode pro Wort\n1 Bedeutung sagen\n2 Wortfeld nennen\n3 Beispielsatz sprechen\n4 Satz schreiben\n5 Rechtschreibung pruefen\n\nPrioritaet\nErst Klausurwoerter, dann Zusatzwoerter.\n\nWeiter\n-- {Wortfelder sortieren}{!#en_vocab_fields}\n-- {Verb plus Preposition}{!#en_verb_prep}\n-- {Word families U4}{!#en_word_families}\n\n!#en_vocab_start\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#205D6B",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
           "title": "Wortfelder sortieren",
-          "prompt": "Ordne Woerter in Wortfelder: school/work, technology, desert, emotions, jobs."
+          "content": "Aufgabe\nSortiere die Woerter in Wortfelder. Schreibe danach zu jedem Feld zwei eigene Saetze.\n\nDesert Southwest\ndesert, cactus, crater, heat, arid, wildlife, flash flood, thunderstorm\n\nSchool and work\nrecruiter, social studies, spring break, pressure, struggle, retire\n\nWild West and Tombstone\ngunfight, territory, boomtown, legendary, scandalous, living history show\n\nPeople and jobs\nminer, dentist, rancher, smuggler, criminal, policeman, judge, witness\n\nMini Check\nKann ich das Wort in einem Satz benutzen, ohne Deutsch zu denken?\n\n!#en_vocab_fields\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#205D6B",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         },
         {
-          "type": "practice",
-          "title": "Word families",
-          "prompt": "Bilde passende Wortfamilien, z. B. science, scientist, scientific."
+          "title": "Verb plus Preposition",
+          "content": "Diese Chunks als ganze Bausteine lernen.\n\naccuse someone of something\nwarn someone about something\nadapt to something\nbecome involved in something\nrelate to something\nheal from something\n\nTraining\n1 Chunk laut lesen.\n2 Deutsche Bedeutung sagen.\n3 Einen eigenen Satz schreiben.\n4 Preposition farbig markieren.\n\nBeispiele\nThey adapted to the heat.\nThe witness warned the sheriff about the criminal.\nThe story relates to life in Tombstone.\n\nFehlerfalle\nNicht jedes Verb bekommt im Englischen dieselbe Preposition wie im Deutschen.\n\n!#en_verb_prep\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#205D6B",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         },
         {
-          "type": "paper",
-          "title": "Writing-Vokabelbank",
-          "prompt": "Schreibe 20 Woerter mit deutscher Bedeutung und einem eigenen englischen Beispielsatz auf Papier."
+          "title": "Word families U4 Anfang",
+          "content": "Lernziel\nErkennen, welche Wortart in die Luecke passt.\n\nPaare\nregistration -> registered\nchallenge -> challenging\nto include -> including\nanimated -> animation\nscience -> scientist\nrobot -> robotics\nto expect -> expectation\n\nDecoder\nSteht vor der Luecke a oder an? Dann oft noun.\nBeschreibt das Wort ein noun? Dann adjective.\nGeht es um eine Person? Dann oft -er, -or, -ist.\nFolgt nach einer preposition ein Verb? Dann oft -ing.\n\nAufgabe\nSchreibe zu jedem Paar einen Mini-Satz.\n\n!#en_word_families\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#205D6B",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         }
       ]
     },
     {
-      "id": "grammar",
-      "title": "Grammar U3/U4",
-      "cards": [
+      "title": "Grammar",
+      "showdate": null,
+      "annotation": "Grammatik als Schreibwerkzeug",
+      "color": "#315E36",
+      "flags": "66",
+      "extras": null,
+      "boxes": [
         {
-          "type": "rule",
-          "title": "Conditional type 1",
-          "rule": "If + simple present, will + infinitive. Fuer reale/moegliche Folgen."
+          "title": "Grammar Start",
+          "content": "Ziel\nGrammatik nicht isoliert lernen, sondern fuer Reading und Writing nutzen.\n\nRegelkarte immer gleich\nSignalwort\nBedeutung\nFormel\nBeispiel\nEigener Satz\n\nWeiter\n-- {Conditional type 1 und 2}{!#en_conditionals}\n-- {Past Perfect}{!#en_past_perfect}\n-- {Gerund oder Infinitive}{!#en_gerund_inf}\n-- {Linking Words}{!#en_linking}\n\n!#en_grammar_start\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#315E36",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         },
         {
-          "type": "rule",
-          "title": "Conditional type 2",
-          "rule": "If + simple past, would + infinitive. Fuer unwahrscheinliche oder gedachte Situationen."
+          "title": "Conditional type 1 und 2",
+          "content": "Type 1\nIf plus simple present, will plus infinitive.\nBedeutung: realistisch moeglich.\nBeispiel: If it gets too hot, we will stay inside.\n\nType 2\nIf plus simple past, would plus infinitive.\nBedeutung: gedacht, unwahrscheinlich oder hypothetisch.\nBeispiel: If I lived in California, I would visit the desert.\n\nWriting Nutzen\nType 1 fuer echte Folgen.\nType 2 fuer Meinung, Wuensche oder Gedankenexperiment.\n\nSatzstarter\nIf more girls joined tech clubs, they would learn useful skills.\nIf the camp is well organized, students will become more independent.\n\n!#en_conditionals\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#315E36",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         },
         {
-          "type": "rule",
           "title": "Past Perfect",
-          "rule": "had + past participle. Es zeigt, was vor einem anderen Ereignis in der Vergangenheit passiert war."
+          "content": "Regel\nhad plus past participle.\n\nBedeutung\nEtwas war schon vorher passiert.\n\nDecoder\nZwei Ereignisse in der Vergangenheit?\nWas passierte zuerst? Das bekommt past perfect.\n\nBeispiel\nAfter the recruiter had explained the program, the students asked questions.\n\nWriting Nutzen\nPast perfect macht Erzaehlungen klarer.\n\nMini Aufgabe\nVerbinde zwei Saetze mit after oder because.\nThe students arrived. The teacher explained the task.\n\n!#en_past_perfect\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#315E36",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         },
         {
-          "type": "practice",
           "title": "Gerund oder Infinitive",
-          "prompt": "Entscheide nach typischen Signalverben, ob -ing oder to-infinitive passt."
+          "content": "Gerund\nNach prepositions steht oft -ing.\nBeispiel: before joining the club, after visiting the museum, by learning new words.\n\nInfinitive with to\nOft fuer Ziel oder Absicht.\nBeispiel: to learn, to help, to become more independent.\n\nOhne to\nNach make, let, help oft infinitive ohne to.\nBeispiel: The program helped her learn coding.\n\nWriting Nutzen\nDamit werden Saetze laenger und genauer.\n\nMini Aufgabe\nSchreibe je einen Satz mit before, after und to.\n\n!#en_gerund_inf\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#315E36",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
+          "title": "Linking Words",
+          "content": "Funktion zuerst, Wort danach.\n\nGrund\nbecause, one reason is that\n\nBeispiel\nfor example\n\nGegensatz\nhowever, although\n\nZiel\nin order to, so that\n\nZeit\nbefore, after, while, until\n\nSchluss\nin conclusion\n\nWriting Nutzen\nLinking words zeigen der Lehrkraft den Gedankengang.\n\nMini Auftrag\nMarkiere in deinem Text mindestens vier linking words.\n\n!#en_linking\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#315E36",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         }
       ]
     },
     {
-      "id": "reading",
       "title": "Reading",
-      "cards": [
+      "showdate": null,
+      "annotation": "Aufgaben verstehen und Belege finden",
+      "color": "#4B4E87",
+      "flags": "66",
+      "extras": null,
+      "boxes": [
         {
-          "type": "decoder",
-          "title": "Textfrage knacken",
-          "steps": [
-            "Operator unterstreichen.",
-            "Schluesselwort aus der Frage suchen.",
-            "Textstelle markieren.",
-            "Antwort formulieren und Beleg kontrollieren."
-          ]
+          "title": "Reading Decoder",
+          "content": "Immer in dieser Reihenfolge arbeiten.\n\n1 Fragewort markieren.\nWho, where, why, how, what\n\n2 Schluesselwort aus der Frage suchen.\n\n3 Textstelle finden.\nNicht raten.\n\n4 Antwort knapp formulieren.\n\n5 Pruefen\nSteht die Antwort wirklich im Text?\nHabe ich die Frage beantwortet?\n\n!#en_reading_decoder\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#4B4E87",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         },
         {
-          "type": "practice",
-          "title": "Paralleltexte",
-          "prompt": "Bearbeite einen aehnlichen Text, aber mit neuen Namen, Orten und Details."
+          "title": "Reading Themen",
+          "content": "Aehnliche Texte ueben, keine Originalaufgaben kopieren.\n\nMoegliche Themen\nSummer camp and independence\nCalifornia nature and stress\nGirls in tech and internships\nLife in California\nTombstone and living history\n\nAntwortschema\nThe text says that ...\nI know this because ...\nThe phrase ... shows that ...\n\nMini Auftrag\nBei jeder Antwort ein Wort aus der Frage und ein Wort aus der Textstelle farbig markieren.\n\n!#en_reading_topics\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#4B4E87",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         }
       ]
     },
     {
-      "id": "writing",
       "title": "Writing",
-      "cards": [
+      "showdate": null,
+      "annotation": "Writing systematisch vorbereiten",
+      "color": "#7A4A21",
+      "flags": "66",
+      "extras": null,
+      "boxes": [
         {
-          "type": "scaffold",
-          "title": "3-Teil-Plan",
-          "items": [
-            "Opening: Situation klar machen.",
-            "Middle: zwei bis drei passende Details.",
-            "Ending: sinnvolle Reaktion oder Ausblick."
-          ]
+          "title": "Writing Plan",
+          "content": "Vor jedem Writing erst planen.\n\n1 Frage verstehen\nWhat do I have to write about?\n\n2 Meinung festlegen\nI think that ...\n\n3 Zwei Gruende sammeln\nOne reason is that ...\nAnother reason is that ...\n\n4 Beispiel einbauen\nFor example, ...\n\n5 Gegenposition oder Einschraenkung\nHowever, ...\n\n6 Schluss\nIn conclusion, ...\n\n!#en_writing_plan\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#7A4A21",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         },
         {
-          "type": "paper",
-          "title": "Papierfassung",
-          "prompt": "Schreibe eine vollstaendige Fassung auf Papier. Danach markiere drei gute Woerter und zwei Saetze, die verbessert werden koennen."
+          "title": "Useful Phrases",
+          "content": "Meinung\nI think that ...\nIn my opinion, ...\nI believe that ...\n\nGrund\nOne reason is that ...\nAnother reason is that ...\nThis is important because ...\n\nBeispiel\nFor example, ...\nFor instance, ...\n\nFolge\nThis shows that ...\nThat is why ...\n\nGegensatz\nHowever, ...\nAlthough this can be difficult, ...\n\nSchluss\nIn conclusion, ...\nAll in all, ...\n\nAuftrag\nWaehle pro Writing mindestens vier Phrases und markiere sie nach dem Schreiben.\n\n!#en_useful_phrases\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#7A4A21",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
+          "title": "Writing mit Grammatik",
+          "content": "So nutzt du Grammatik im Text.\n\nConditional type 1\nFuer echte Folgen.\nIf students practise every day, they will remember more words.\n\nConditional type 2\nFuer Gedanken und Meinungen.\nIf more girls joined a coding club, they would get new chances.\n\nPast perfect\nFuer klare Reihenfolge in Erzaehlungen.\nAfter they had visited the start-up, they wrote a report.\n\nGerund\nNach prepositions.\nBefore writing the final text, I make a plan.\n\nInfinitive\nFuer Ziele.\nStudents go to camp to become more independent.\n\n!#en_writing_grammar\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#7A4A21",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
+          "title": "Writing Themen U3 U4",
+          "content": "Uebe mit aehnlichen Themen.\n\n1 Should more girls be encouraged to work in tech?\nNutze: girls, tech, coding, program, skills, future, challenge.\n\n2 Is summer camp a good way to become more independent?\nNutze: camp, pressure, struggle, help, become more independent.\n\n3 Is California a good place to live?\nNutze: desert, heat, wildfire, bay, valley, traffic, affordability.\n\n4 Why can living history shows be interesting?\nNutze: Tombstone, gunfight, legendary, witness, living history show.\n\nNicht alles auf einmal.\nErst Plan, dann 80 bis 100 Woerter.\n\n!#en_writing_topics\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#7A4A21",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         }
       ]
     },
     {
-      "id": "feedback",
-      "title": "Feedback-Schleife",
-      "cards": [
+      "title": "Papiertraining",
+      "showdate": null,
+      "annotation": "Schriftlich automatisieren",
+      "color": "#6B2E4A",
+      "flags": "66",
+      "extras": null,
+      "boxes": [
         {
-          "type": "feedback",
-          "title": "Bei falscher Antwort",
-          "steps": [
-            "Fehlertyp benennen.",
-            "Regel in einem Satz wiederholen.",
-            "Ein richtiges Beispiel zeigen.",
-            "Eine sehr aehnliche neue Aufgabe loesen."
-          ]
+          "title": "Papierauftrag 1 Vocabulary",
+          "content": "Arbeite auf Papier.\n\n1 Schreibe 15 Klausurwoerter ab.\n2 Schreibe die deutsche Bedeutung daneben.\n3 Markiere schwierige Schreibstellen.\n4 Schreibe 8 eigene englische Saetze.\n5 Lies die Saetze laut.\n\nPflichtwoerter zur Auswahl\nrecruiter, pressure, struggle, adapt to, warn about, desert, heat, thunderstorm, gunfight, witness, scientist, robotics, expectation, challenging, including\n\n!#en_paper_vocab\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#6B2E4A",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
+          "title": "Papierauftrag 2 Writing",
+          "content": "Schreibe auf Papier.\n\nThema\nShould more girls be encouraged to work in tech?\n\nSchritt 1 Plan\nOpinion\nReason 1\nReason 2\nExample\nHowever Satz\nConclusion\n\nSchritt 2 Text\n80 bis 100 Woerter.\n\nSchritt 3 Kontrolle\n[ ] 4 useful phrases benutzt\n[ ] 1 conditional benutzt\n[ ] 1 Beispiel benutzt\n[ ] Verben kontrolliert\n[ ] Wortstellung kontrolliert\n\n!#en_paper_writing\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#6B2E4A",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
+          "title": "Papierauftrag 3 Reading",
+          "content": "Reading auf Papier trainieren.\n\n1 Lies den Text einmal ohne Stift.\n2 Lies die Fragen.\n3 Unterstreiche in jeder Frage ein Schluesselwort.\n4 Suche im Text die passende Stelle.\n5 Schreibe eine kurze Antwort.\n6 Schreibe daneben: My evidence is ...\n\nKontrolle\nEine Antwort ohne Textstelle ist noch nicht fertig.\n\n!#en_paper_reading\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#6B2E4A",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        }
+      ]
+    },
+    {
+      "title": "Feedback",
+      "showdate": null,
+      "annotation": "Fehler produktiv nutzen",
+      "color": "#38412D",
+      "flags": "66",
+      "extras": null,
+      "boxes": [
+        {
+          "title": "Feedback Loop",
+          "content": "Bei falscher Antwort nicht nur korrigieren.\n\nAblauf\n1 Fehlertyp nennen.\nVocabulary, grammar, reading evidence, writing structure, spelling\n\n2 Regel in einem Satz sagen.\n\n3 Ein richtiges Beispiel ansehen.\n\n4 Eine fast gleiche neue Aufgabe loesen.\n\n5 Einen Merksatz notieren.\n\nBeispiel\nFehler: type 1 und type 2 verwechselt.\nRegel: Realistische Folge bekommt type 1.\nNeuer Satz: If I practise the words, I will remember them.\n\n!#en_feedback_loop\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#38412D",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
+        },
+        {
+          "title": "Zwei Wochen Plan",
+          "content": "Kurzer Trainingsplan\n\nTag A Vocabulary plus kurze Saetze\n20 Minuten\n\nTag B Grammar plus eigene Saetze\n20 Minuten\n\nTag C Reading Decoder\n25 Minuten\n\nTag D Writing Plan plus Absatz\n30 Minuten\n\nTag E Fehlerkarten wiederholen\n15 Minuten\n\nRegel\nLieber jeden Tag kurz und aktiv als einmal sehr lang.\n\n!#en_two_weeks\n\n",
+          "subject": "1",
+          "booktime": null,
+          "booklimit": "0",
+          "color": "#38412D",
+          "flags": "0",
+          "position": null,
+          "showdate": null,
+          "extras": null
         }
       ]
     }

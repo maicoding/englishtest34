@@ -1,42 +1,30 @@
-# Edumap-Entwurf: Englisch U3/U4
+# Edumap: Englisch U3/U4 Anfang Klausurtraining
 
-## 1. Startdiagnose
+Diese Datei beschreibt die Importdatei `english_u3_u4_edumap.json`.
 
-- Vokabeln aktiv schreiben
-- Wortfelder erkennen
-- Grammatikform erkennen
-- Reading-Belege finden
-- Writing sauber planen
+## Aufbau
 
-## 2. Grundlagen aus U3 sichern
+Die Edumap ist bewusst nicht als eine lange horizontale Reihe angelegt, sondern als mehrere farbige Lernpfade:
 
-- Desert Southwest / Wild West / school and work
-- Verb + preposition chunks
-- Conditionals type 1 and type 2
-- Past Perfect vs. Simple Past
+- Start: Orientierung, Diagnose, Reihenfolge.
+- Vocabulary: Klausurwortschatz, Wortfelder, Verb + Preposition, Word families.
+- Grammar: Grammatik als Werkzeug fuer Writing und Reading.
+- Reading: Decoder, Belegmethode, Parallelthemen.
+- Writing: Plan, Useful Phrases, Grammatik im Text, U3/U4-Themen.
+- Papiertraining: schriftliche Automatisierung.
+- Feedback: Fehler in Regel, Beispiel und neue Aufgabe verwandeln.
 
-## 3. U4 vorbereiten
+## Wortschatzregel
 
-- Tech, internship, robotics, expectations
-- Word families
-- Gerund / Infinitive
-- Linking words
+Die Map nutzt nur Wortschatz und Phrases aus U1 bis U4 Anfang, mit Fokus auf Woerter aus den vorliegenden U3/U4-Materialien und Klausurtypen.
 
-## 4. Reading
+## Writing-Schwerpunkt
 
-- Erst Frage decodieren
-- Dann Textstelle markieren
-- Dann Antwort mit Beleg formulieren
+Writing ist als eigener Pfad mit vier Boxen angelegt:
 
-## 5. Writing
+- Writing Plan
+- Useful Phrases
+- Writing mit Grammatik
+- Writing Themen U3 U4
 
-- Vokabelbank
-- Satzstarter
-- Plan in drei Teilen
-- Schriftliche Fassung auf Papier
-
-## 6. Wiederholung
-
-- Fehlerkarte
-- Regelkarte
-- Drei richtige Parallelbeispiele
+Die Grammatikboxen erklaeren nicht nur Regeln, sondern zeigen direkt, wie diese Regeln in einem Writing genutzt werden.
