@@ -54,9 +54,21 @@ const conditionalTypeLabels = {
 };
 
 const conditionalRules = {
-  1: "Conditional 1: if-clause im simple present; main clause mit will/can/should/may/must + Infinitiv. Kein will im if-clause.",
-  2: "Conditional 2: if-clause im simple past; main clause mit would/could/might + Infinitiv. Kein would im if-clause.",
-  3: "Conditional 3: if-clause im past perfect; main clause mit would/could/might have + past participle. Kein would im if-clause."
+  1: "Bei Bedingungssätzen vom Typ 1 hält der Sprecher oder die Sprecherin es für möglich, dass sich die Bedingung erfüllt. Die Bedingung steht im simple present, die Folge im will future.",
+  2: "Bei Bedingungssätzen vom Typ 2 hält der Sprecher oder die Sprecherin es für unwahrscheinlich, dass sich die Bedingung erfüllt. Die Bedingung steht im simple past, die Folge im conditional (would/could + Infinitiv).",
+  3: "if-clause: had(n’t) + past participle; main clause: would(n’t) have + past participle"
+};
+
+const conditionalBookSignals = {
+  1: "Type 1: possible",
+  2: "Type 2: unlikely / hypothetical",
+  3: "Type 3: impossible now"
+};
+
+const conditionalBookExamples = {
+  1: "If I hurry, I’ll be able to listen to their talk.",
+  2: "If they came back later, I’d listen to them.",
+  3: "Well, if I had spent less time in the photo exhibit, I wouldn’t have been late for the talk."
 };
 
 const conditionalStructures = {
@@ -2223,6 +2235,8 @@ function conditionalTaskFromEntry(entry, task) {
     ok: task.ok,
     help: task.help,
     rule: conditionalRules[entry.conditionalType],
+    bookSignal: conditionalBookSignals[entry.conditionalType],
+    bookExample: conditionalBookExamples[entry.conditionalType],
     mistakes: task.mistakes,
     paperSteps: conditionalPaperSteps(entry)
   };
@@ -2236,6 +2250,7 @@ function renderConditionalTask(node, task) {
     <div class="sentence">${escapeHtml(task.sentence)}</div>
     <div class="conditionalHintGrid">
       <span><strong>Typ</strong>${escapeHtml(conditionalTypeLabels[task.conditionalType])}</span>
+      <span><strong>Buchsignal</strong>${escapeHtml(task.bookSignal)}</span>
       <span><strong>Writing</strong>${escapeHtml(task.writingFunction || "sentence building")}</span>
       <span><strong>Vokabeln</strong>${escapeHtml(task.vocabularyFocus.length ? task.vocabularyFocus.join(", ") : "U3/U4")}</span>
     </div>
@@ -2350,6 +2365,7 @@ function conditionalPaperSteps(entry) {
     `Schreibe den ganzen Satz ab: ${entry.sentence}`,
     `Markiere den if-clause: ${entry.ifClause}`,
     `Markiere den main clause: ${entry.mainClause}`,
+    `Vergleiche mit dem Buchsignal: ${conditionalBookSignals[entry.conditionalType]}`,
     `Notiere die Struktur: ${entry.structure || conditionalStructures[entry.conditionalType]}`,
     entry.paragraphPrompt || "Schreibe danach einen zweiten eigenen Satz mit anderem U3/U4-Wortschatz."
   ];
