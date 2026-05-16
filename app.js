@@ -1366,18 +1366,16 @@ const basics = {
   CONTINUATION_WRITING: "Beim Fortsetzen muessen Perspektive, Zeitform, Ort und Atmosphaere gleich bleiben."
 };
 
-let currentProfile = "A";
 let activeSubject = null;
 const STORAGE_VERSION = "v1";
 
 function key() {
-  return `fsg-learning-${STORAGE_VERSION}-${currentProfile}`;
+  return `fsg-learning-${STORAGE_VERSION}`;
 }
 
 function initialState() {
   return {
     version: STORAGE_VERSION,
-    profile: currentProfile,
     latin: {},
     english: {},
     math: {},
@@ -1392,7 +1390,6 @@ function loadState() {
 
 function saveState(state) {
   state.version = STORAGE_VERSION;
-  state.profile = currentProfile;
   state.updatedAt = new Date().toISOString();
   localStorage.setItem(key(), JSON.stringify(state));
 }
@@ -1874,11 +1871,6 @@ document.getElementById("vocabSubject").addEventListener("change", renderVocabTa
 document.getElementById("vocabMode").addEventListener("change", renderVocabTask);
 document.getElementById("newGrammarTask").addEventListener("click", renderGrammarTask);
 document.getElementById("grammarFocus").addEventListener("change", renderGrammarTask);
-
-document.getElementById("learner").addEventListener("change", (event) => {
-  currentProfile = event.target.value;
-  renderDashboard();
-});
 
 document.getElementById("resetProgress").addEventListener("click", () => {
   saveState(initialState());

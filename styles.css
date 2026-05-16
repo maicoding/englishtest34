@@ -36,7 +36,7 @@ textarea {
 
 .topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 24px;
   padding: 22px 32px 18px;
@@ -46,6 +46,10 @@ textarea {
   top: 0;
   z-index: 5;
   backdrop-filter: blur(12px);
+}
+
+.topbar > div {
+  width: min(1180px, 100%);
 }
 
 h1,
@@ -76,18 +80,6 @@ h3 {
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 6px;
-}
-
-.profile {
-  display: grid;
-  gap: 6px;
-  min-width: 170px;
-}
-
-.profile label {
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 700;
 }
 
 select {
