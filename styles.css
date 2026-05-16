@@ -300,7 +300,8 @@ select {
 
 .legend,
 .answers,
-.toolbar {
+.toolbar,
+.moduleBar {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -308,6 +309,28 @@ select {
 
 .toolbar {
   align-items: end;
+}
+
+.moduleBar {
+  align-items: center;
+}
+
+.moduleButton {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  padding: 10px 13px;
+  min-height: 42px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.moduleButton.active,
+.moduleButton:hover {
+  background: #e8f6ec;
+  border-color: #9bd4ad;
+  color: #174b34;
 }
 
 .toolbar label {

@@ -1518,6 +1518,77 @@ function renderGrammarTask() {
   renderChoiceTaskNode(document.getElementById("grammarTask"), "english", task, renderGrammarTask);
 }
 
+function renderEnglishModule(module = "exam") {
+  document.querySelectorAll("[data-english-module]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.englishModule === module);
+  });
+
+  if (module === "exam") {
+    renderTask("english");
+    return;
+  }
+
+  if (module === "vocab") {
+    renderEnglishVocabModule();
+    return;
+  }
+
+  if (module === "grammar") {
+    renderEnglishFilteredTask(["GRAMMAR_CONDITIONALS", "GRAMMAR_PAST_PERFECT", "GRAMMAR_GERUND_INF", "LINKING", "VOCAB_FORM"], module);
+    return;
+  }
+
+  if (module === "reading") {
+    renderEnglishFilteredTask(["READING_EVIDENCE", "GENRE_READING"], module);
+    return;
+  }
+
+  if (module === "writing") {
+    renderEnglishFilteredTask(["WRITING_STRUCTURE", "CONTINUATION_WRITING", "LINKING", "GRAMMAR_CONDITIONALS"], module);
+    return;
+  }
+
+  renderEnglishPaperModule();
+}
+
+function renderEnglishFilteredTask(types, module) {
+  const pool = tasks.english.filter((task) => types.includes(task.type));
+  const task = pool[Math.floor(Math.random() * pool.length)];
+  renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, () => renderEnglishModule(module));
+}
+
+function renderEnglishVocabModule() {
+  const item = chooseVocab("english");
+  const node = document.getElementById("englishTask");
+  node.innerHTML = buildChoiceTask("english", "VOCAB_FORM", item, "Welche Form oder Bedeutung passt?", item.sentence, item.solution);
+  attachChoiceHandlers(node, "english", "VOCAB_FORM", item.solution, `Richtig. ${item.hint}`, item.hint, renderEnglishVocabModule);
+}
+
+function renderEnglishPaperModule() {
+  const englishTasks = paperTasks.filter((task) => task.title.startsWith("Englisch:"));
+  const task = englishTasks[Math.floor(Math.random() * englishTasks.length)];
+  document.getElementById("englishTask").innerHTML = `
+    <div class="paperBox">
+      <div class="taskMeta">${task.title}</div>
+      <ol>${task.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
+      <div class="feedback">Dieser Auftrag gehoert zum Englischtraining und soll schriftlich bearbeitet werden.</div>
+      ${task.solution ? `
+        <button class="quiet revealEnglishSolution">Musterloesung / Kontrollblick zeigen</button>
+        <div class="feedback solutionBox" hidden>${escapeHtml(task.solution)}</div>
+      ` : ""}
+      <button class="quiet feedbackAction" id="newEnglishPaperTask">Neuer Englisch-Papierauftrag</button>
+    </div>
+  `;
+  const reveal = document.querySelector("#englishTask .revealEnglishSolution");
+  if (reveal) {
+    reveal.addEventListener("click", () => {
+      document.querySelector("#englishTask .solutionBox").hidden = false;
+      reveal.disabled = true;
+    });
+  }
+  document.getElementById("newEnglishPaperTask").addEventListener("click", () => renderEnglishModule("paper"));
+}
+
 function renderDashboard() {
   renderStatus("latin");
   renderStatus("english");
@@ -1668,7 +1739,7 @@ function buildChoiceTask(subject, type, item, prompt, sentence, answer) {
   `;
 }
 
-function attachChoiceHandlers(node, subject, type, answer, ok, help) {
+function attachChoiceHandlers(node, subject, type, answer, ok, help, repeatCallback = renderVocabTask) {
   node.querySelectorAll(".answerButton").forEach((button) => {
     button.addEventListener("click", () => {
       const correct = button.dataset.answer === answer;
@@ -1686,7 +1757,7 @@ function attachChoiceHandlers(node, subject, type, answer, ok, help) {
         help,
         selected: button.dataset.answer
       });
-      feedback.querySelector("[data-repeat-type]").addEventListener("click", renderVocabTask);
+      feedback.querySelector("[data-repeat-type]").addEventListener("click", repeatCallback);
     });
   });
 }
@@ -1761,7 +1832,8 @@ document.querySelectorAll(".nav").forEach((button) => {
 document.querySelectorAll("[data-go-view]").forEach((button) => {
   button.addEventListener("click", () => {
     showView(button.dataset.goView);
-    if (button.dataset.startDomain) renderTask(button.dataset.startDomain);
+    if (button.dataset.startDomain === "english") renderEnglishModule("exam");
+    else if (button.dataset.startDomain) renderTask(button.dataset.startDomain);
   });
 });
 
@@ -1771,7 +1843,14 @@ function showView(view) {
 }
 
 document.querySelectorAll("[data-start]").forEach((button) => {
-  button.addEventListener("click", () => renderTask(button.dataset.start));
+  button.addEventListener("click", () => {
+    if (button.dataset.start === "english") renderEnglishModule("exam");
+    else renderTask(button.dataset.start);
+  });
+});
+
+document.querySelectorAll("[data-english-module]").forEach((button) => {
+  button.addEventListener("click", () => renderEnglishModule(button.dataset.englishModule));
 });
 
 document.getElementById("newPaperTask").addEventListener("click", renderPaperTask);
@@ -1797,7 +1876,7 @@ document.getElementById("resetProgress").addEventListener("click", () => {
 
 renderDashboard();
 renderTask("latin");
-renderTask("english");
+renderEnglishModule("exam");
 renderTask("math");
 renderPaperTask();
 renderUnderstandingTask();
