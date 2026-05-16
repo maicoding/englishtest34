@@ -1113,7 +1113,8 @@ const paperTasks = [
 const conditionalSituations = [
   {
     type: "type1",
-    title: "Conditional type 1",
+    focus: "main clause",
+    title: "Type 1: main clause",
     prompt: "Choose the correct ending for a realistic situation.",
     sentence: "If I practise the U4 words every day, ...",
     answer: "I will remember them in the test.",
@@ -1124,7 +1125,8 @@ const conditionalSituations = [
   },
   {
     type: "type1",
-    title: "Conditional type 1",
+    focus: "main clause",
+    title: "Type 1: main clause",
     prompt: "Choose the correct form.",
     sentence: "If the reading text gives evidence, I ___ the answer.",
     answer: "can check",
@@ -1135,7 +1137,8 @@ const conditionalSituations = [
   },
   {
     type: "type1",
-    title: "Conditional type 1",
+    focus: "if-clause",
+    title: "Type 1: if-clause",
     prompt: "Choose the correct if-clause.",
     sentence: "___, she will learn useful tech skills.",
     answer: "If she joins the internship",
@@ -1145,8 +1148,45 @@ const conditionalSituations = [
     rule: "Type 1: If she joins ..., she will learn ... The if-clause uses simple present."
   },
   {
+    type: "type1",
+    focus: "error repair",
+    title: "Type 1: Fehler reparieren",
+    prompt: "Which corrected sentence is right?",
+    sentence: "Wrong: If I will ask my cousin, he will help me get an internship.",
+    answer: "If I ask my cousin, he will help me get an internship.",
+    wrong: ["If I would ask my cousin, he will help me get an internship.", "If I asked my cousin, he will helps me get an internship."],
+    ok: "Correct. In a type 1 if-clause, use simple present, not will.",
+    help: "The result can have will. The if-clause does not use will in type 1.",
+    rule: "Type 1: If + simple present, will + infinitive. Do not put will into the if-clause."
+  },
+  {
+    type: "type1",
+    focus: "two-part tense",
+    title: "Type 1: beide Satzteile",
+    prompt: "Choose the pair of verb forms.",
+    sentence: "If I ___ in the children's activity center, I ___ new skills. (work / learn)",
+    answer: "work / will learn",
+    wrong: ["will work / learn", "worked / would learn"],
+    ok: "Correct. Type 1 uses simple present in the if-clause and will + infinitive in the main clause.",
+    help: "First clause after if: present. Result clause: will + infinitive.",
+    rule: "Type 1 has two time choices: if-clause = simple present; main clause = will/can + infinitive."
+  },
+  {
+    type: "type1",
+    focus: "meaning",
+    title: "Type 1 oder type 2?",
+    prompt: "Which type fits the meaning?",
+    sentence: "The weather forecast for tomorrow is good, so if it stays like this, we will go hiking.",
+    answer: "type 1 because it is a real possibility",
+    wrong: ["type 2 because it uses if", "type 3 because it is about the past"],
+    ok: "Correct. Tomorrow's weather is a real possible condition.",
+    help: "Do not decide only because you see if. Decide from meaning and verb forms.",
+    rule: "Type 1 is for real or possible situations: if + present, will + infinitive."
+  },
+  {
     type: "type2",
-    title: "Conditional type 2",
+    focus: "if-clause",
+    title: "Type 2: if-clause",
     prompt: "Choose the correct form for a hypothetical situation.",
     sentence: "If I ___ in California, I would visit the desert.",
     answer: "lived",
@@ -1157,7 +1197,8 @@ const conditionalSituations = [
   },
   {
     type: "type2",
-    title: "Conditional type 2",
+    focus: "main clause",
+    title: "Type 2: main clause",
     prompt: "Choose the correct ending.",
     sentence: "If more girls joined the coding club, ...",
     answer: "they would get more practice.",
@@ -1168,7 +1209,8 @@ const conditionalSituations = [
   },
   {
     type: "type2",
-    title: "Conditional type 2",
+    focus: "whole sentence",
+    title: "Type 2: ganzer Satz",
     prompt: "Which sentence is correct?",
     sentence: "Hypothetical: I do not have enough time now.",
     answer: "If I had more time, I would write a better text.",
@@ -1176,6 +1218,114 @@ const conditionalSituations = [
     ok: "This sentence imagines a different present situation.",
     help: "Type 2 uses simple past in the if-clause and would + infinitive in the main clause.",
     rule: "Type 2 does not mean past time here. The simple past form shows distance from reality."
+  },
+  {
+    type: "type2",
+    focus: "two-part tense",
+    title: "Type 2: beide Satzteile",
+    prompt: "Choose the pair of verb forms.",
+    sentence: "If Tayen ___ a wild horse, her mother ___ worried. (ride / be)",
+    answer: "rode / would be",
+    wrong: ["rides / will be", "would ride / was"],
+    ok: "Correct. Type 2: rode in the if-clause, would be in the main clause.",
+    help: "Do not put would into the if-clause. Put would into the result clause.",
+    rule: "Type 2 has two time choices: if-clause = simple past; main clause = would/could + infinitive."
+  },
+  {
+    type: "type2",
+    focus: "error repair",
+    title: "Type 2: Fehler reparieren",
+    prompt: "Which corrected sentence is right?",
+    sentence: "Wrong: If she would go to a school close to the reservation, she could spend weekends at home.",
+    answer: "If she went to a school close to the reservation, she could spend weekends at home.",
+    wrong: ["If she will go to a school close to the reservation, she could spend weekends at home.", "If she went to a school close to the reservation, she can spends weekends at home."],
+    ok: "Correct. Type 2 uses simple past in the if-clause, not would.",
+    help: "would belongs to the main clause, not after if.",
+    rule: "Type 2: If + simple past, would/could + infinitive. The if-clause does not use would."
+  },
+  {
+    type: "type2",
+    focus: "were",
+    title: "Type 2: If I were you",
+    prompt: "Choose the correct form.",
+    sentence: "If I ___ you, I would wear a scarf inside.",
+    answer: "were",
+    wrong: ["am", "will be"],
+    ok: "Correct. The fixed phrase is: If I were you, I would ...",
+    help: "This is advice with an imagined situation, so use type 2.",
+    rule: "For advice, learn the chunk: If I were you, I would + infinitive."
+  },
+  {
+    type: "type2",
+    focus: "meaning",
+    title: "Type 1 oder type 2?",
+    prompt: "Which type fits the meaning?",
+    sentence: "I do not have a cousin at the museum. If I had one, I would ask him.",
+    answer: "type 2 because it is not real now",
+    wrong: ["type 1 because it can happen tomorrow", "type 3 because it uses had"],
+    ok: "Correct. had is simple past here, not past perfect. It shows an unreal present situation.",
+    help: "In type 2, simple past can talk about an unreal present.",
+    rule: "Type 2 often sounds like past, but it means unreal now: If I had ..., I would ..."
+  },
+  {
+    type: "type3",
+    focus: "if-clause",
+    title: "Type 3: if-clause",
+    prompt: "Choose the correct if-clause for a past situation.",
+    sentence: "___, he would have learned more about the Navajo code talkers.",
+    answer: "If Adam had attended the presentation",
+    wrong: ["If Adam attended the presentation", "If Adam would attend the presentation"],
+    ok: "Correct. Type 3 looks back: if + past perfect.",
+    help: "For a past unreal condition, use had + past participle in the if-clause.",
+    rule: "Type 3: If + past perfect, would have + past participle. Use it for unreal past situations."
+  },
+  {
+    type: "type3",
+    focus: "main clause",
+    title: "Type 3: main clause",
+    prompt: "Choose the correct result clause.",
+    sentence: "If Tayen had injured herself while she was alone in the park, ...",
+    answer: "she would have called a ranger.",
+    wrong: ["she would call a ranger.", "she had called a ranger."],
+    ok: "Correct. Type 3 result: would have + past participle.",
+    help: "The result is also unreal past, so use would have called.",
+    rule: "Type 3 main clause: would/could have + past participle."
+  },
+  {
+    type: "type3",
+    focus: "two-part tense",
+    title: "Type 3: beide Satzteile",
+    prompt: "Choose the pair of verb forms.",
+    sentence: "If Adam ___ to New Mexico, he ___ the desert museum. (not go / not see)",
+    answer: "had not gone / would not have seen",
+    wrong: ["did not go / would not see", "would not go / had not seen"],
+    ok: "Correct. Type 3 uses past perfect in the if-clause and would have + past participle in the main clause.",
+    help: "Both parts point to an unreal past situation.",
+    rule: "Type 3 has two time choices: if-clause = had + past participle; main clause = would have + past participle."
+  },
+  {
+    type: "mixed",
+    focus: "type choice",
+    title: "Typ erkennen",
+    prompt: "Which sentence is type 1?",
+    sentence: "Find the realistic future condition.",
+    answer: "If I find the brochure, I will send it to the school.",
+    wrong: ["If I found the brochure, I would send it to the school.", "If I had found the brochure, I would have sent it to the school."],
+    ok: "Correct. type 1 uses present + will for a realistic future condition.",
+    help: "Compare the verb forms in both sentence parts.",
+    rule: "Type 1: present + will. Type 2: past + would. Type 3: past perfect + would have."
+  },
+  {
+    type: "mixed",
+    focus: "type choice",
+    title: "Typ erkennen",
+    prompt: "Which sentence is type 2?",
+    sentence: "Find the imagined present condition.",
+    answer: "If there was no electricity, people would get nervous.",
+    wrong: ["If there is no electricity, people will get nervous.", "If there had been no electricity, people would have got nervous."],
+    ok: "Correct. type 2 uses simple past + would for an imagined situation.",
+    help: "was/were in the if-clause plus would in the main clause points to type 2.",
+    rule: "Type 2: If + simple past, would/could + infinitive."
   }
 ];
 
@@ -1601,7 +1751,8 @@ function englishPaperPrompt(task, paperContext = null) {
       title: "Conditionals automatisieren",
       steps: [
         "Schreibe den richtigen Satz vollstaendig ab.",
-        "Schreibe daneben: type 1 realistisch oder type 2 hypothetisch.",
+        "Markiere den if-clause blau und den main clause gruen.",
+        "Schreibe die Zeiten daneben: present + will, past + would oder past perfect + would have.",
         "Erfinde einen zweiten Satz mit neuen Woertern aus U3/U4."
       ]
     };
