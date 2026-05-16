@@ -239,12 +239,12 @@ const tasks = {
       sentence: "A job in technology can be ___ if you like solving problems.",
       options: ["challenging", "challenge", "challenged"],
       answer: "challenging",
-      ok: "Right. challenging means demanding but interesting.",
-      help: "The job has the quality of being demanding. It is not being challenged by another person.",
-      rule: "challenging beschreibt eine Sache, die herausfordert. challenged beschreibt jemanden oder etwas, das herausgefordert wurde. A job can be challenging.",
+      ok: "Right. After can be you need an adjective. challenging describes what the job is like.",
+      help: "Look at the gap after can be. The sentence needs an adjective that describes the job.",
+      rule: "Nach can be braucht die Luecke ein Adjektiv. challenging beschreibt die Eigenschaft des Jobs: Er ist herausfordernd. challenge ist Nomen oder Verb; challenged bedeutet, dass jemand oder etwas herausgefordert wurde.",
       mistakes: {
-        "challenge": "challenge ist kein passendes Adjektiv nach can be. Der Satz braucht eine Eigenschaft des Jobs: challenging.",
-        "challenged": "challenged wuerde bedeuten, dass der Job herausgefordert wurde. Gemeint ist aber: Der Job fordert dich heraus, also challenging."
+        "challenge": "challenge ist hier nicht die richtige Form. Nach can be braucht der Satz ein Adjektiv, aber challenge ist meistens Nomen oder Verb. Richtig ist challenging.",
+        "challenged": "challenged beschreibt jemanden oder etwas, der/das herausgefordert wurde. Der Job wird hier nicht herausgefordert; er hat die Eigenschaft, herausfordernd zu sein: challenging."
       }
     },
     {
