@@ -3756,6 +3756,31 @@ function renderTask(domain, preferredType = null) {
   renderChoiceTaskNode(node, domain, task);
 }
 
+function renderEnglishExamModule() {
+  const task = chooseTask("english");
+  const node = document.getElementById("englishTask");
+  renderChoiceTaskNode(node, "english", task, () => renderEnglishExamModule());
+  node.insertAdjacentHTML("afterbegin", renderPracticeRhythm(task));
+}
+
+function renderPracticeRhythm(task) {
+  const writingTypes = ["WRITING_STRUCTURE", "WRITING_PHRASES", "WRITING_GRAMMAR", "CONTINUATION_WRITING"];
+  const anchor = writingTypes.includes(task.type)
+    ? "Mini-Absatz oder Satzstarter schriftlich sichern"
+    : ["VOCAB_FORM", "VOCAB_ACTIVE", "VOCAB_CATEGORY", "VERB_PREP"].includes(task.type)
+      ? "ein Wort oder einen Chunk kurz schreiben"
+      : ["GRAMMAR_CONDITIONALS", "GRAMMAR_PAST_PERFECT", "GRAMMAR_GERUND_INF", "LINKING"].includes(task.type)
+        ? "einen Regelsatz oder Beispielsatz schreiben"
+        : "Fragewort, Suchwort oder Beleg notieren";
+  return `
+    <section class="practiceRhythm" aria-label="Uebungsrhythmus">
+      <span><strong>Schnell</strong>klicken, Feedback lesen, Regel laut sagen</span>
+      <span><strong>Papieranker</strong>${escapeHtml(anchor)}, wenn Papier da ist</span>
+      <span><strong>Intensiv</strong>groessere Schreibbloecke im Papierbereich</span>
+    </section>
+  `;
+}
+
 function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderTask(domain, task.type), paperContext = null) {
   node.innerHTML = `
     <div class="taskMeta">${escapeHtml(task.title)}</div>
@@ -3821,12 +3846,13 @@ function paperPromptForTask(domain, task, paperContext = null) {
   const prompt = englishPaperPrompt(task, paperContext);
   if (!prompt) return "";
   return `
-    <aside class="inlinePaper">
+    <aside class="inlinePaper ${prompt.level || "mini"}">
       <div>
-        <span class="paperLabel">Papier</span>
+        <span class="paperLabel">${escapeHtml(prompt.label || "Papieranker")}</span>
         <strong>${escapeHtml(prompt.title)}</strong>
       </div>
       <ol>${prompt.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+      <p class="paperHint">${escapeHtml(prompt.hint || "Ohne Papier: Regel einmal laut sagen und direkt die naechste Aufgabe loesen.")}</p>
     </aside>
   `;
 }
@@ -3834,8 +3860,11 @@ function paperPromptForTask(domain, task, paperContext = null) {
 function englishPaperPrompt(task, paperContext = null) {
   if (task.paperSteps) {
     return {
-      title: "Satz auf Papier automatisieren",
-      steps: task.paperSteps
+      label: "Papier",
+      level: paperContext === "writing" ? "medium" : "mini",
+      title: paperContext === "writing" ? "Schreibauftrag sichern" : "Kurz schriftlich sichern",
+      steps: paperContext === "writing" ? task.paperSteps : task.paperSteps.slice(0, 3),
+      hint: "Wenn wenig Zeit ist: nur den ersten Satz schreiben und die Regel laut sagen."
     };
   }
 
@@ -3846,87 +3875,90 @@ function englishPaperPrompt(task, paperContext = null) {
 
   if (paperContext === "writing") {
     return {
-      title: "Writing auf Papier vorbereiten",
+      label: "Papier",
+      level: "medium",
+      title: "Writing kurz vorbereiten",
       steps: [
-        "Schreibe erst den Texttyp auf: report, mediation, answer oder continuation.",
-        "Notiere vier Bausteine: place/topic, task/information, detail/example, opinion/result.",
-        "Formuliere vier englische Saetze auf Papier.",
-        "Baue mindestens eine useful phrase und eine passende Grammatikform ein: past perfect, conditional oder linking word."
-      ]
+        "Notiere Texttyp und zwei Pflichtinfos.",
+        "Schreibe zwei englische Saetze mit useful phrase.",
+        "Unterstreiche ein Verb oder linking word."
+      ],
+      hint: "Intensiv-Writing liegt im Papierbereich; hier reicht ein kurzer Anker."
     };
   }
 
   if (paperContext === "reading") {
     return {
-      title: "Beleg notieren",
+      level: "mini",
+      title: "Reading-Anker",
       steps: [
-        "Schreibe die Frageart auf: who, why, how, what oder evidence.",
-        "Notiere ein Schluesselwort aus der Aufgabe.",
-        "Schreibe eine moegliche Belegstelle als kurzen Ausdruck."
+        "Schreibe Fragewort und Suchwort auf.",
+        "Notiere einen kurzen Belegausdruck."
       ]
     };
   }
 
   if (paperContext === "conditionals") {
     return {
-      title: "Conditionals automatisieren",
+      level: "mini",
+      title: "Conditional-Anker",
       steps: [
-        "Schreibe den richtigen Satz vollstaendig ab.",
-        "Markiere den if-clause blau und den main clause gruen.",
-        "Schreibe die Zeiten daneben: present + will, past + would oder past perfect + would have.",
-        "Erfinde einen zweiten Satz mit neuen Woertern aus U3.",
-        "Sprich die Regel einmal laut und schreibe sie darunter."
-      ]
+        "Schreibe den richtigen Satz ab.",
+        "Markiere if-clause und main clause.",
+        "Notiere die Struktur: present + will, past + would oder past perfect + would have."
+      ],
+      hint: "Mehrere eigene Conditional-Saetze gibt es im Papierbereich."
     };
   }
 
   if (vocabTypes.includes(task.type)) {
     return {
-      title: "Wort aktiv sichern",
+      level: "mini",
+      title: "Wort kurz sichern",
       steps: [
         `Schreibe die richtige Loesung: ${task.answer}.`,
-        "Schreibe das Wort oder den Chunk dreimal sauber.",
-        "Schreibe die deutsche Bedeutung daneben.",
-        "Schreibe einen eigenen englischen Satz mit diesem Wort oder Chunk.",
-        "Markiere die Stelle, die du leicht verwechseln koenntest.",
-        "Decke die Loesung ab und schreibe sie noch einmal aus dem Kopf."
-      ]
+        "Schreibe Bedeutung oder eigenen Mini-Satz dazu.",
+        "Markiere eine Verwechslungsstelle."
+      ],
+      hint: "Wenn kein Papier da ist: Wort buchstabieren und einmal im Kopf in einen Satz setzen."
     };
   }
 
   if (grammarTypes.includes(task.type)) {
     return {
-      title: "Grammatik schriftlich sichern",
+      level: "mini",
+      title: "Grammatik-Anker",
       steps: [
-        "Schreibe die Regel in einem kurzen deutschen Satz.",
-        "Schreibe den richtigen englischen Satz vollstaendig ab.",
-        "Schreibe einen neuen englischen Beispielsatz mit anderer Situation.",
-        "Unterstreiche den Ausloeser und die richtige Form.",
-        "Schreibe darunter: Warum ist genau diese Form richtig?"
-      ]
+        "Schreibe den richtigen Satz ab.",
+        "Unterstreiche Ausloeser und richtige Form.",
+        "Notiere die Regel in einem kurzen Satz."
+      ],
+      hint: "Eigene Beispielsatz-Serien gibt es im Papierbereich."
     };
   }
 
   if (readingTypes.includes(task.type)) {
     return {
-      title: "Beleg notieren",
+      level: "mini",
+      title: "Beleg-Anker",
       steps: [
-        "Schreibe die Frageart auf: who, why, how, what oder evidence.",
-        "Notiere ein Schluesselwort aus der Aufgabe.",
-        "Schreibe eine moegliche Belegstelle als kurzen Ausdruck."
+        "Schreibe Fragewort und Suchwort.",
+        "Notiere einen kurzen Beleg."
       ]
     };
   }
 
   if (writingTypes.includes(task.type)) {
     return {
+      label: "Papier",
+      level: "medium",
       title: "Mini-Absatz vorbereiten",
       steps: [
-        "Schreibe erst den Texttyp auf: report, mediation, answer oder continuation.",
-        "Notiere vier Bausteine: place/topic, task/information, detail/example, opinion/result.",
-        "Formuliere vier englische Saetze auf Papier.",
+        "Notiere Texttyp und zwei Bausteine.",
+        "Formuliere zwei bis vier englische Saetze.",
         "Markiere useful phrases und pruefe die Verben."
-      ]
+      ],
+      hint: "Wenn wenig Zeit ist: nur zwei gute Saetze schreiben."
     };
   }
 
@@ -3982,7 +4014,7 @@ function renderEnglishModule(module = "exam") {
   });
 
   if (module === "exam") {
-    renderTask("english");
+    renderEnglishExamModule();
     return;
   }
 
@@ -4427,6 +4459,11 @@ function renderEnglishPaperModule() {
   const task = weightedTasks[Math.floor(Math.random() * weightedTasks.length)];
   document.getElementById("englishTask").innerHTML = `
     <div class="paperBox">
+      <div class="practiceRhythm paperRhythm">
+        <span><strong>Intensiv</strong>jetzt bewusst schreiben</span>
+        <span><strong>Basis</strong>Vokabeln, Conditionals, Grammar, AC3</span>
+        <span><strong>Kontrolle</strong>Muster erst nach eigener Loesung zeigen</span>
+      </div>
       <div class="taskMeta">${task.title}</div>
       <ol>${task.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
       <div class="feedback">Dieser Auftrag gehoert zum Englischtraining und soll schriftlich bearbeitet werden.</div>

@@ -461,6 +461,35 @@ select {
   text-transform: uppercase;
 }
 
+.practiceRhythm {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.practiceRhythm span {
+  min-height: 48px;
+  padding: 10px;
+  border: 1px solid #dbe6dc;
+  border-radius: 8px;
+  background: #f7faf6;
+  color: #3d4a42;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.practiceRhythm strong {
+  display: block;
+  color: #1f4f37;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.paperRhythm {
+  margin-bottom: 4px;
+}
+
 .writingCoach {
   display: grid;
   gap: 14px;
@@ -687,6 +716,15 @@ select {
   background: #fffaf0;
 }
 
+.inlinePaper.mini {
+  padding: 12px;
+}
+
+.inlinePaper.medium {
+  border-color: #c9d8c8;
+  background: #f5fbf5;
+}
+
 .inlinePaper > div {
   display: flex;
   align-items: center;
@@ -712,6 +750,13 @@ select {
   margin: 0;
   padding-left: 22px;
   line-height: 1.55;
+}
+
+.paperHint {
+  margin: 0;
+  color: #75592c;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .reserveIntro {
@@ -798,6 +843,10 @@ select {
   }
 
   .phraseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .practiceRhythm {
     grid-template-columns: 1fr;
   }
 
