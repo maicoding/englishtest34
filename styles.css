@@ -349,11 +349,43 @@ select {
 
 .feedbackBlock {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .feedbackBlock p {
   line-height: 1.5;
+  margin: 0;
+}
+
+.feedbackLine {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.feedbackLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.successLine .feedbackLabel {
+  color: #174b34;
+  border-color: #9bd4ad;
+}
+
+.correctionLine .feedbackLabel {
+  color: #8d2c22;
+  border-color: #efb2a8;
 }
 
 .answerInline {
@@ -451,5 +483,9 @@ select {
 
   .answerButton {
     width: 100%;
+  }
+
+  .feedbackLine {
+    grid-template-columns: 1fr;
   }
 }

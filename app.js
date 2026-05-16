@@ -1487,12 +1487,13 @@ function lockAnswers(node, selectedButton, answer) {
 function buildFeedback({ correct, domain, type, answer, ok, help, selected }) {
   const rule = basics[type] || "Erst die Regel nennen, dann die Aufgabe loesen.";
   const label = areas[domain][type] || "Grundlage";
+  const cleanOk = stripFeedbackLead(ok);
   const correction = correct
-    ? `<p><strong>Richtig.</strong> ${escapeHtml(ok)}</p>`
-    : `<p><strong>Korrektur:</strong> Richtig ist <span class="answerInline">${escapeHtml(answer)}</span>. Deine Wahl war <span class="answerInline">${escapeHtml(selected)}</span>.</p>`;
+    ? `<div class="feedbackLine successLine"><span class="feedbackLabel">Richtig</span><p>${escapeHtml(cleanOk)}</p></div>`
+    : `<div class="feedbackLine correctionLine"><span class="feedbackLabel">Korrektur</span><p>Richtig ist <span class="answerInline">${escapeHtml(answer)}</span>. Deine Wahl war <span class="answerInline">${escapeHtml(selected)}</span>.</p></div>`;
   const explanation = correct
-    ? `<p><strong>Regel noch einmal:</strong> ${escapeHtml(rule)}</p>`
-    : `<p><strong>Warum?</strong> ${escapeHtml(help)} <strong>Regel:</strong> ${escapeHtml(rule)}</p>`;
+    ? `<div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(rule)}</p></div>`
+    : `<div class="feedbackLine"><span class="feedbackLabel">Warum</span><p>${escapeHtml(help)}</p></div><div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(rule)}</p></div>`;
   const next = correct
     ? "Noch eine Aufgabe aus diesem Bereich festigen"
     : "Gleichen Bereich sofort noch einmal ueben";
@@ -1500,10 +1501,14 @@ function buildFeedback({ correct, domain, type, answer, ok, help, selected }) {
     <div class="feedbackBlock">
       ${correction}
       ${explanation}
-      <p><strong>Merkschritt:</strong> Sag die Regel einmal laut und loese dann eine aehnliche Aufgabe.</p>
+      <div class="feedbackLine"><span class="feedbackLabel">Merkschritt</span><p>Sag die Regel einmal laut und loese dann eine aehnliche Aufgabe.</p></div>
       <button class="quiet feedbackAction" data-repeat-type="${escapeHtml(type)}">${next}: ${escapeHtml(label)}</button>
     </div>
   `;
+}
+
+function stripFeedbackLead(text) {
+  return text.replace(/^(Correct|Yes|Right|Exactly|Good|Genau|Richtig|Ja|Sehr gut)\.\s*/i, "");
 }
 
 function renderGrammarTask() {
