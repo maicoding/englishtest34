@@ -1754,12 +1754,21 @@ function escapeHtml(value) {
 
 document.querySelectorAll(".nav").forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".nav").forEach((item) => item.classList.remove("active"));
-    document.querySelectorAll(".view").forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    document.getElementById(button.dataset.view).classList.add("active");
+    showView(button.dataset.view);
   });
 });
+
+document.querySelectorAll("[data-go-view]").forEach((button) => {
+  button.addEventListener("click", () => {
+    showView(button.dataset.goView);
+    if (button.dataset.startDomain) renderTask(button.dataset.startDomain);
+  });
+});
+
+function showView(view) {
+  document.querySelectorAll(".nav").forEach((item) => item.classList.toggle("active", item.dataset.view === view));
+  document.querySelectorAll(".view").forEach((item) => item.classList.toggle("active", item.id === view));
+}
 
 document.querySelectorAll("[data-start]").forEach((button) => {
   button.addEventListener("click", () => renderTask(button.dataset.start));

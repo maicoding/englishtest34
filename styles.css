@@ -140,7 +140,8 @@ select {
 }
 
 .hero,
-.sectionHead {
+.sectionHead,
+.startHero {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -156,6 +157,72 @@ select {
   max-width: 760px;
   margin-top: 8px;
   line-height: 1.5;
+}
+
+.startHero {
+  background: #182127;
+  color: white;
+  min-height: 180px;
+}
+
+.startHero .label,
+.startHero p {
+  color: #d8e2dc;
+}
+
+.startHero h2 {
+  max-width: 760px;
+}
+
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.choiceCard {
+  min-height: 210px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.choiceCard:hover,
+.choiceCard:focus-visible {
+  transform: translateY(-2px);
+  border-color: #b7c7ba;
+  outline: 0;
+}
+
+.choiceCard strong {
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.choiceCard span:last-child {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.choiceKicker {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.mainChoice {
+  grid-column: span 2;
+  background: #e8f6ec;
+  border-color: #b9dec5;
 }
 
 .grid {
@@ -467,7 +534,8 @@ select {
   }
 
   .layout,
-  .grid.two {
+  .grid.two,
+  .choiceGrid {
     grid-template-columns: 1fr;
   }
 
@@ -483,6 +551,10 @@ select {
 
   .answerButton {
     width: 100%;
+  }
+
+  .mainChoice {
+    grid-column: auto;
   }
 
   .feedbackLine {

@@ -23,7 +23,8 @@
 
     <main class="layout">
       <aside class="sidebar" aria-label="Lernbereiche">
-        <button class="nav active" data-view="dashboard">Ueberblick</button>
+        <button class="nav active" data-view="start">Start</button>
+        <button class="nav" data-view="dashboard">Ueberblick</button>
         <button class="nav" data-view="latin">Latein</button>
         <button class="nav" data-view="english">Englisch</button>
         <button class="nav" data-view="math">Mathe</button>
@@ -36,7 +37,60 @@
       </aside>
 
       <section class="content">
-        <section id="dashboard" class="view active">
+        <section id="start" class="view active">
+          <div class="startHero">
+            <div>
+              <p class="label">Start</p>
+              <h2>Was soll heute sicher werden?</h2>
+              <p>Waehle einen Bereich. Jede Aufgabe gibt danach sofort Rueckmeldung, Regel und Wiederholung.</p>
+            </div>
+          </div>
+
+          <div class="choiceGrid">
+            <button class="choiceCard mainChoice" data-go-view="english" data-start-domain="english">
+              <span class="choiceKicker">Englisch U3/U4</span>
+              <strong>Pruefungstraining</strong>
+              <span>Vocabulary, grammar, reading und kurze Antworten automatisch festigen.</span>
+            </button>
+            <button class="choiceCard" data-go-view="grammar">
+              <span class="choiceKicker">Englisch</span>
+              <strong>Grammatik fuer Writing</strong>
+              <span>Gerund/infinitive, linking words und word families sicher anwenden.</span>
+            </button>
+            <button class="choiceCard" data-go-view="vocabulary">
+              <span class="choiceKicker">Vokabeln</span>
+              <strong>Mehrwege-Training</strong>
+              <span>Karte, Auswahl, Luecke, Kontext und Papierauftrag.</span>
+            </button>
+            <button class="choiceCard" data-go-view="paper">
+              <span class="choiceKicker">Writing</span>
+              <strong>Auf Papier schreiben</strong>
+              <span>Plan, useful phrases, Musterstruktur und Kontrollblick.</span>
+            </button>
+            <button class="choiceCard" data-go-view="latin" data-start-domain="latin">
+              <span class="choiceKicker">Latein</span>
+              <strong>AcI und Uebersetzung</strong>
+              <span>Kopfverb, Akkusativ, Infinitiv, Zeit und Satzbau wiederholen.</span>
+            </button>
+            <button class="choiceCard" data-go-view="math" data-start-domain="math">
+              <span class="choiceKicker">Mathe</span>
+              <strong>Lineare Funktionen</strong>
+              <span>Textaufgaben, Punktprobe, m und b sowie Antwortsaetze trainieren.</span>
+            </button>
+            <button class="choiceCard" data-go-view="understanding">
+              <span class="choiceKicker">Decoder</span>
+              <strong>Aufgaben verstehen</strong>
+              <span>Operator, Signalwort und Loesungsweg vor dem Rechnen oder Schreiben klaeren.</span>
+            </button>
+            <button class="choiceCard" data-go-view="rules">
+              <span class="choiceKicker">Regeln</span>
+              <strong>Erkennen und uebertragen</strong>
+              <span>Regeln nicht nur lesen, sondern mit neuen Beispielen anwenden.</span>
+            </button>
+          </div>
+        </section>
+
+        <section id="dashboard" class="view">
           <div class="hero">
             <div>
               <h2>Heute nur der naechste sinnvolle Schritt.</h2>
