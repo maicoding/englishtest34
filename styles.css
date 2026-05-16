@@ -419,6 +419,48 @@ select {
   margin-bottom: 8px;
 }
 
+.decoderMarks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+.stagePill,
+.decoderMark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid #cfd9d0;
+  border-radius: 8px;
+  background: #f7fbf7;
+  color: #274435;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.stagePill {
+  background: #1f4f37;
+  border-color: #1f4f37;
+  color: white;
+}
+
+.stagePill.text_smart,
+.stagePill.u4_start,
+.stagePill.u4_later {
+  background: #fff4df;
+  border-color: #e4c27f;
+  color: #714f14;
+}
+
+.decoderMark strong {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
 .writingCoach {
   display: grid;
   gap: 14px;
@@ -770,8 +812,31 @@ select {
   .sidebar {
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px;
     background: white;
+    position: sticky;
+    top: 86px;
+    z-index: 4;
+  }
+
+  .subjectNav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sideLabel {
+    display: none;
+  }
+
+  .nav {
+    white-space: nowrap;
+    min-height: 38px;
+    padding: 9px 12px;
   }
 
   .content {
