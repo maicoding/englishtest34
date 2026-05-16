@@ -1,18 +1,18 @@
 :root {
   color-scheme: light;
-  --bg: #f6f7f4;
-  --ink: #1d2328;
-  --muted: #66706a;
-  --line: #d8ddd5;
+  --bg: #f7f8f5;
+  --ink: #20252b;
+  --muted: #606b66;
+  --line: #dfe4dc;
   --panel: #ffffff;
-  --blue: #2d6cdf;
-  --orange: #d46b2a;
-  --green: #26855d;
-  --violet: #7257c8;
+  --blue: #3768c9;
+  --orange: #b95f2c;
+  --green: #247a56;
+  --violet: #6656b8;
   --red: #c94141;
   --yellow: #c79020;
   --ok: #22845d;
-  --shadow: 0 16px 40px rgba(31, 42, 35, 0.08);
+  --shadow: 0 12px 32px rgba(34, 42, 36, 0.06);
 }
 
 * {
@@ -39,9 +39,9 @@ textarea {
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  padding: 28px 32px 18px;
+  padding: 22px 32px 18px;
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.92);
   position: sticky;
   top: 0;
   z-index: 5;
@@ -56,8 +56,8 @@ p {
 }
 
 h1 {
-  font-size: clamp(24px, 3vw, 38px);
-  line-height: 1.05;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.08;
 }
 
 h2 {
@@ -99,16 +99,17 @@ select {
 
 .layout {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 204px minmax(0, 1fr);
   min-height: calc(100vh - 99px);
 }
 
 .sidebar {
   border-right: 1px solid var(--line);
-  padding: 22px 16px;
+  padding: 20px 14px;
   display: grid;
   align-content: start;
-  gap: 8px;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .subjectNav {
@@ -133,18 +134,21 @@ select {
   border: 0;
   background: transparent;
   color: var(--ink);
-  padding: 12px 14px;
+  padding: 11px 13px;
   border-radius: 8px;
   cursor: pointer;
+  min-height: 42px;
 }
 
 .nav.active,
 .nav:hover {
-  background: #e8eee7;
+  background: #e8efe8;
 }
 
 .content {
+  width: min(1180px, calc(100vw - 252px));
   padding: 28px;
+  margin: 0 auto;
 }
 
 .view {
@@ -163,10 +167,11 @@ select {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  background: #e8eee7;
+  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 24px;
+  padding: 22px;
+  box-shadow: var(--shadow);
 }
 
 .hero p {
@@ -177,14 +182,14 @@ select {
 }
 
 .startHero {
-  background: #182127;
-  color: white;
-  min-height: 180px;
+  background: #eef4ed;
+  color: var(--ink);
+  min-height: 132px;
 }
 
 .startHero .label,
 .startHero p {
-  color: #d8e2dc;
+  color: var(--muted);
 }
 
 .startHero h2 {
@@ -199,27 +204,38 @@ select {
 
 .choiceGrid.homeChoices {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .choiceCard {
   min-height: 210px;
   display: grid;
-  align-content: start;
-  gap: 12px;
+  align-content: center;
+  gap: 14px;
   text-align: left;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: white;
   color: var(--ink);
-  padding: 20px;
+  padding: 28px;
   cursor: pointer;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.choiceCard::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: var(--green);
 }
 
 .choiceCard:hover,
 .choiceCard:focus-visible {
   transform: translateY(-2px);
-  border-color: #b7c7ba;
+  border-color: #aec5b4;
   outline: 0;
 }
 
@@ -231,6 +247,7 @@ select {
 .choiceCard span:last-child {
   color: var(--muted);
   line-height: 1.45;
+  font-weight: 800;
 }
 
 .choiceKicker {
@@ -247,12 +264,13 @@ select {
 }
 
 .homeChoices .choiceCard {
-  min-height: 260px;
+  min-height: 220px;
   align-content: center;
 }
 
 .homeChoices .choiceCard strong {
-  font-size: clamp(34px, 4vw, 54px);
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
 }
 
 .grid {
@@ -593,10 +611,15 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .content {
+    width: 100%;
+  }
+
   .sidebar {
     border-right: 0;
     border-bottom: 1px solid var(--line);
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    background: white;
   }
 
   .content {
@@ -609,6 +632,10 @@ select {
 
   .mainChoice {
     grid-column: auto;
+  }
+
+  .homeChoices .choiceCard {
+    min-height: 158px;
   }
 
   .feedbackLine {
