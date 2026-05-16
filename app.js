@@ -33,6 +33,60 @@ const areas = {
   }
 };
 
+const conditionalSourceFiles = {
+  type1: "./materials/conditionals/conditional1.json",
+  type2: "./materials/conditionals/conditional2.json",
+  type3: "./materials/conditionals/conditional3.json",
+  mixed: "./materials/conditionals/mixed.json"
+};
+
+const conditionalLabels = {
+  type1: "Type 1",
+  type2: "Type 2",
+  type3: "Type 3",
+  mixed: "Gemischt"
+};
+
+const conditionalTypeLabels = {
+  1: "Conditional 1",
+  2: "Conditional 2",
+  3: "Conditional 3"
+};
+
+const conditionalRules = {
+  1: "Conditional 1: if-clause im simple present; main clause mit will/can/should/may/must + Infinitiv. Kein will im if-clause.",
+  2: "Conditional 2: if-clause im simple past; main clause mit would/could/might + Infinitiv. Kein would im if-clause.",
+  3: "Conditional 3: if-clause im past perfect; main clause mit would/could/might have + past participle. Kein would im if-clause."
+};
+
+const conditionalStructures = {
+  1: "If + simple present, will/can/should/may/must + infinitive",
+  2: "If + simple past, would/could/might + infinitive",
+  3: "If + past perfect, would/could/might have + past participle"
+};
+
+const conditionalModes = {
+  random: "Mix",
+  cloze: "Luecke",
+  type: "Typ",
+  structure: "Struktur",
+  clauses: "Satzteile"
+};
+
+let conditionalData = {
+  type1: [],
+  type2: [],
+  type3: [],
+  mixed: []
+};
+let conditionalDataLoaded = false;
+let conditionalDataLoading = null;
+let conditionalSettings = {
+  set: "mixed",
+  mode: "random"
+};
+let recentConditionalIds = [];
+
 const tasks = {
   latin: [
     {
@@ -1818,6 +1872,13 @@ function paperPromptForTask(domain, task, paperContext = null) {
 }
 
 function englishPaperPrompt(task, paperContext = null) {
+  if (task.paperSteps) {
+    return {
+      title: "Satz auf Papier automatisieren",
+      steps: task.paperSteps
+    };
+  }
+
   const vocabTypes = ["VOCAB_FORM", "VOCAB_ACTIVE", "VOCAB_CATEGORY", "VERB_PREP"];
   const grammarTypes = ["GRAMMAR_CONDITIONALS", "GRAMMAR_PAST_PERFECT", "GRAMMAR_GERUND_INF", "LINKING"];
   const readingTypes = ["READING_EVIDENCE", "GENRE_READING"];
@@ -1992,20 +2053,306 @@ function renderEnglishFilteredTask(types, module) {
 }
 
 function renderConditionalTrainer() {
-  const base = conditionalSituations[Math.floor(Math.random() * conditionalSituations.length)];
-  const task = {
+  const node = document.getElementById("englishTask");
+  if (!conditionalDataLoaded) {
+    node.innerHTML = `
+      <div class="paperBox">
+        <div class="taskMeta">Conditionals</div>
+        <div class="prompt">Die 400 neuen Satzbausteine werden geladen.</div>
+        <div class="feedback">Danach mischt die App Type 1, Type 2, Type 3 und gemischte Aufgaben automatisch.</div>
+      </div>
+    `;
+    loadConditionalData().then(renderConditionalTrainer).catch(() => {
+      node.innerHTML = `
+        <div class="paperBox">
+          <div class="taskMeta">Conditionals</div>
+          <div class="prompt">Die JSON-Dateien konnten nicht geladen werden.</div>
+          <div class="feedback warn">Bitte pruefe, ob die Dateien im Ordner materials/conditionals liegen.</div>
+        </div>
+      `;
+    });
+    return;
+  }
+
+  const task = buildConditionalJsonTask();
+  renderConditionalTask(node, task);
+}
+
+function loadConditionalData() {
+  if (conditionalDataLoaded) return Promise.resolve();
+  if (conditionalDataLoading) return conditionalDataLoading;
+  conditionalDataLoading = Promise.all(Object.entries(conditionalSourceFiles).map(([key, source]) => (
+    fetch(source)
+      .then((response) => {
+        if (!response.ok) throw new Error(source);
+        return response.json();
+      })
+      .then((data) => {
+        conditionalData[key] = normalizeConditionalEntries(data.entries || [], key);
+      })
+  ))).then(() => {
+    conditionalDataLoaded = true;
+  });
+  return conditionalDataLoading;
+}
+
+function normalizeConditionalEntries(entries, set) {
+  return entries.map((entry, index) => {
+    const fallbackType = set === "type1" ? 1 : set === "type2" ? 2 : set === "type3" ? 3 : Number(entry.conditionalType || 1);
+    return {
+      ...entry,
+      conditionalType: Number(entry.conditionalType || fallbackType),
+      id: entry.id || `${set}-${index + 1}`
+    };
+  });
+}
+
+function buildConditionalJsonTask() {
+  const pool = getConditionalPool();
+  const entry = chooseFreshConditional(pool);
+  const mode = resolveConditionalMode();
+  if (mode === "type") return buildConditionalTypeTask(entry);
+  if (mode === "structure") return buildConditionalStructureTask(entry);
+  if (mode === "clauses") return buildConditionalClauseTask(entry, pool);
+  return buildConditionalClozeTask(entry);
+}
+
+function getConditionalPool() {
+  const selected = conditionalSettings.set;
+  if (selected === "mixed") return conditionalData.mixed.length ? conditionalData.mixed : [...conditionalData.type1, ...conditionalData.type2, ...conditionalData.type3];
+  return conditionalData[selected].length ? conditionalData[selected] : conditionalData.mixed;
+}
+
+function chooseFreshConditional(pool) {
+  const fresh = pool.filter((entry) => !recentConditionalIds.includes(entry.id));
+  const source = fresh.length ? fresh : pool;
+  const entry = source[Math.floor(Math.random() * source.length)];
+  recentConditionalIds = [entry.id, ...recentConditionalIds.filter((id) => id !== entry.id)].slice(0, 30);
+  return entry;
+}
+
+function resolveConditionalMode() {
+  if (conditionalSettings.mode !== "random") return conditionalSettings.mode;
+  const modes = conditionalSettings.set === "mixed"
+    ? ["cloze", "type", "structure", "clauses"]
+    : ["cloze", "structure", "clauses"];
+  return modes[Math.floor(Math.random() * modes.length)];
+}
+
+function buildConditionalClozeTask(entry) {
+  const answer = entry.clozeAnswer || entry.modalInMainClause || modalAnswerForType(entry.conditionalType);
+  const sentence = entry.cloze && entry.cloze.includes("___")
+    ? entry.cloze
+    : entry.sentence.replace(answer, "___");
+  const wrong = conditionalModalDistractors(entry.conditionalType, answer);
+  return conditionalTaskFromEntry(entry, {
+    title: `${conditionalTypeLabels[entry.conditionalType]}: Luecke`,
+    prompt: "Choose the correct verb block.",
+    sentence,
+    answer,
+    options: shuffle([answer, ...wrong]).slice(0, 4),
+    ok: `Richtig. ${answer} passt zur Struktur: ${entry.structure || conditionalStructures[entry.conditionalType]}.`,
+    help: conditionalHelpForType(entry.conditionalType),
+    mistakes: buildConditionalOptionMistakes(entry, wrong, "cloze")
+  });
+}
+
+function buildConditionalTypeTask(entry) {
+  const answer = conditionalTypeLabels[entry.conditionalType];
+  const wrong = Object.values(conditionalTypeLabels).filter((label) => label !== answer);
+  return conditionalTaskFromEntry(entry, {
+    title: "Conditional-Typ erkennen",
+    prompt: "Which conditional type is this sentence?",
+    sentence: entry.sentence,
+    answer,
+    options: shuffle([answer, ...wrong]),
+    ok: `Richtig. Die Formen zeigen ${answer}: ${entry.structure || conditionalStructures[entry.conditionalType]}.`,
+    help: "Entscheide nicht nur nach if. Pruefe beide Satzteile: if-clause und main clause.",
+    mistakes: Object.fromEntries(wrong.map((option) => [option, typeMismatchExplanation(entry, option)]))
+  });
+}
+
+function buildConditionalStructureTask(entry) {
+  const answer = conditionalStructures[entry.conditionalType];
+  const wrong = Object.entries(conditionalStructures)
+    .filter(([type]) => Number(type) !== entry.conditionalType)
+    .map(([, structure]) => structure);
+  return conditionalTaskFromEntry(entry, {
+    title: `${conditionalTypeLabels[entry.conditionalType]}: Struktur`,
+    prompt: "Which structure explains the sentence?",
+    sentence: entry.sentence,
+    answer,
+    options: shuffle([answer, ...wrong]),
+    ok: `Richtig. Im Satz steht: ${entry.ifClause} / ${entry.mainClause}.`,
+    help: "Markiere zuerst den if-clause, dann den main clause. Danach bestimmst du die Zeiten.",
+    mistakes: Object.fromEntries(wrong.map((option) => [option, structureMismatchExplanation(entry, option)]))
+  });
+}
+
+function buildConditionalClauseTask(entry, pool) {
+  const otherClauses = shuffle(pool
+    .filter((candidate) => candidate.id !== entry.id && candidate.ifClause !== entry.ifClause)
+    .map((candidate) => candidate.ifClause))
+    .slice(0, 2);
+  return conditionalTaskFromEntry(entry, {
+    title: `${conditionalTypeLabels[entry.conditionalType]}: Satzteile`,
+    prompt: "Which if-clause belongs to this main clause?",
+    sentence: entry.mainClause,
+    answer: entry.ifClause,
+    options: shuffle([entry.ifClause, ...otherClauses]),
+    ok: "Richtig. Beide Satzteile gehoeren inhaltlich und grammatisch zusammen.",
+    help: "Der if-clause muss zur Bedeutung und zur Conditional-Struktur des main clause passen.",
+    mistakes: Object.fromEntries(otherClauses.map((option) => [option, clauseMismatchExplanation(entry, option)]))
+  });
+}
+
+function conditionalTaskFromEntry(entry, task) {
+  return {
     type: "GRAMMAR_CONDITIONALS",
-    title: base.title,
-    prompt: base.prompt,
-    sentence: base.sentence,
-    options: shuffle([base.answer, ...base.wrong]),
-    answer: base.answer,
-    ok: base.ok,
-    help: base.help,
-    rule: base.rule,
-    mistakes: base.mistakes
+    sourceId: entry.id,
+    conditionalType: entry.conditionalType,
+    writingUseCase: entry.writingUseCase,
+    writingFunction: entry.writingFunction,
+    vocabularyFocus: entry.vocabularyFocus || [],
+    paragraphPrompt: entry.paragraphPrompt,
+    title: task.title,
+    prompt: task.prompt,
+    sentence: task.sentence,
+    options: task.options,
+    answer: task.answer,
+    ok: task.ok,
+    help: task.help,
+    rule: conditionalRules[entry.conditionalType],
+    mistakes: task.mistakes,
+    paperSteps: conditionalPaperSteps(entry)
   };
-  renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, renderConditionalTrainer, "conditionals");
+}
+
+function renderConditionalTask(node, task) {
+  node.innerHTML = `
+    ${buildConditionalControls()}
+    <div class="taskMeta">${escapeHtml(task.title)} · ${escapeHtml(task.writingUseCase || "writing scaffold")} · ${escapeHtml(task.sourceId)}</div>
+    <div class="prompt">${escapeHtml(task.prompt)}</div>
+    <div class="sentence">${escapeHtml(task.sentence)}</div>
+    <div class="conditionalHintGrid">
+      <span><strong>Typ</strong>${escapeHtml(conditionalTypeLabels[task.conditionalType])}</span>
+      <span><strong>Writing</strong>${escapeHtml(task.writingFunction || "sentence building")}</span>
+      <span><strong>Vokabeln</strong>${escapeHtml(task.vocabularyFocus.length ? task.vocabularyFocus.join(", ") : "U3/U4")}</span>
+    </div>
+    <div class="answers">
+      ${task.options.map((option) => `<button class="answerButton" data-answer="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join("")}
+    </div>
+    <div class="feedback" hidden></div>
+    ${paperPromptForTask("english", task, "conditionals")}
+  `;
+
+  node.querySelectorAll("[data-cond-set]").forEach((button) => {
+    button.addEventListener("click", () => {
+      conditionalSettings.set = button.dataset.condSet;
+      renderConditionalTrainer();
+    });
+  });
+  node.querySelectorAll("[data-cond-mode]").forEach((button) => {
+    button.addEventListener("click", () => {
+      conditionalSettings.mode = button.dataset.condMode;
+      renderConditionalTrainer();
+    });
+  });
+  node.querySelector("[data-cond-next]").addEventListener("click", renderConditionalTrainer);
+  node.querySelectorAll(".answerButton").forEach((button) => {
+    button.addEventListener("click", () => {
+      const correct = button.dataset.answer === task.answer;
+      record("english", task.type, correct);
+      lockAnswers(node, button, task.answer);
+      const feedback = node.querySelector(".feedback");
+      feedback.hidden = false;
+      feedback.className = correct ? "feedback" : "feedback warn";
+      feedback.innerHTML = buildFeedback({
+        correct,
+        domain: "english",
+        type: task.type,
+        answer: task.answer,
+        ok: task.ok,
+        help: task.help,
+        rule: task.rule,
+        selected: button.dataset.answer,
+        mistake: task.mistakes ? task.mistakes[button.dataset.answer] : null
+      });
+      feedback.querySelector("[data-repeat-type]").addEventListener("click", renderConditionalTrainer);
+    });
+  });
+}
+
+function buildConditionalControls() {
+  const setButtons = Object.entries(conditionalLabels).map(([key, label]) => (
+    `<button class="miniToggle ${conditionalSettings.set === key ? "active" : ""}" data-cond-set="${key}">${label}</button>`
+  )).join("");
+  const modeButtons = Object.entries(conditionalModes).map(([key, label]) => (
+    `<button class="miniToggle ${conditionalSettings.mode === key ? "active" : ""}" data-cond-mode="${key}">${label}</button>`
+  )).join("");
+  return `
+    <div class="conditionalTrainerBar">
+      <div><span class="barLabel">Typ</span>${setButtons}</div>
+      <div><span class="barLabel">Modus</span>${modeButtons}</div>
+      <button class="miniToggle nextToggle" type="button" data-cond-next="true">Neue Zufallsaufgabe</button>
+    </div>
+  `;
+}
+
+function modalAnswerForType(type) {
+  if (type === 1) return "will";
+  if (type === 2) return "would";
+  return "would have";
+}
+
+function conditionalModalDistractors(type, answer) {
+  const pools = {
+    1: ["would", "had", "would have", "will have"],
+    2: ["will", "had", "would have", "will have"],
+    3: ["would", "will", "had", "will have"]
+  };
+  return pools[type].filter((item) => item !== answer).slice(0, 3);
+}
+
+function conditionalHelpForType(type) {
+  if (type === 1) return "Realistische Bedingung: if + simple present, danach will/can/should + Infinitiv.";
+  if (type === 2) return "Gedachte Situation: if + simple past, danach would/could/might + Infinitiv.";
+  return "Unwirkliche Vergangenheit: if + past perfect, danach would/could/might have + past participle.";
+}
+
+function buildConditionalOptionMistakes(entry, wrongOptions, mode) {
+  return Object.fromEntries(wrongOptions.map((option) => {
+    if (entry.conditionalType === 1) {
+      return [option, `${option} passt hier nicht, weil der Satz eine realistische Bedingung ausdrueckt. In Type 1 steht im main clause will/can/should + Infinitiv, nicht die Form von Type 2 oder Type 3.`];
+    }
+    if (entry.conditionalType === 2) {
+      return [option, `${option} passt hier nicht, weil der Satz eine gedachte Situation ausdrueckt. Type 2 braucht would/could/might + Infinitiv im main clause.`];
+    }
+    return [option, `${option} passt hier nicht, weil der Satz auf eine unwirkliche Vergangenheit zurueckblickt. Type 3 braucht would/could/might have + past participle.`];
+  }));
+}
+
+function typeMismatchExplanation(entry, option) {
+  const chosen = Number(option.replace("Conditional ", ""));
+  return `Das waere ${option}, aber der Satz zeigt ${conditionalTypeLabels[entry.conditionalType]}: ${entry.structure || conditionalStructures[entry.conditionalType]}. Pruefe beide Satzteile, nicht nur das Wort if.`;
+}
+
+function structureMismatchExplanation(entry, option) {
+  return `Diese Struktur passt nicht zu den Verbformen im Satz. Hier steht: ${entry.ifClause} / ${entry.mainClause}. Das ist ${conditionalStructures[entry.conditionalType]}.`;
+}
+
+function clauseMismatchExplanation(entry, option) {
+  return `${option} passt nicht sauber zum main clause "${entry.mainClause}". Der richtige if-clause ist "${entry.ifClause}", weil Bedeutung und Verbform zusammengehoeren.`;
+}
+
+function conditionalPaperSteps(entry) {
+  return [
+    `Schreibe den ganzen Satz ab: ${entry.sentence}`,
+    `Markiere den if-clause: ${entry.ifClause}`,
+    `Markiere den main clause: ${entry.mainClause}`,
+    `Notiere die Struktur: ${entry.structure || conditionalStructures[entry.conditionalType]}`,
+    entry.paragraphPrompt || "Schreibe danach einen zweiten eigenen Satz mit anderem U3/U4-Wortschatz."
+  ];
 }
 
 function renderEnglishVocabModule() {
@@ -2278,7 +2625,7 @@ function renderHelpCard() {
 }
 
 function escapeHtml(value) {
-  return value.replace(/[&<>"']/g, (char) => ({
+  return String(value ?? "").replace(/[&<>"']/g, (char) => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",

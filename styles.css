@@ -419,6 +419,77 @@ select {
   margin-bottom: 8px;
 }
 
+.conditionalTrainerBar {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f9faf7;
+}
+
+.conditionalTrainerBar > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.barLabel {
+  min-width: 54px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.miniToggle {
+  min-height: 34px;
+  min-width: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  background: white;
+}
+
+.miniToggle.active {
+  border-color: #9db7a6;
+  background: #e8f1ea;
+  color: #183f2b;
+}
+
+.nextToggle {
+  justify-self: start;
+}
+
+.conditionalHintGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+
+.conditionalHintGrid span {
+  display: grid;
+  gap: 3px;
+  min-height: 56px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.conditionalHintGrid strong {
+  color: var(--text);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
 .prompt {
   font-size: 22px;
   line-height: 1.4;
@@ -637,6 +708,10 @@ select {
   .grid.two,
   .choiceGrid,
   .choiceGrid.homeChoices {
+    grid-template-columns: 1fr;
+  }
+
+  .conditionalHintGrid {
     grid-template-columns: 1fr;
   }
 
