@@ -129,7 +129,8 @@ const tasks = {
       options: ["registered", "registration", "registering"],
       answer: "registered",
       ok: "Correct. The sentence needs a verb in the past: registered.",
-      help: "Look at the sentence first: Do you need a noun, verb, adjective or person?"
+      help: "The subject is Maya and the sentence tells what she did. That needs a past verb, not the noun registration.",
+      rule: "registered ist hier das Verb im simple past. registration ist ein Nomen und kann nach she nicht direkt als Praedikat stehen."
     },
     {
       type: "VOCAB_FORM",
@@ -138,8 +139,9 @@ const tasks = {
       sentence: "The class was very ___. (challenge)",
       options: ["challenge", "challenging", "challenged"],
       answer: "challenging",
-      ok: "Yes. challenging describes the class.",
-      help: "After was/very you often need an adjective."
+      ok: "Yes. challenging describes the class as demanding or difficult in an interesting way.",
+      help: "The class causes the challenge. It is not the thing that was challenged by someone else.",
+      rule: "challenging bedeutet: etwas ist herausfordernd. challenged bedeutet: jemand oder etwas wurde herausgefordert. In 'The class was very ...' beschreibt man die Eigenschaft der class, also challenging."
     },
     {
       type: "VOCAB_FORM",
@@ -149,7 +151,8 @@ const tasks = {
       options: ["introduction", "introduce", "introduced"],
       answer: "introduction",
       ok: "Correct. After an you need a noun: introduction.",
-      help: "Check the word before the gap. an/the/my often points to a noun."
+      help: "an stands before a singular noun. introduce is a verb, introduced is a verb form or adjective.",
+      rule: "Nach an braucht man ein zaehlbares Nomen im Singular. Deshalb: an introduction, nicht an introduce."
     },
     {
       type: "VOCAB_ACTIVE",
@@ -159,7 +162,8 @@ const tasks = {
       options: ["challenging", "challenge", "challenged"],
       answer: "challenging",
       ok: "Right. challenging means demanding but interesting.",
-      help: "Say the full sentence aloud. If it describes a thing, you often need an adjective."
+      help: "The job has the quality of being demanding. It is not being challenged by another person.",
+      rule: "challenging beschreibt eine Sache, die herausfordert. challenged beschreibt jemanden oder etwas, das herausgefordert wurde. A job can be challenging."
     },
     {
       type: "VOCAB_ACTIVE",
@@ -827,7 +831,8 @@ const vocab = {
       category: "Word family",
       sentence: "The coding class was very ___.",
       solution: "challenging",
-      hint: "Adjective from challenge."
+      hint: "The class is demanding or difficult in an interesting way.",
+      rule: "challenging beschreibt die Sache, die herausfordert. challenged beschreibt jemanden oder etwas, das herausgefordert wurde."
     },
     {
       lesson: "U4",
@@ -836,7 +841,8 @@ const vocab = {
       category: "Word family",
       sentence: "Maya ___ for a holiday workshop.",
       solution: "registered",
-      hint: "Verb from registration."
+      hint: "The sentence needs the verb in the past.",
+      rule: "registered ist ein Verb im simple past. registration ist ein Nomen."
     },
     {
       lesson: "U4",
@@ -845,7 +851,8 @@ const vocab = {
       category: "Word family",
       sentence: "They introduced new programs, ___ one for video games.",
       solution: "including",
-      hint: "Form from include."
+      hint: "including adds an example to the group of programs.",
+      rule: "including bedeutet hier 'darunter/einschliesslich'. include waere das Verb, included die Vergangenheitsform."
     },
     {
       lesson: "U4",
@@ -854,7 +861,8 @@ const vocab = {
       category: "Technology",
       sentence: "She liked doing ___.",
       solution: "animation",
-      hint: "Noun; animated is the adjective."
+      hint: "After doing you need the activity as a noun.",
+      rule: "animation ist das Nomen. animated beschreibt etwas als animiert."
     },
     {
       lesson: "U4",
@@ -1466,6 +1474,7 @@ function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderT
         answer: task.answer,
         ok: task.ok,
         help: task.help,
+        rule: task.rule,
         selected: button.dataset.answer
       });
       const repeat = feedback.querySelector("[data-repeat-type]");
@@ -1482,16 +1491,16 @@ function lockAnswers(node, selectedButton, answer) {
   });
 }
 
-function buildFeedback({ correct, domain, type, answer, ok, help, selected }) {
-  const rule = basics[type] || "Erst die Regel nennen, dann die Aufgabe loesen.";
+function buildFeedback({ correct, domain, type, answer, ok, help, rule, selected }) {
+  const ruleText = rule || help || basics[type] || "Erst die Regel nennen, dann die Aufgabe loesen.";
   const label = areas[domain][type] || "Grundlage";
   const cleanOk = stripFeedbackLead(ok);
   const correction = correct
     ? `<div class="feedbackLine successLine"><span class="feedbackLabel">Richtig</span><p>${escapeHtml(cleanOk)}</p></div>`
     : `<div class="feedbackLine correctionLine"><span class="feedbackLabel">Korrektur</span><p>Richtig ist <span class="answerInline">${escapeHtml(answer)}</span>. Deine Wahl war <span class="answerInline">${escapeHtml(selected)}</span>.</p></div>`;
   const explanation = correct
-    ? `<div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(rule)}</p></div>`
-    : `<div class="feedbackLine"><span class="feedbackLabel">Warum</span><p>${escapeHtml(help)}</p></div><div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(rule)}</p></div>`;
+    ? `<div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(ruleText)}</p></div>`
+    : `<div class="feedbackLine"><span class="feedbackLabel">Warum</span><p>${escapeHtml(help)}</p></div><div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(ruleText)}</p></div>`;
   const next = correct
     ? "Noch eine Aufgabe aus diesem Bereich festigen"
     : "Gleichen Bereich sofort noch einmal ueben";
@@ -1559,7 +1568,7 @@ function renderEnglishVocabModule() {
   const item = chooseVocab("english");
   const node = document.getElementById("englishTask");
   node.innerHTML = buildChoiceTask("english", "VOCAB_FORM", item, "Welche Form oder Bedeutung passt?", item.sentence, item.solution);
-  attachChoiceHandlers(node, "english", "VOCAB_FORM", item.solution, `Richtig. ${item.hint}`, item.hint, renderEnglishVocabModule);
+  attachChoiceHandlers(node, "english", "VOCAB_FORM", item.solution, `Richtig. ${item.hint}`, item.hint, renderEnglishVocabModule, item.rule);
 }
 
 function renderEnglishPaperModule() {
@@ -1737,7 +1746,7 @@ function buildChoiceTask(subject, type, item, prompt, sentence, answer) {
   `;
 }
 
-function attachChoiceHandlers(node, subject, type, answer, ok, help, repeatCallback = renderVocabTask) {
+function attachChoiceHandlers(node, subject, type, answer, ok, help, repeatCallback = renderVocabTask, rule = null) {
   node.querySelectorAll(".answerButton").forEach((button) => {
     button.addEventListener("click", () => {
       const correct = button.dataset.answer === answer;
@@ -1753,6 +1762,7 @@ function attachChoiceHandlers(node, subject, type, answer, ok, help, repeatCallb
         answer,
         ok,
         help,
+        rule,
         selected: button.dataset.answer
       });
       feedback.querySelector("[data-repeat-type]").addEventListener("click", repeatCallback);
