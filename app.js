@@ -1892,6 +1892,257 @@ const englishU3FinalCoverageTasks = [
 
 tasks.english.push(...englishU3FinalCoverageTasks);
 
+const englishAutomationDrillTasks = [
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: school and work",
+    prompt: "Complete the definition.",
+    sentence: "Someone who looks for people to join a company or an organization is called a ___.",
+    options: ["recruiter", "rancher", "witness"],
+    answer: "recruiter",
+    ok: "Correct. This is the standard definition pattern for recruiter.",
+    help: "The words looks for people to join point directly to recruiter.",
+    rule: "Automatisieren: looks for people to join a company -> recruiter."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: school and work",
+    prompt: "Complete the definition.",
+    sentence: "The time in spring when many American students do not have classes for a week is called ___.",
+    options: ["spring break", "social studies", "career opportunity"],
+    answer: "spring break",
+    ok: "Correct. This definition points to spring break.",
+    help: "one week without classes in spring = spring break.",
+    rule: "Automatisieren: spring + one week off school -> spring break."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: school and work",
+    prompt: "Complete the definition.",
+    sentence: "When people finish their professional career, they ___ from their job.",
+    options: ["retire", "struggle", "register"],
+    answer: "retire",
+    ok: "Correct. retire means finish a professional career.",
+    help: "professional career + finish = retire.",
+    rule: "Automatisieren: finish career -> retire from a job."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: people",
+    prompt: "Complete the definition.",
+    sentence: "A ___ is someone who works with cattle or horses on a ranch.",
+    options: ["rancher", "smuggler", "dentist"],
+    answer: "rancher",
+    ok: "Correct. cattle, horses and ranch point to rancher.",
+    help: "Do not overthink: ranch -> rancher.",
+    rule: "Automatisieren: ranch/cattle/horses -> rancher."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: people",
+    prompt: "Complete the definition.",
+    sentence: "A ___ is someone who saw what happened and can tell the police or a judge.",
+    options: ["witness", "criminal", "miner"],
+    answer: "witness",
+    ok: "Correct. saw what happened + tell police/judge = witness.",
+    help: "The function is seeing and reporting.",
+    rule: "Automatisieren: saw event + reports it -> witness."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: Tombstone",
+    prompt: "Choose the correct word.",
+    sentence: "Tombstone attracted many people and quickly became a ___.",
+    options: ["boomtown", "shelter", "novel"],
+    answer: "boomtown",
+    ok: "Correct. A town that grows quickly is a boomtown.",
+    help: "many people + quickly became = boomtown.",
+    rule: "Automatisieren: town grows quickly because of money/jobs -> boomtown."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: Tombstone",
+    prompt: "Choose the correct word.",
+    sentence: "Visitors can watch actors perform a ___ about the Wild West.",
+    options: ["living history show", "gunfight", "territory"],
+    answer: "living history show",
+    ok: "Correct. actors perform history = living history show.",
+    help: "The clue is actors perform history.",
+    rule: "Automatisieren: actors + history performance -> living history show."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: Tombstone",
+    prompt: "Choose the correct word.",
+    sentence: "The town is in the ___ part of Arizona, near the Mexican border.",
+    options: ["southern", "scandalous", "legendary"],
+    answer: "southern",
+    ok: "Correct. southern means in the south.",
+    help: "part of Arizona asks for direction/location.",
+    rule: "Automatisieren: southern part = suedlicher Teil."
+  },
+  {
+    type: "VOCAB_ACTIVE",
+    title: "Klausurdrill U3: Tombstone",
+    prompt: "Choose the correct word.",
+    sentence: "If you like history, you will not ___ visiting this museum.",
+    options: ["regret", "retire", "relate"],
+    answer: "regret",
+    ok: "Correct. You will not regret visiting means you will be happy you went.",
+    help: "will not regret + -ing is a useful chunk.",
+    rule: "Automatisieren: You won't regret visiting ..."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Klausurdrill U3: verb + preposition",
+    prompt: "Choose the correct preposition.",
+    sentence: "Tourists were accused ___ taking plants from the park.",
+    options: ["of", "to", "about"],
+    answer: "of",
+    ok: "Correct. accuse someone of doing something.",
+    help: "This is a fixed chunk: accuse of.",
+    rule: "Automatisieren: accuse someone of doing something."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Klausurdrill U3: verb + preposition",
+    prompt: "Choose the correct preposition.",
+    sentence: "Desert animals have adapted ___ extreme heat.",
+    options: ["to", "of", "from"],
+    answer: "to",
+    ok: "Correct. adapt to something.",
+    help: "This is a fixed chunk: adapt to.",
+    rule: "Automatisieren: adapt to + noun."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Klausurdrill U3: verb + preposition",
+    prompt: "Choose the correct preposition.",
+    sentence: "Signs warn visitors ___ flash floods.",
+    options: ["about", "to", "in"],
+    answer: "about",
+    ok: "Correct. warn someone about something.",
+    help: "This is a fixed chunk: warn about.",
+    rule: "Automatisieren: warn visitors about danger."
+  },
+  {
+    type: "VERB_PREP",
+    title: "Klausurdrill U3: verb + preposition",
+    prompt: "Choose the correct phrase.",
+    sentence: "Students can become involved ___ conservation programmes.",
+    options: ["in", "of", "from"],
+    answer: "in",
+    ok: "Correct. become involved in something.",
+    help: "This is a fixed chunk: become involved in.",
+    rule: "Automatisieren: become involved in programmes."
+  },
+  {
+    type: "VOCAB_FORM",
+    title: "Klausurdrill U4 Anfang: word family",
+    prompt: "Choose the correct form.",
+    sentence: "Avery signed up when she ___ for summer camp. (registration)",
+    options: ["registered", "registration", "registering"],
+    answer: "registered",
+    ok: "Correct. The sentence needs the past verb registered.",
+    help: "she + action in the past = registered.",
+    rule: "Automatisieren: she registered; registration ist das Nomen."
+  },
+  {
+    type: "VOCAB_FORM",
+    title: "Klausurdrill U4 Anfang: word family",
+    prompt: "Choose the correct form.",
+    sentence: "The coding class was not too ___. (challenge)",
+    options: ["challenging", "challenge", "challenged"],
+    answer: "challenging",
+    ok: "Correct. The class is challenging.",
+    help: "The class causes the challenge; it is not challenged by someone.",
+    rule: "Automatisieren: class/job/task is challenging."
+  },
+  {
+    type: "VOCAB_FORM",
+    title: "Klausurdrill U4 Anfang: word family",
+    prompt: "Choose the correct form.",
+    sentence: "They gave us an ___ to a new computer program. (introduce)",
+    options: ["introduction", "introduce", "introduced"],
+    answer: "introduction",
+    ok: "Correct. an needs a noun: introduction.",
+    help: "an + noun. introduce is a verb.",
+    rule: "Automatisieren: an introduction."
+  },
+  {
+    type: "VOCAB_FORM",
+    title: "Klausurdrill U4 Anfang: word family",
+    prompt: "Choose the correct form.",
+    sentence: "Her least favourite class was ___. (robot)",
+    options: ["robotics", "robot", "robotic"],
+    answer: "robotics",
+    ok: "Correct. robotics is the school subject.",
+    help: "The gap names a class/subject, not one machine.",
+    rule: "Automatisieren: robotics class / robotics as a subject."
+  },
+  {
+    type: "GRAMMAR_GERUND_INF",
+    title: "Klausurdrill U4 Anfang: gerund",
+    prompt: "Choose the correct form.",
+    sentence: "Maya enjoys ___ short animations.",
+    options: ["creating", "to create", "create"],
+    answer: "creating",
+    ok: "Correct. enjoy is followed by -ing.",
+    help: "enjoy + -ing. Do not use to after enjoy.",
+    rule: "Automatisieren: enjoy doing something."
+  },
+  {
+    type: "GRAMMAR_GERUND_INF",
+    title: "Klausurdrill U4 Anfang: gerund",
+    prompt: "Choose the correct form.",
+    sentence: "Teenagers interested in ___ outdoors can join the camp.",
+    options: ["being", "to be", "be"],
+    answer: "being",
+    ok: "Correct. interested in is followed by -ing.",
+    help: "Preposition in + -ing.",
+    rule: "Automatisieren: interested in being/doing."
+  },
+  {
+    type: "GRAMMAR_GERUND_INF",
+    title: "Klausurdrill U4 Anfang: infinitive",
+    prompt: "Choose the correct form.",
+    sentence: "The group stopped in order ___ a photo.",
+    options: ["to take", "taking", "take"],
+    answer: "to take",
+    ok: "Correct. in order to + infinitive.",
+    help: "Purpose/Ziel: in order to do something.",
+    rule: "Automatisieren: in order to + infinitive."
+  },
+  {
+    type: "LINKING",
+    title: "Klausurdrill U4 Anfang: linking",
+    prompt: "Which linking word fits?",
+    sentence: "The camp was expensive. ___, many students wanted to join it.",
+    options: ["However", "Because", "Until"],
+    answer: "However",
+    ok: "Correct. However shows contrast.",
+    help: "expensive but many wanted to join = contrast.",
+    rule: "Automatisieren: However = Gegensatz am Satzanfang."
+  },
+  {
+    type: "READING_EVIDENCE",
+    title: "Klausurdrill Reading: Beleg",
+    prompt: "Which evidence answers the question?",
+    sentence: "Question: Why did the company create the internship? Text: The company created the programme in order to get more girls interested in technology.",
+    options: [
+      "to get more girls interested in technology",
+      "the company created",
+      "internship"
+    ],
+    answer: "to get more girls interested in technology",
+    ok: "Correct. That phrase gives the reason.",
+    help: "why asks for reason/purpose. Look for in order to.",
+    rule: "Automatisieren: why -> because / to / in order to."
+  }
+];
+
+tasks.english.push(...englishAutomationDrillTasks);
+
 const vocab = {
   latin: [
     {
