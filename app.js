@@ -190,7 +190,7 @@ const tasks = {
   ],
   english: [
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -206,7 +206,7 @@ const tasks = {
       }
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -222,7 +222,7 @@ const tasks = {
       }
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -238,7 +238,7 @@ const tasks = {
       }
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "VOCAB_ACTIVE",
       title: "Active vocabulary",
       prompt: "Which word best completes the sentence?",
@@ -506,7 +506,7 @@ const tasks = {
       rule: "past perfect markiert die Vorvergangenheit: After they had studied ..., they found ..."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -517,7 +517,7 @@ const tasks = {
       help: "want, hope, decide, plan, learn -> to + infinitive."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund after preposition",
       prompt: "Choose the correct form.",
@@ -528,7 +528,7 @@ const tasks = {
       help: "Preposition + verb usually means -ing: interested in being, good at drawing, thinking about going."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "GRAMMAR_GERUND_INF",
       title: "Infinitive with to",
       prompt: "Choose the correct form.",
@@ -539,7 +539,7 @@ const tasks = {
       help: "Purpose/Ziel: in order to do something."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -550,7 +550,7 @@ const tasks = {
       help: "enjoy, avoid, finish, practise, mind -> -ing."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -561,7 +561,7 @@ const tasks = {
       help: "after, before, without, by, for -> usually -ing."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -572,7 +572,7 @@ const tasks = {
       help: "make/let/help are special. help someone do something is common."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which linking word shows a reason?",
@@ -583,7 +583,7 @@ const tasks = {
       help: "Ask: Is it a reason, contrast, goal or time?"
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which linking phrase expresses a goal?",
@@ -594,7 +594,7 @@ const tasks = {
       help: "Purpose means Ziel: in order to / so that."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which linking word shows contrast?",
@@ -605,7 +605,7 @@ const tasks = {
       help: "Contrast means Gegensatz: although, however, while."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which phrase expresses a precaution?",
@@ -616,7 +616,7 @@ const tasks = {
       help: "in case is used when something might happen and you prepare for it."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which word shows time?",
@@ -627,7 +627,7 @@ const tasks = {
       help: "Ask what relationship is needed: time, reason, contrast, purpose or precaution."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which phrase shows result?",
@@ -939,7 +939,7 @@ const tasks = {
       help: "Before writing, mark: narrator, tense, atmosphere, place, problem."
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -955,7 +955,7 @@ const tasks = {
       }
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -971,7 +971,7 @@ const tasks = {
       }
     },
     {
-      stage: "u4_later",
+      stage: "u4_start",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
