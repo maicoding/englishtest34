@@ -568,6 +568,278 @@ const tasks = {
       answer: "I-perspective and past tense",
       ok: "Correct. Consistency is more important than a wild plot twist.",
       help: "Before writing, mark: narrator, tense, atmosphere, place, problem."
+    },
+    {
+      type: "VOCAB_FORM",
+      title: "Word family",
+      prompt: "Choose the correct form.",
+      sentence: "My cousin wants to become a computer ___. (science)",
+      options: ["scientist", "science", "scientific"],
+      answer: "scientist",
+      ok: "Correct. A person who works in science is a scientist.",
+      help: "The gap names a person after become a. That needs the person noun scientist.",
+      rule: "Nach become a braucht man hier ein Personen-Nomen. science ist das Fach, scientific ist ein Adjektiv, scientist ist die Person.",
+      mistakes: {
+        "science": "science ist das Fach oder Gebiet. Nach become a brauchst du aber eine Person: scientist.",
+        "scientific": "scientific ist ein Adjektiv. Nach become a brauchst du hier ein Nomen fuer eine Person: scientist."
+      }
+    },
+    {
+      type: "VOCAB_FORM",
+      title: "Word family",
+      prompt: "Choose the correct form.",
+      sentence: "The ___ class was hard because the machines were complicated. (robot)",
+      options: ["robotics", "robot", "robotic"],
+      answer: "robotics",
+      ok: "Correct. robotics names the subject or class.",
+      help: "The gap names the school subject/class, not one machine.",
+      rule: "robotics ist das Fach oder der Kurs. robot ist die Maschine; robotic ist ein Adjektiv wie in robotic arm.",
+      mistakes: {
+        "robot": "robot ist eine einzelne Maschine. Gemeint ist aber der Kurs/das Fach: robotics.",
+        "robotic": "robotic ist ein Adjektiv. Vor class kann es manchmal gehen, aber im U4-Wortfamilienmuster ist der Kurs robotics class."
+      }
+    },
+    {
+      type: "VOCAB_FORM",
+      title: "Word family",
+      prompt: "Choose the correct form.",
+      sentence: "The camp was different from my ___ before I went. (expect)",
+      options: ["expectations", "expect", "expected"],
+      answer: "expectations",
+      ok: "Correct. After my you need a noun: expectations.",
+      help: "my signals a noun. expectations means what someone thought would happen.",
+      rule: "Nach my braucht die Luecke ein Nomen. expectations ist das Nomen; expect ist Verb; expected ist Verbform oder Adjektiv.",
+      mistakes: {
+        "expect": "expect ist ein Verb. Nach my brauchst du ein Nomen: expectations.",
+        "expected": "expected ist eine Verbform oder ein Adjektiv. Gemeint sind die Vorstellungen vorher: expectations."
+      }
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "Internship feedback",
+      prompt: "Which phrase fits the feedback dialogue?",
+      sentence: "My manager is happy because I follow ___ carefully.",
+      options: ["instructions", "panic", "legal status"],
+      answer: "instructions",
+      ok: "Correct. You follow instructions.",
+      help: "Learn this as a chunk: follow instructions.",
+      rule: "In feedback-dialogues the phrase is follow instructions. panic is a feeling; legal status belongs to work permission."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "Internship feedback",
+      prompt: "Which phrase fits best?",
+      sentence: "She is from Germany and cannot accept paid work because of her ___.",
+      options: ["legal status", "instructions", "customers"],
+      answer: "legal status",
+      ok: "Correct. legal status can prevent someone from accepting a paid job.",
+      help: "Use context: paid work, student, US. That points to legal status.",
+      rule: "legal status beschreibt die rechtliche Situation einer Person, z.B. ob sie arbeiten darf."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "Synonyms and antonyms",
+      prompt: "Choose the antonym.",
+      sentence: "The opposite of accepted is ___.",
+      options: ["rejected", "increased", "obvious"],
+      answer: "rejected",
+      ok: "Correct. accept and reject are opposites.",
+      help: "Antonym means opposite. accepted -> rejected.",
+      rule: "Bei antonym-Aufgaben suchst du nicht ein verwandtes Thema, sondern das Gegenteil."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "Synonyms and antonyms",
+      prompt: "Choose the phrase with a similar meaning.",
+      sentence: "easy to see = ___.",
+      options: ["obvious", "bilingual", "suburban"],
+      answer: "obvious",
+      ok: "Correct. obvious means easy to see or understand.",
+      help: "Synonym means similar meaning, not same topic.",
+      rule: "Bei synonym-Aufgaben pruefst du die Bedeutung im Satz: obvious = easy to see/understand."
+    },
+    {
+      type: "VOCAB_CATEGORY",
+      title: "Odd one out",
+      prompt: "Which word does not fit?",
+      sentence: "park / countryside / suburban / urban",
+      options: ["park", "countryside", "urban"],
+      answer: "park",
+      ok: "Correct. countryside, suburban and urban describe kinds of places; park is a specific place.",
+      help: "For odd one out, explain the category first.",
+      rule: "Odd-one-out braucht immer eine Begruendung: Welche drei gehoeren zusammen, und warum passt eins nicht?"
+    },
+    {
+      type: "VOCAB_CATEGORY",
+      title: "British and American English",
+      prompt: "Choose the American English word.",
+      sentence: "BE: mobile phone. AE: ___",
+      options: ["cell phone", "torch", "lift"],
+      answer: "cell phone",
+      ok: "Correct. In American English, mobile phone is cell phone.",
+      help: "AE/BE Aufgaben fragen nach der passenden Variante, nicht nach freier Uebersetzung.",
+      rule: "Lerne AE/BE paarweise: mobile phone/cell phone, lift/elevator, flat/apartment."
+    },
+    {
+      type: "GRAMMAR_GERUND_INF",
+      title: "Indirect question + infinitive",
+      prompt: "Which sentence reports the question correctly?",
+      sentence: "Question: How many eggs should I use?",
+      options: [
+        "He wants to know how many eggs to use.",
+        "He wants to know how many eggs use.",
+        "He wants to know how many eggs using."
+      ],
+      answer: "He wants to know how many eggs to use.",
+      ok: "Correct. Indirect question: question word + to-infinitive.",
+      help: "After wants to know, use question word + to + verb.",
+      rule: "Indirekte Fragen mit Infinitiv: how/where/what/whether + to + Infinitiv. Beispiel: how many eggs to use.",
+      mistakes: {
+        "He wants to know how many eggs use.": "Nach how many eggs fehlt der to-infinitive: to use.",
+        "He wants to know how many eggs using.": "using ist hier falsch. Das Muster ist question word + to + Infinitiv: to use."
+      }
+    },
+    {
+      type: "GRAMMAR_GERUND_INF",
+      title: "Indirect question + infinitive",
+      prompt: "Choose the correct reported question.",
+      sentence: "Question: Should I make the sauce myself or buy it?",
+      options: [
+        "He needs to decide whether to make the sauce himself or buy it.",
+        "He needs to decide whether making the sauce himself or buy it.",
+        "He needs to decide whether he to make the sauce himself."
+      ],
+      answer: "He needs to decide whether to make the sauce himself or buy it.",
+      ok: "Correct. whether + to-infinitive reports a yes/no choice.",
+      help: "For should I ... or ..., use whether to ... or ...",
+      rule: "Bei Entscheidungsfragen passt whether + to + Infinitiv: whether to make ... or buy ..."
+    },
+    {
+      type: "GRAMMAR_GERUND_INF",
+      title: "Superlative + infinitive",
+      prompt: "Choose the correct sentence.",
+      sentence: "Sequoia National Park / one of the first national parks / create",
+      options: [
+        "Sequoia was one of the first national parks to be created.",
+        "Sequoia was one of the first national parks creating.",
+        "Sequoia was one of the first national parks to created."
+      ],
+      answer: "Sequoia was one of the first national parks to be created.",
+      ok: "Correct. After one of the first, use to be + past participle for passive meaning.",
+      help: "Superlative/first/only + noun is often followed by a to-infinitive.",
+      rule: "Nach the first/the only/the best place kann ein to-infinitive folgen: the best place to learn, the first park to be created.",
+      mistakes: {
+        "Sequoia was one of the first national parks creating.": "creating macht den Park aktiv. Gemeint ist passiv: der Park wurde geschaffen, also to be created.",
+        "Sequoia was one of the first national parks to created.": "Nach to steht der Infinitiv. Fuer Passiv brauchst du to be created."
+      }
+    },
+    {
+      type: "GRAMMAR_GERUND_INF",
+      title: "Object + infinitive",
+      prompt: "Which rewrite is correct?",
+      sentence: "Director: Keep people out of the shot.",
+      options: [
+        "I want you to keep people out of the shot.",
+        "I want you keep people out of the shot.",
+        "I want that you keeping people out of the shot."
+      ],
+      answer: "I want you to keep people out of the shot.",
+      ok: "Correct. want + object + to-infinitive.",
+      help: "I want/expect/would like + person + to + verb.",
+      rule: "Bei want/expect/would like mit Objekt: I want you to keep..., I expect you to be..., I would like you to help..."
+    },
+    {
+      type: "GRAMMAR_GERUND_INF",
+      title: "Infinitive with or without to",
+      prompt: "Choose the correct form.",
+      sentence: "Let me ___ your phone number before you go.",
+      options: ["write down", "to write down", "writing down"],
+      answer: "write down",
+      ok: "Correct. After let me, use the infinitive without to.",
+      help: "let + object + infinitive without to.",
+      rule: "Nach let/make/help kann der Infinitiv ohne to stehen: let me write, make him wait, help her carry."
+    },
+    {
+      type: "LINKING",
+      title: "Adverbial clauses",
+      prompt: "Which linking word fits?",
+      sentence: "Actors may choose rural homes ___ their children can have more privacy.",
+      options: ["so that", "until", "such ... that"],
+      answer: "so that",
+      ok: "Correct. so that expresses purpose.",
+      help: "Ask: Is the clause a goal, time limit or result?",
+      rule: "so that + subject + verb zeigt ein Ziel: damit jemand etwas tun/kann."
+    },
+    {
+      type: "LINKING",
+      title: "Adverbial clauses",
+      prompt: "Which linking phrase fits?",
+      sentence: "They went to ___ many auditions ___ it was easier to live in L.A.",
+      options: ["so ... that", "in order to", "until"],
+      answer: "so ... that",
+      ok: "Correct. so many ... that shows result.",
+      help: "so ... that links intensity and result.",
+      rule: "Resultat: so + adjective/adverb/many/much + that. Bei Nomen mit adjective oft such ... that."
+    },
+    {
+      type: "READING_EVIDENCE",
+      title: "Reading: paragraph matching",
+      prompt: "Which strategy prepares matching tasks best?",
+      sentence: "A reading task gives headings and paragraph letters A-E.",
+      options: [
+        "mark one key idea in each paragraph",
+        "translate the whole text first",
+        "choose the shortest paragraph"
+      ],
+      answer: "mark one key idea in each paragraph",
+      ok: "Correct. Matching tasks are solved by paragraph key ideas.",
+      help: "Read for the main idea first, not every detail.",
+      rule: "Bei matching-Aufgaben: pro Absatz eine Hauptidee markieren, dann erst Antwortoptionen vergleichen."
+    },
+    {
+      type: "READING_EVIDENCE",
+      title: "Reading: short answer",
+      prompt: "Which answer format is safest?",
+      sentence: "Question: Why did she change her opinion about camp?",
+      options: [
+        "because she had new positive experiences there",
+        "camp",
+        "I think it is nice"
+      ],
+      answer: "because she had new positive experiences there",
+      ok: "Correct. The answer gives a reason, not just a topic.",
+      help: "For why-questions, answer with because + reason.",
+      rule: "Fragewort entscheidet Antwortform: why -> reason, how -> way/process, what -> fact, who -> person."
+    },
+    {
+      type: "WRITING_STRUCTURE",
+      title: "Mediation",
+      prompt: "What is the best first sentence for a presentation mediation?",
+      sentence: "You explain a German brand story to exchange students.",
+      options: [
+        "In my presentation, I am going to explain how the brand became successful in the US.",
+        "The text is long and German.",
+        "I cannot translate everything."
+      ],
+      answer: "In my presentation, I am going to explain how the brand became successful in the US.",
+      ok: "Correct. It names audience, topic and purpose clearly.",
+      help: "Mediation is not word-by-word translation. Select useful information for the audience.",
+      rule: "Mediation: Zielgruppe klaeren, relevante Informationen auswaehlen, klar und knapp auf Englisch formulieren."
+    },
+    {
+      type: "WRITING_STRUCTURE",
+      title: "Writing: California argument",
+      prompt: "Which sentence starts a balanced paragraph well?",
+      sentence: "Topic: the different sides of life in California.",
+      options: [
+        "California offers many opportunities, but it also has serious problems.",
+        "California is California and I like it.",
+        "There are people and things."
+      ],
+      answer: "California offers many opportunities, but it also has serious problems.",
+      ok: "Correct. It opens a balanced argument.",
+      help: "A strong opening sentence names both sides if the task asks for a balanced view.",
+      rule: "Argument writing: claim -> reason -> example -> result/contrast. Useful contrast: but, however, on the other hand."
     }
   ],
   math: [
