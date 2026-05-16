@@ -130,7 +130,11 @@ const tasks = {
       answer: "registered",
       ok: "Correct. The sentence needs a verb in the past: registered.",
       help: "The subject is Maya and the sentence tells what she did. That needs a past verb, not the noun registration.",
-      rule: "registered ist hier das Verb im simple past. registration ist ein Nomen und kann nach she nicht direkt als Praedikat stehen."
+      rule: "registered ist hier das Verb im simple past. registration ist ein Nomen und kann nach she nicht direkt als Praedikat stehen.",
+      mistakes: {
+        "registration": "registration ist ein Nomen. Nach dem Subjekt she braucht der Satz hier aber ein Verb: she registered.",
+        "registering": "registering kann nach is/was oder als -ing-Form passen. Hier erzaehlt der Satz im simple past, deshalb: registered."
+      }
     },
     {
       type: "VOCAB_FORM",
@@ -141,7 +145,11 @@ const tasks = {
       answer: "challenging",
       ok: "Yes. challenging describes the class as demanding or difficult in an interesting way.",
       help: "The class causes the challenge. It is not the thing that was challenged by someone else.",
-      rule: "challenging bedeutet: etwas ist herausfordernd. challenged bedeutet: jemand oder etwas wurde herausgefordert. In 'The class was very ...' beschreibt man die Eigenschaft der class, also challenging."
+      rule: "challenging bedeutet: etwas ist herausfordernd. challenged bedeutet: jemand oder etwas wurde herausgefordert. In 'The class was very ...' beschreibt man die Eigenschaft der class, also challenging.",
+      mistakes: {
+        "challenge": "challenge ist hier das Grundwort und meistens Nomen oder Verb. Nach was very brauchst du ein Adjektiv: challenging.",
+        "challenged": "challenged bedeutet eher: jemand/etwas wurde herausgefordert. Die class wird hier nicht von jemandem herausgefordert, sondern sie ist herausfordernd: challenging."
+      }
     },
     {
       type: "VOCAB_FORM",
@@ -152,7 +160,11 @@ const tasks = {
       answer: "introduction",
       ok: "Correct. After an you need a noun: introduction.",
       help: "an stands before a singular noun. introduce is a verb, introduced is a verb form or adjective.",
-      rule: "Nach an braucht man ein zaehlbares Nomen im Singular. Deshalb: an introduction, nicht an introduce."
+      rule: "Nach an braucht man ein zaehlbares Nomen im Singular. Deshalb: an introduction, nicht an introduce.",
+      mistakes: {
+        "introduce": "introduce ist ein Verb. Nach an kann aber kein Verb direkt stehen. Es muss das Nomen introduction sein.",
+        "introduced": "introduced ist eine Vergangenheitsform oder ein Partizip. Nach an braucht der Satz ein Nomen: introduction."
+      }
     },
     {
       type: "VOCAB_ACTIVE",
@@ -163,7 +175,11 @@ const tasks = {
       answer: "challenging",
       ok: "Right. challenging means demanding but interesting.",
       help: "The job has the quality of being demanding. It is not being challenged by another person.",
-      rule: "challenging beschreibt eine Sache, die herausfordert. challenged beschreibt jemanden oder etwas, das herausgefordert wurde. A job can be challenging."
+      rule: "challenging beschreibt eine Sache, die herausfordert. challenged beschreibt jemanden oder etwas, das herausgefordert wurde. A job can be challenging.",
+      mistakes: {
+        "challenge": "challenge ist kein passendes Adjektiv nach can be. Der Satz braucht eine Eigenschaft des Jobs: challenging.",
+        "challenged": "challenged wuerde bedeuten, dass der Job herausgefordert wurde. Gemeint ist aber: Der Job fordert dich heraus, also challenging."
+      }
     },
     {
       type: "VOCAB_ACTIVE",
@@ -227,7 +243,12 @@ const tasks = {
       ],
       answer: "I can learn useful skills.",
       ok: "Correct. Type 1: if + simple present, main clause with will/can/should + infinitive.",
-      help: "Type 1 is realistic: If + present, will/can/should + infinitive."
+      help: "Type 1 is realistic: If + present, will/can/should + infinitive.",
+      rule: "If I get work experience ist eine realistische Bedingung. Deshalb bleibt der if-Satz im simple present, und der Hauptsatz nimmt can/will/should + Infinitiv.",
+      mistakes: {
+        "I would learned useful skills.": "would learned ist keine richtige Form: Nach would steht immer der Infinitiv learn. Ausserdem waere would type 2, hier ist die Situation realistisch.",
+        "I had learned useful skills.": "had learned ist past perfect. Das beschreibt etwas, das frueher passiert ist, nicht eine moegliche Folge von work experience."
+      }
     },
     {
       type: "GRAMMAR_CONDITIONALS",
@@ -237,7 +258,12 @@ const tasks = {
       options: ["had", "have", "will have"],
       answer: "had",
       ok: "Correct. Type 2 uses simple past in the if-clause: If I had ..., I would ...",
-      help: "Type 2 is hypothetical: If + simple past, would/could + infinitive."
+      help: "Type 2 is hypothetical: If + simple past, would/could + infinitive.",
+      rule: "would visit im Hauptsatz zeigt type 2. Deshalb braucht der if-Satz simple past: If I had more time, I would visit ...",
+      mistakes: {
+        "have": "have ist simple present und passt zu type 1. Der Hauptsatz hat aber would visit, also brauchst du type 2: had.",
+        "will have": "will steht nicht im if-Satz. Bei type 2 steht dort simple past: had."
+      }
     },
     {
       type: "GRAMMAR_PAST_PERFECT",
@@ -1121,7 +1147,11 @@ const conditionalSituations = [
     wrong: ["I would remembered them in the test.", "I had remembered them in the test."],
     ok: "Type 1 fits because daily practice is a realistic condition with a possible future result.",
     help: "This is realistic, so use if + simple present and will/can + infinitive.",
-    rule: "Type 1: If + simple present, will/can/should + infinitive. Use it for realistic conditions and possible results."
+    rule: "Type 1: If + simple present, will/can/should + infinitive. Use it for realistic conditions and possible results.",
+    mistakes: {
+      "I would remembered them in the test.": "would remembered ist doppelt falsch: would passt zu type 2, und nach would steht immer der Infinitiv remember, nicht remembered.",
+      "I had remembered them in the test.": "had remembered ist past perfect. Das passt zu Vorzeitigkeit oder type 3, aber hier geht es um eine realistische Folge in der Zukunft."
+    }
   },
   {
     type: "type1",
@@ -1133,7 +1163,11 @@ const conditionalSituations = [
     wrong: ["would checked", "had checked"],
     ok: "Type 1 fits: the evidence can really help you check the answer.",
     help: "After if + simple present, the main clause can use can/will + infinitive.",
-    rule: "Type 1 stays close to real life: If something happens, something can/will happen."
+    rule: "Type 1 stays close to real life: If something happens, something can/will happen.",
+    mistakes: {
+      "would checked": "would checked ist keine richtige Verbform. Nach would steht der Infinitiv check. Ausserdem ist die Situation realistisch, deshalb passt can check.",
+      "had checked": "had checked blickt in die Vergangenheit zurueck. Der Satz meint aber: Wenn es Belege gibt, kann ich jetzt oder in der Arbeit pruefen."
+    }
   },
   {
     type: "type1",
@@ -1145,7 +1179,11 @@ const conditionalSituations = [
     wrong: ["If she joined the internship", "If she had joined the internship"],
     ok: "This is a realistic future possibility, so the if-clause uses simple present.",
     help: "For type 1, do not use would in the if-clause.",
-    rule: "Type 1: If she joins ..., she will learn ... The if-clause uses simple present."
+    rule: "Type 1: If she joins ..., she will learn ... The if-clause uses simple present.",
+    mistakes: {
+      "If she joined the internship": "joined ist simple past und macht daraus type 2. Der zweite Satzteil hat aber will learn, also braucht der if-Satz type 1: joins.",
+      "If she had joined the internship": "had joined ist past perfect und wuerde zu type 3 gehoeren. Hier steht will learn, also geht es um eine moegliche Zukunft."
+    }
   },
   {
     type: "type1",
@@ -1157,7 +1195,11 @@ const conditionalSituations = [
     wrong: ["If I would ask my cousin, he will help me get an internship.", "If I asked my cousin, he will helps me get an internship."],
     ok: "Correct. In a type 1 if-clause, use simple present, not will.",
     help: "The result can have will. The if-clause does not use will in type 1.",
-    rule: "Type 1: If + simple present, will + infinitive. Do not put will into the if-clause."
+    rule: "Type 1: If + simple present, will + infinitive. Do not put will into the if-clause.",
+    mistakes: {
+      "If I would ask my cousin, he will help me get an internship.": "would darf in diesem type-1-if-Satz nicht stehen. Die Bedingung ist realistisch: If I ask ..., he will help ...",
+      "If I asked my cousin, he will helps me get an internship.": "asked macht den if-Satz zu type 2, aber will passt zu type 1. Ausserdem steht nach will der Infinitiv help, nicht helps."
+    }
   },
   {
     type: "type1",
@@ -1169,7 +1211,11 @@ const conditionalSituations = [
     wrong: ["will work / learn", "worked / would learn"],
     ok: "Correct. Type 1 uses simple present in the if-clause and will + infinitive in the main clause.",
     help: "First clause after if: present. Result clause: will + infinitive.",
-    rule: "Type 1 has two time choices: if-clause = simple present; main clause = will/can + infinitive."
+    rule: "Type 1 has two time choices: if-clause = simple present; main clause = will/can + infinitive.",
+    mistakes: {
+      "will work / learn": "will gehoert bei type 1 in den Hauptsatz, nicht direkt hinter if. Richtig ist: If I work ..., I will learn ...",
+      "worked / would learn": "worked / would learn ist type 2. Der Satz trainiert aber eine realistische Moeglichkeit: work / will learn."
+    }
   },
   {
     type: "type1",
@@ -1181,7 +1227,11 @@ const conditionalSituations = [
     wrong: ["type 2 because it uses if", "type 3 because it is about the past"],
     ok: "Correct. Tomorrow's weather is a real possible condition.",
     help: "Do not decide only because you see if. Decide from meaning and verb forms.",
-    rule: "Type 1 is for real or possible situations: if + present, will + infinitive."
+    rule: "Type 1 is for real or possible situations: if + present, will + infinitive.",
+    mistakes: {
+      "type 2 because it uses if": "if allein entscheidet nicht den Typ. stays ist simple present und will go ist will + Infinitiv: Das ist type 1.",
+      "type 3 because it is about the past": "Der Satz nennt tomorrow und will go. Er schaut nach vorn, nicht in eine unwirkliche Vergangenheit."
+    }
   },
   {
     type: "type2",
@@ -1193,7 +1243,11 @@ const conditionalSituations = [
     wrong: ["live", "will live"],
     ok: "Type 2 fits because the sentence imagines a situation that is not real now.",
     help: "Hypothetical condition: if + simple past, would + infinitive.",
-    rule: "Type 2: If + simple past, would/could + infinitive. Use it for imagined or unlikely situations."
+    rule: "Type 2: If + simple past, would/could + infinitive. Use it for imagined or unlikely situations.",
+    mistakes: {
+      "live": "live waere simple present und passt zu type 1. Der Hauptsatz hat would visit, also braucht der if-Satz simple past: lived.",
+      "will live": "will steht nicht im if-Satz. Bei type 2 steht dort simple past: If I lived ..., I would visit ..."
+    }
   },
   {
     type: "type2",
@@ -1205,7 +1259,11 @@ const conditionalSituations = [
     wrong: ["they will got more practice.", "they had got more practice."],
     ok: "The sentence imagines a possible change, so type 2 uses would + infinitive.",
     help: "Do not write would got. After would, use the infinitive: would get.",
-    rule: "After would/could, use the infinitive without to: would get, would learn, could practise."
+    rule: "After would/could, use the infinitive without to: would get, would learn, could practise.",
+    mistakes: {
+      "they will got more practice.": "will got ist keine richtige Form. Nach will steht get. Weil der if-Satz joined hat, passt hier aber would get.",
+      "they had got more practice.": "had got ist past perfect. Der Satz beschreibt keine fruehere Handlung, sondern eine gedachte Folge: would get."
+    }
   },
   {
     type: "type2",
@@ -1217,7 +1275,11 @@ const conditionalSituations = [
     wrong: ["If I have more time, I would wrote a better text.", "If I will have more time, I write a better text."],
     ok: "This sentence imagines a different present situation.",
     help: "Type 2 uses simple past in the if-clause and would + infinitive in the main clause.",
-    rule: "Type 2 does not mean past time here. The simple past form shows distance from reality."
+    rule: "Type 2 does not mean past time here. The simple past form shows distance from reality.",
+    mistakes: {
+      "If I have more time, I would wrote a better text.": "have ist type 1, would gehoert aber zu type 2. Dazu kommt: Nach would steht write, nicht wrote.",
+      "If I will have more time, I write a better text.": "will steht nicht im if-Satz. Fuer diese gedachte Gegenwart brauchst du: If I had ..., I would write ..."
+    }
   },
   {
     type: "type2",
@@ -1229,7 +1291,11 @@ const conditionalSituations = [
     wrong: ["rides / will be", "would ride / was"],
     ok: "Correct. Type 2: rode in the if-clause, would be in the main clause.",
     help: "Do not put would into the if-clause. Put would into the result clause.",
-    rule: "Type 2 has two time choices: if-clause = simple past; main clause = would/could + infinitive."
+    rule: "Type 2 has two time choices: if-clause = simple past; main clause = would/could + infinitive.",
+    mistakes: {
+      "rides / will be": "rides / will be ist type 1. Der Satz mit einem wilden Pferd ist hier als gedachte Situation angelegt, deshalb: rode / would be.",
+      "would ride / was": "would gehoert in den Hauptsatz, nicht in den if-Satz. Nach if steht bei type 2 simple past: rode."
+    }
   },
   {
     type: "type2",
@@ -1241,7 +1307,11 @@ const conditionalSituations = [
     wrong: ["If she will go to a school close to the reservation, she could spend weekends at home.", "If she went to a school close to the reservation, she can spends weekends at home."],
     ok: "Correct. Type 2 uses simple past in the if-clause, not would.",
     help: "would belongs to the main clause, not after if.",
-    rule: "Type 2: If + simple past, would/could + infinitive. The if-clause does not use would."
+    rule: "Type 2: If + simple past, would/could + infinitive. The if-clause does not use would.",
+    mistakes: {
+      "If she will go to a school close to the reservation, she could spend weekends at home.": "will gehoert nicht in den if-Satz. could im Hauptsatz zeigt type 2, also: If she went ...",
+      "If she went to a school close to the reservation, she can spends weekends at home.": "can spends ist falsch: Nach can steht spend. Fuer type 2 ist noch besser: could spend."
+    }
   },
   {
     type: "type2",
@@ -1253,7 +1323,11 @@ const conditionalSituations = [
     wrong: ["am", "will be"],
     ok: "Correct. The fixed phrase is: If I were you, I would ...",
     help: "This is advice with an imagined situation, so use type 2.",
-    rule: "For advice, learn the chunk: If I were you, I would + infinitive."
+    rule: "For advice, learn the chunk: If I were you, I would + infinitive.",
+    mistakes: {
+      "am": "am waere echte Gegenwart. Bei einem Rat stellst du dir vor, du waerst die andere Person: If I were you ...",
+      "will be": "will be zeigt Zukunft, aber dieser Rat ist eine gedachte Situation. Der feste Ausdruck lautet: If I were you ..."
+    }
   },
   {
     type: "type2",
@@ -1265,7 +1339,11 @@ const conditionalSituations = [
     wrong: ["type 1 because it can happen tomorrow", "type 3 because it uses had"],
     ok: "Correct. had is simple past here, not past perfect. It shows an unreal present situation.",
     help: "In type 2, simple past can talk about an unreal present.",
-    rule: "Type 2 often sounds like past, but it means unreal now: If I had ..., I would ..."
+    rule: "Type 2 often sounds like past, but it means unreal now: If I had ..., I would ...",
+    mistakes: {
+      "type 1 because it can happen tomorrow": "Der Satz sagt: I do not have a cousin. Es ist also nicht real jetzt. had + would ask zeigt type 2.",
+      "type 3 because it uses had": "had allein ist hier simple past von have. Past perfect waere had had oder had asked. Deshalb ist es type 2."
+    }
   },
   {
     type: "type3",
@@ -1277,7 +1355,11 @@ const conditionalSituations = [
     wrong: ["If Adam attended the presentation", "If Adam would attend the presentation"],
     ok: "Correct. Type 3 looks back: if + past perfect.",
     help: "For a past unreal condition, use had + past participle in the if-clause.",
-    rule: "Type 3: If + past perfect, would have + past participle. Use it for unreal past situations."
+    rule: "Type 3: If + past perfect, would have + past participle. Use it for unreal past situations.",
+    mistakes: {
+      "If Adam attended the presentation": "attended ist simple past. Der Hauptsatz would have learned zeigt aber type 3, also muss der if-Satz past perfect haben: had attended.",
+      "If Adam would attend the presentation": "would gehoert nicht in den if-Satz. Bei type 3 steht dort had + past participle."
+    }
   },
   {
     type: "type3",
@@ -1289,7 +1371,11 @@ const conditionalSituations = [
     wrong: ["she would call a ranger.", "she had called a ranger."],
     ok: "Correct. Type 3 result: would have + past participle.",
     help: "The result is also unreal past, so use would have called.",
-    rule: "Type 3 main clause: would/could have + past participle."
+    rule: "Type 3 main clause: would/could have + past participle.",
+    mistakes: {
+      "she would call a ranger.": "would call ist type 2. Der if-Satz hat had injured, also geht es um type 3: would have called.",
+      "she had called a ranger.": "had called ist nur past perfect. Im Hauptsatz von type 3 brauchst du would have + past participle."
+    }
   },
   {
     type: "type3",
@@ -1301,7 +1387,11 @@ const conditionalSituations = [
     wrong: ["did not go / would not see", "would not go / had not seen"],
     ok: "Correct. Type 3 uses past perfect in the if-clause and would have + past participle in the main clause.",
     help: "Both parts point to an unreal past situation.",
-    rule: "Type 3 has two time choices: if-clause = had + past participle; main clause = would have + past participle."
+    rule: "Type 3 has two time choices: if-clause = had + past participle; main clause = would have + past participle.",
+    mistakes: {
+      "did not go / would not see": "did not go / would not see mischt simple past mit type 2. Fuer eine unwirkliche Vergangenheit brauchst du had not gone / would not have seen.",
+      "would not go / had not seen": "would steht nicht in den if-Satz. Ausserdem braucht der Hauptsatz would not have seen."
+    }
   },
   {
     type: "mixed",
@@ -1313,7 +1403,11 @@ const conditionalSituations = [
     wrong: ["If I found the brochure, I would send it to the school.", "If I had found the brochure, I would have sent it to the school."],
     ok: "Correct. type 1 uses present + will for a realistic future condition.",
     help: "Compare the verb forms in both sentence parts.",
-    rule: "Type 1: present + will. Type 2: past + would. Type 3: past perfect + would have."
+    rule: "Type 1: present + will. Type 2: past + would. Type 3: past perfect + would have.",
+    mistakes: {
+      "If I found the brochure, I would send it to the school.": "found + would send ist type 2. Gesucht ist type 1, also present + will: find / will send.",
+      "If I had found the brochure, I would have sent it to the school.": "had found + would have sent ist type 3. Gesucht ist die realistische Zukunft mit type 1."
+    }
   },
   {
     type: "mixed",
@@ -1325,7 +1419,11 @@ const conditionalSituations = [
     wrong: ["If there is no electricity, people will get nervous.", "If there had been no electricity, people would have got nervous."],
     ok: "Correct. type 2 uses simple past + would for an imagined situation.",
     help: "was/were in the if-clause plus would in the main clause points to type 2.",
-    rule: "Type 2: If + simple past, would/could + infinitive."
+    rule: "Type 2: If + simple past, would/could + infinitive.",
+    mistakes: {
+      "If there is no electricity, people will get nervous.": "is + will get ist type 1. Gesucht ist eine gedachte Situation, deshalb: was / would get.",
+      "If there had been no electricity, people would have got nervous.": "had been + would have got ist type 3. Gesucht ist type 2 fuer eine gedachte Gegenwart."
+    }
   }
 ];
 
@@ -1695,7 +1793,8 @@ function renderChoiceTaskNode(node, domain, task, repeatCallback = () => renderT
         ok: task.ok,
         help: task.help,
         rule: task.rule,
-        selected: button.dataset.answer
+        selected: button.dataset.answer,
+        mistake: task.mistakes ? task.mistakes[button.dataset.answer] : null
       });
       const repeat = feedback.querySelector("[data-repeat-type]");
       repeat.addEventListener("click", repeatCallback);
@@ -1813,8 +1912,9 @@ function lockAnswers(node, selectedButton, answer) {
   });
 }
 
-function buildFeedback({ correct, domain, type, answer, ok, help, rule, selected }) {
+function buildFeedback({ correct, domain, type, answer, ok, help, rule, selected, mistake = null }) {
   const ruleText = rule || help || basics[type] || "Erst die Regel nennen, dann die Aufgabe loesen.";
+  const whyText = mistake || help || ruleText;
   const label = areas[domain][type] || "Grundlage";
   const cleanOk = stripFeedbackLead(ok);
   const correction = correct
@@ -1822,7 +1922,7 @@ function buildFeedback({ correct, domain, type, answer, ok, help, rule, selected
     : `<div class="feedbackLine correctionLine"><span class="feedbackLabel">Korrektur</span><p>Richtig ist <span class="answerInline">${escapeHtml(answer)}</span>. Deine Wahl war <span class="answerInline">${escapeHtml(selected)}</span>.</p></div>`;
   const explanation = correct
     ? `<div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(ruleText)}</p></div>`
-    : `<div class="feedbackLine"><span class="feedbackLabel">Warum</span><p>${escapeHtml(help)}</p></div><div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(ruleText)}</p></div>`;
+    : `<div class="feedbackLine"><span class="feedbackLabel">Warum</span><p>${escapeHtml(whyText)}</p></div><div class="feedbackLine"><span class="feedbackLabel">Regel</span><p>${escapeHtml(ruleText)}</p></div>`;
   const next = correct
     ? "Noch eine Aufgabe aus diesem Bereich festigen"
     : "Gleichen Bereich sofort noch einmal ueben";
@@ -1902,7 +2002,8 @@ function renderConditionalTrainer() {
     answer: base.answer,
     ok: base.ok,
     help: base.help,
-    rule: base.rule
+    rule: base.rule,
+    mistakes: base.mistakes
   };
   renderChoiceTaskNode(document.getElementById("englishTask"), "english", task, renderConditionalTrainer, "conditionals");
 }
@@ -2117,7 +2218,8 @@ function attachChoiceHandlers(node, subject, type, answer, ok, help, repeatCallb
         ok,
         help,
         rule,
-        selected: button.dataset.answer
+        selected: button.dataset.answer,
+        mistake: item.mistakes ? item.mistakes[button.dataset.answer] : null
       });
       feedback.querySelector("[data-repeat-type]").addEventListener("click", repeatCallback);
     });
