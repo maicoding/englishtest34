@@ -1,44 +1,36 @@
-# Englisch U4 Klausurabdeckung
+# Englisch Klausurabdeckung Ende U3
 
 Stand: 2026-05-16
 
 ## Prioritaet
 
-Listening war in der letzten Arbeit bereits ein Schwerpunkt und wird deshalb nicht als Haupttrainingspfad automatisiert. Die App bereitet stattdessen die wahrscheinlicheren Aufgabenformate aus U3-Resten und U4-Anfang vor.
+Die Schuelerinnen und Schueler sind nach aktuellem Stand erst bei Ende U3. Die App trainiert deshalb im normalen Englischpfad konsequent U3-Ende: Wortschatz, Reading-Strategien, Writing-Bausteine, Conditional 1-3 und past perfect. U4-Aufgaben sind technisch als Reserve vorhanden, erscheinen aber nicht im normalen Trainingsfluss.
 
-Aktuelle Gewichtung in der App:
+Listening war in der letzten Arbeit bereits ein Schwerpunkt und wird nicht als Hauptpfad automatisiert. Reading-Aufgaben trainieren aber dieselben Belegstrategien: Schluesselwoerter markieren, Aussage pruefen, kurze evidence notieren.
 
-1. U3-Reste: Conditionals 1-3, past perfect, Reading-Belege.
-2. U4 Check-in / Station 1: word families, vocabulary categories, gerund, infinitive patterns, indirect questions with infinitives, superlative + infinitive, object + infinitive, Reading "Not a happy camper".
-3. Station 2/3/Unit-Ende nur als Reserve. Diese Aufgaben sind im Code vorhanden, werden aber in den normalen Englisch-Modulen nicht mehr bevorzugt.
-
-## In der App abgedeckt
+## Im Standardpfad
 
 | Klausurformat | App-Bereich | Status |
 |---|---|---|
-| Word families: registration/register, challenge/challenging/challenged, introduce/introduction, science/scientist, robot/robotics, expect/expectations | Englisch -> Grammar, Vocabulary, Pruefung | abgedeckt |
-| Vocabulary categories: nature, work, sports, technology/social issues | Englisch -> Vocabulary, Pruefung | abgedeckt |
-| Internship feedback vocabulary: instructions, panic, doing well, following in their footsteps, legal status, bilingual, customers | Reserve | vorhanden, aber nachrangig, weil nach Station 2 |
-| Synonyms/antonyms | Reserve | vorhanden, aber nachrangig, weil nach Station 3 |
-| Odd one out mit Begruendung | Reserve | vorhanden, aber nachrangig, weil nach Story/Unit-Ende |
-| British/American English Grundpaare | Reserve | vorhanden, aber nachrangig, weil nach Unit 4 |
-| Gerund after verbs/prepositions; gerund as subject | Englisch -> Grammar | abgedeckt |
-| to-infinitive after want/decide/plan/hope/need | Englisch -> Grammar | abgedeckt |
-| Indirect questions with infinitives: how/where/whether + to-infinitive | Englisch -> Grammar | abgedeckt |
-| Superlative + infinitive: first/only/best place to ... | Englisch -> Grammar | abgedeckt |
-| Object + infinitive: want/expect/would like + person + to ... | Englisch -> Grammar | abgedeckt |
-| Infinitive with/without to: in order to, let me, can be, have to | Englisch -> Grammar | abgedeckt |
-| Linking words: in order to, so that, so ... that, until, in case, while/however | Englisch -> Grammar/Writing | Grundformen abgedeckt; Station-3-Formate nachrangig |
-| Reading: paragraph matching, short answers with evidence, why/how/what question decoding | Englisch -> Reading | abgedeckt |
-| Writing: einfacher strukturierter Absatz, claim-reason-example-conclusion | Englisch -> Writing | abgedeckt |
-| Mediation: adressatengerechte Informationsweitergabe | Reserve | vorhanden, aber nachrangig, wenn nur U4-Anfang drankommt |
-| Conditional 1/2/3 plus mixed, 400 Satzbausteine, Luecke/Typ/Struktur/Satzteile | Englisch -> Conditionals | stark abgedeckt |
+| Desert Southwest: cactus, crater, wildlife, flash flood, arid | Englisch -> Vocabulary, Pruefung | abgedeckt |
+| School and work: recruiter, social studies, spring break, pressure, struggle, retire | Englisch -> Vocabulary, Pruefung | abgedeckt |
+| People definitions: miner, dentist, rancher, smuggler, criminal, policeman, judge, witness | Englisch -> Vocabulary, Pruefung | abgedeckt |
+| Tombstone word field: boomtown, legendary, gunfight, territory, living history show, attract, regret | Englisch -> Vocabulary, Pruefung | abgedeckt |
+| Verb + preposition: accuse of, warn about, adapt to, relate to, become involved in, not work out | Englisch -> Vocabulary, Pruefung | abgedeckt |
+| Word categories and odd one out with reason | Englisch -> Vocabulary, Pruefung | abgedeckt |
+| Conditional type 1, type 2, type 3, mixed recognition | Englisch -> Conditionals, Grammar | stark abgedeckt |
+| Past perfect; simple past vs past perfect | Englisch -> Grammar, Pruefung | abgedeckt |
+| Reading: true/false with evidence, paragraph matching, short answers | Englisch -> Reading, Pruefung | abgedeckt |
+| Writing: internship report, short answer, mediation for useful information | Englisch -> Writing, Papier | abgedeckt |
 
-## Noch nachrangig
+## Reserve
 
-| Klausurformat | Grund |
+| Bereich | Grund |
 |---|---|
-| Listening Women in tech / Gold Rush / low-income housing | Listening war zuletzt dran; nur Strategie bleibt indirekt ueber Reading/Belege trainiert |
-| Station-2/3-Vokabeln und Unit-Ende-Formate | Vermutlich zu spaet fuer die naechste Arbeit; in der App als Reserve markiert |
-| Vollstaendige freie Writing-Korrektur in der App | Wird aktuell ueber Papierauftrag, Scaffold und Musterlogik vorbereitet; automatische Bewertung waere ein eigener KI-Schritt |
-| Vollstaendige Mediation als langer Text | Starttraining ist drin; eine komplette Mediation sollte auf Papier mit Musterloesung geuebt werden |
+| U4 Check-in und Station 1: word families, technology vocabulary, gerund/infinitive patterns | nur Reserve, weil aktuell Ende U3 |
+| U4 Station 2/3: internship feedback, synonyms/antonyms, British/American English, California argument, longer mediation | nur Reserve, vermutlich noch zu weit |
+| Vollstaendige freie Writing-Korrektur in der App | ueber Scaffold, Papierauftrag und Musterlogik vorbereitet; automatische Bewertung waere ein eigener KI-Schritt |
+
+## Didaktische Steuerung
+
+Der Standardpfad beginnt mit sicher automatisierbaren Aufgaben. Nach jeder Antwort erscheint entweder die Regel noch einmal oder bei falscher Antwort die Korrektur mit passender Begruendung. Papieraufgaben werden an den Stellen angeboten, an denen Schreiben sinnvoll ist: eigener Satz mit einer Vokabel, Reading-Beleg notieren, kurzen Writing-Absatz strukturieren.

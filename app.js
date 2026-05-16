@@ -188,6 +188,7 @@ const tasks = {
   ],
   english: [
     {
+      stage: "u4_later",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -203,6 +204,7 @@ const tasks = {
       }
     },
     {
+      stage: "u4_later",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -218,6 +220,7 @@ const tasks = {
       }
     },
     {
+      stage: "u4_later",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -233,6 +236,7 @@ const tasks = {
       }
     },
     {
+      stage: "u4_later",
       type: "VOCAB_ACTIVE",
       title: "Active vocabulary",
       prompt: "Which word best completes the sentence?",
@@ -268,6 +272,95 @@ const tasks = {
       help: "Group words by topic first. Topic groups help you understand reading and listening tasks faster."
     },
     {
+      type: "VOCAB_ACTIVE",
+      title: "U3 school and work",
+      prompt: "Which word best completes the sentence?",
+      sentence: "A ___ looks for people to join a company or programme.",
+      options: ["recruiter", "rancher", "witness"],
+      answer: "recruiter",
+      ok: "Correct. A recruiter finds people for a company, team or programme.",
+      help: "Use the context words join a company or programme. That points to recruiter.",
+      rule: "recruiter ist eine Person. Das Wort gehoert zum Feld school and work und passt zu recruit = jemanden anwerben."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "U3 school and work",
+      prompt: "Which word best completes the sentence?",
+      sentence: "Too much ___ can make students feel nervous before a test.",
+      options: ["pressure", "saddle", "territory"],
+      answer: "pressure",
+      ok: "Correct. pressure means stress or Druck.",
+      help: "The signal is feel nervous before a test. That is emotional pressure.",
+      rule: "pressure ist ein Nomen. Wichtige Kollokation: put pressure on someone."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "U3 people in the West",
+      prompt: "Which person is described?",
+      sentence: "This person sees something happen and can tell a judge about it.",
+      options: ["witness", "miner", "smuggler"],
+      answer: "witness",
+      ok: "Correct. A witness saw something and can report it.",
+      help: "The words sees and tell a judge are the clues.",
+      rule: "Bei Definitionsaufgaben markierst du die Funktionswoerter: person, sees, tell a judge -> witness."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "U3 people in the West",
+      prompt: "Which person is described?",
+      sentence: "This person works with cattle, horses or a ranch.",
+      options: ["rancher", "dentist", "policeman"],
+      answer: "rancher",
+      ok: "Correct. A rancher works on or owns a ranch.",
+      help: "cattle, horses and ranch belong to the same word field.",
+      rule: "Bei U3-Personen hilft das Wortfeld: ranch/cattle/horses -> rancher; mine/gold -> miner; law/court -> judge."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "U3 Tombstone",
+      prompt: "Which word best completes the sentence?",
+      sentence: "Tombstone became a ___ when many people came there to make money.",
+      options: ["boomtown", "crater", "saddle"],
+      answer: "boomtown",
+      ok: "Correct. A boomtown grows quickly because money or jobs attract people.",
+      help: "The clue is many people came there to make money.",
+      rule: "boomtown gehoert zu Tombstone/Gold Rush: Eine Stadt waechst schnell, weil es Arbeit, Geld oder Bodenschaetze gibt."
+    },
+    {
+      type: "VOCAB_ACTIVE",
+      title: "U3 Tombstone",
+      prompt: "Choose the correct word.",
+      sentence: "A famous old story that many people know is ___.",
+      options: ["legendary", "arid", "bilingual"],
+      answer: "legendary",
+      ok: "Correct. legendary means famous from stories or history.",
+      help: "The clues are famous, old story and many people know it.",
+      rule: "legendary ist ein Adjektiv. Es beschreibt Personen, Orte oder Ereignisse, ueber die viele Geschichten erzaehlt werden."
+    },
+    {
+      type: "VOCAB_CATEGORY",
+      title: "U3 vocabulary category",
+      prompt: "Which category fits best?",
+      sentence: "miner / rancher / judge / witness",
+      options: ["people and jobs", "natural environment", "school subjects"],
+      answer: "people and jobs",
+      ok: "Correct. These words all name people or jobs.",
+      help: "Ask first: person, place, object, nature word or action?",
+      rule: "Kategorien helfen bei Reading-Aufgaben: Du musst nicht jedes Wort perfekt uebersetzen, aber das Wortfeld erkennen."
+    },
+    {
+      type: "VOCAB_CATEGORY",
+      title: "U3 odd one out",
+      prompt: "Which word does not fit?",
+      sentence: "cactus / crater / wildlife / recruiter",
+      options: ["recruiter", "crater", "wildlife"],
+      answer: "recruiter",
+      ok: "Correct. cactus, crater and wildlife belong to nature; recruiter is a person/job.",
+      help: "For odd one out, say the category before choosing.",
+      rule: "Odd-one-out braucht eine Begruendung: Drei Woerter gehoeren zu nature, eins gehoert zu work."
+    },
+    {
+      stage: "u4_later",
       type: "VOCAB_CATEGORY",
       title: "U4 vocabulary category",
       prompt: "Which word belongs to work?",
@@ -296,6 +389,28 @@ const tasks = {
       answer: "to",
       ok: "Correct. adapt to something.",
       help: "Do not translate from German word by word. Store the English phrase as a chunk."
+    },
+    {
+      type: "VERB_PREP",
+      title: "Verb + preposition",
+      prompt: "Choose the correct preposition.",
+      sentence: "Park rangers warn visitors ___ flash floods.",
+      options: ["about", "of", "to"],
+      answer: "about",
+      ok: "Correct. warn someone about something.",
+      help: "Learn the whole chunk: warn about.",
+      rule: "warn about bedeutet vor etwas warnen. accuse of und adapt to sind andere feste Paare."
+    },
+    {
+      type: "VERB_PREP",
+      title: "Verb + preposition",
+      prompt: "Choose the correct phrase.",
+      sentence: "The plan did not ___ because the weather changed.",
+      options: ["work out", "work to", "work about"],
+      answer: "work out",
+      ok: "Correct. work out means succeed or turn out well.",
+      help: "not work out is one complete phrase.",
+      rule: "work out ist ein phrasal verb. Es bedeutet: klappen / funktionieren / gut ausgehen."
     },
     {
       type: "GRAMMAR_CONDITIONALS",
@@ -332,6 +447,32 @@ const tasks = {
       }
     },
     {
+      type: "GRAMMAR_CONDITIONALS",
+      title: "Conditional type 1 or 2",
+      prompt: "Which sentence is correct?",
+      sentence: "Unreal now: If I lived near Monument Valley, ...",
+      options: [
+        "I would take photos every day.",
+        "I will took photos every day.",
+        "I had taken photos every day."
+      ],
+      answer: "I would take photos every day.",
+      ok: "Correct. Type 2: if + simple past, would + infinitive.",
+      help: "Unreal now means type 2, not type 1.",
+      rule: "Bei type 2 steht im if-Satz simple past und im Hauptsatz would/could + Infinitiv: If I lived ..., I would take ..."
+    },
+    {
+      type: "GRAMMAR_CONDITIONALS",
+      title: "Conditional type 3",
+      prompt: "Choose the correct form.",
+      sentence: "If the hikers had checked the weather, they ___ the storm.",
+      options: ["would have avoided", "would avoid", "will avoid"],
+      answer: "would have avoided",
+      ok: "Correct. Type 3: if + past perfect, would have + past participle.",
+      help: "had checked shows type 3. The result needs would have avoided.",
+      rule: "Type 3 spricht ueber die Vergangenheit: If + had + past participle, would have + past participle."
+    },
+    {
       type: "GRAMMAR_PAST_PERFECT",
       title: "Past perfect",
       prompt: "Choose the correct form.",
@@ -352,6 +493,18 @@ const tasks = {
       help: "Use past perfect for the earlier past action."
     },
     {
+      type: "GRAMMAR_PAST_PERFECT",
+      title: "Simple past or past perfect",
+      prompt: "Choose the correct form.",
+      sentence: "After the travellers ___ the map, they found the old trail.",
+      options: ["had studied", "study", "have studied"],
+      answer: "had studied",
+      ok: "Correct. Studying the map happened before they found the trail.",
+      help: "after often signals the earlier action. Earlier past = had + past participle.",
+      rule: "past perfect markiert die Vorvergangenheit: After they had studied ..., they found ..."
+    },
+    {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -362,6 +515,7 @@ const tasks = {
       help: "want, hope, decide, plan, learn -> to + infinitive."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund after preposition",
       prompt: "Choose the correct form.",
@@ -372,6 +526,7 @@ const tasks = {
       help: "Preposition + verb usually means -ing: interested in being, good at drawing, thinking about going."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Infinitive with to",
       prompt: "Choose the correct form.",
@@ -382,6 +537,7 @@ const tasks = {
       help: "Purpose/Ziel: in order to do something."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -392,6 +548,7 @@ const tasks = {
       help: "enjoy, avoid, finish, practise, mind -> -ing."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -402,6 +559,7 @@ const tasks = {
       help: "after, before, without, by, for -> usually -ing."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Gerund or infinitive",
       prompt: "Choose the correct form.",
@@ -412,6 +570,7 @@ const tasks = {
       help: "make/let/help are special. help someone do something is common."
     },
     {
+      stage: "u4_later",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which linking word shows a reason?",
@@ -422,6 +581,7 @@ const tasks = {
       help: "Ask: Is it a reason, contrast, goal or time?"
     },
     {
+      stage: "u4_later",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which linking phrase expresses a goal?",
@@ -432,6 +592,7 @@ const tasks = {
       help: "Purpose means Ziel: in order to / so that."
     },
     {
+      stage: "u4_later",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which linking word shows contrast?",
@@ -442,6 +603,7 @@ const tasks = {
       help: "Contrast means Gegensatz: although, however, while."
     },
     {
+      stage: "u4_later",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which phrase expresses a precaution?",
@@ -452,6 +614,7 @@ const tasks = {
       help: "in case is used when something might happen and you prepare for it."
     },
     {
+      stage: "u4_later",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which word shows time?",
@@ -462,6 +625,7 @@ const tasks = {
       help: "Ask what relationship is needed: time, reason, contrast, purpose or precaution."
     },
     {
+      stage: "u4_later",
       type: "LINKING",
       title: "Linking words",
       prompt: "Which phrase shows result?",
@@ -490,6 +654,32 @@ const tasks = {
       answer: "underline the reason words",
       ok: "Yes. Reason words lead you to the evidence.",
       help: "Do not start with the answer. Start with the job: why, how, who, where, what evidence?"
+    },
+    {
+      type: "READING_EVIDENCE",
+      title: "U3 reading: true/false",
+      prompt: "What is the safest way to solve a true/false task?",
+      sentence: "Statement: The internship was only for adults.",
+      options: [
+        "find the sentence about age or teenagers first",
+        "choose false because it sounds unlikely",
+        "translate the headline only"
+      ],
+      answer: "find the sentence about age or teenagers first",
+      ok: "Correct. True/false needs evidence from the text.",
+      help: "Decode the statement: internship + only + adults. Then search for age words.",
+      rule: "Bei true/false entscheidest du nie nach Gefuehl. Markiere das Schluesselwort und suche die Belegstelle."
+    },
+    {
+      type: "READING_EVIDENCE",
+      title: "U3 reading: paragraph matching",
+      prompt: "Which heading fits this paragraph idea?",
+      sentence: "A paragraph explains how young people learn practical skills and meet people from different jobs.",
+      options: ["Work experience for teenagers", "Weather in the desert", "A famous gunfight"],
+      answer: "Work experience for teenagers",
+      ok: "Correct. skills, young people and jobs point to work experience.",
+      help: "Do not match single words only. Match the main idea of the paragraph.",
+      rule: "Matching: Absatzidee kurz benennen, dann die Ueberschrift waehlen, die dieselbe Idee ausdrueckt."
     },
     {
       type: "GENRE_READING",
@@ -524,16 +714,17 @@ const tasks = {
     {
       type: "WRITING_STRUCTURE",
       title: "Writing structure",
-      prompt: "Which order is best for a short opinion paragraph?",
-      sentence: "Write about low-income apartments in California.",
+      prompt: "Which order is best for a short internship report?",
+      sentence: "Write about a work experience programme.",
       options: [
-        "opinion - reason - example - conclusion",
+        "where/when - tasks - what I learned - short opinion",
         "example - conclusion - random idea - opinion",
         "German notes - one English sentence"
       ],
-      answer: "opinion - reason - example - conclusion",
-      ok: "Yes. This structure is simple and works under pressure.",
-      help: "Use: I think that ... One reason is ... For example ... In conclusion ..."
+      answer: "where/when - tasks - what I learned - short opinion",
+      ok: "Yes. This gives a clear report structure.",
+      help: "Use simple blocks: place/time, tasks, learning, opinion.",
+      rule: "Report writing braucht Ordnung: I worked at ..., My tasks were ..., I learned ..., In my opinion ..."
     },
     {
       type: "WRITING_STRUCTURE",
@@ -544,6 +735,21 @@ const tasks = {
       answer: "short, clear, relevant information",
       ok: "Correct. Select the information that fits the person and situation.",
       help: "Ask: Who needs the information? What do they need to know? Leave out decoration."
+    },
+    {
+      type: "WRITING_STRUCTURE",
+      title: "U3 writing: mediation",
+      prompt: "What should you do first in a mediation task?",
+      sentence: "A friend wants useful information about visiting a national park.",
+      options: [
+        "select the information the friend needs",
+        "translate every sentence in the same order",
+        "write your own opinion first"
+      ],
+      answer: "select the information the friend needs",
+      ok: "Correct. Mediation is selecting and explaining, not word-by-word translation.",
+      help: "Ask: Who is my reader? What does this person need?",
+      rule: "Mediation: Zielgruppe + Zweck klaeren, relevante Informationen auswaehlen, klar auf Englisch formulieren."
     },
     {
       type: "CONTINUATION_WRITING",
@@ -570,6 +776,7 @@ const tasks = {
       help: "Before writing, mark: narrator, tense, atmosphere, place, problem."
     },
     {
+      stage: "u4_later",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -585,6 +792,7 @@ const tasks = {
       }
     },
     {
+      stage: "u4_later",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -600,6 +808,7 @@ const tasks = {
       }
     },
     {
+      stage: "u4_later",
       type: "VOCAB_FORM",
       title: "Word family",
       prompt: "Choose the correct form.",
@@ -687,6 +896,7 @@ const tasks = {
       rule: "Lerne AE/BE paarweise: mobile phone/cell phone, lift/elevator, flat/apartment."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Indirect question + infinitive",
       prompt: "Which sentence reports the question correctly?",
@@ -706,6 +916,7 @@ const tasks = {
       }
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Indirect question + infinitive",
       prompt: "Choose the correct reported question.",
@@ -721,6 +932,7 @@ const tasks = {
       rule: "Bei Entscheidungsfragen passt whether + to + Infinitiv: whether to make ... or buy ..."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Superlative + infinitive",
       prompt: "Choose the correct sentence.",
@@ -740,6 +952,7 @@ const tasks = {
       }
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Object + infinitive",
       prompt: "Which rewrite is correct?",
@@ -755,6 +968,7 @@ const tasks = {
       rule: "Bei want/expect/would like mit Objekt: I want you to keep..., I expect you to be..., I would like you to help..."
     },
     {
+      stage: "u4_later",
       type: "GRAMMAR_GERUND_INF",
       title: "Infinitive with or without to",
       prompt: "Choose the correct form.",
@@ -1199,6 +1413,132 @@ const vocab = {
   ],
   english: [
     {
+      lesson: "U3",
+      word: "cactus",
+      meaning: "Kaktus",
+      category: "Desert Southwest",
+      sentence: "A ___ can survive in a very dry desert.",
+      solution: "cactus",
+      hint: "Nature word from the Desert Southwest."
+    },
+    {
+      lesson: "U3",
+      word: "flash flood",
+      meaning: "Sturzflut",
+      category: "Desert Southwest",
+      sentence: "After heavy rain, a ___ can be dangerous in a canyon.",
+      solution: "flash flood",
+      hint: "Sudden water after heavy rain."
+    },
+    {
+      lesson: "U3",
+      word: "wildlife",
+      meaning: "Wildtiere / Tierwelt",
+      category: "Desert Southwest",
+      sentence: "Visitors should not disturb the ___ in a national park.",
+      solution: "wildlife",
+      hint: "Animals living in nature."
+    },
+    {
+      lesson: "U3",
+      word: "recruiter",
+      meaning: "Person, die neue Leute fuer eine Firma/Organisation sucht",
+      category: "School and work",
+      sentence: "A ___ looks for people to join a company.",
+      solution: "recruiter",
+      hint: "Person noun from recruit."
+    },
+    {
+      lesson: "U3",
+      word: "pressure",
+      meaning: "Druck",
+      category: "School and work",
+      sentence: "Parents should not put too much ___ on teenagers.",
+      solution: "pressure",
+      hint: "Common phrase: put pressure on someone."
+    },
+    {
+      lesson: "U3",
+      word: "struggle",
+      meaning: "sich abmuehen / Kampf",
+      category: "School and work",
+      sentence: "Some students ___ with difficult tasks at first.",
+      solution: "struggle",
+      hint: "Have problems and keep trying."
+    },
+    {
+      lesson: "U3",
+      word: "rancher",
+      meaning: "Rancher/in",
+      category: "People in the West",
+      sentence: "A ___ works with cattle or horses.",
+      solution: "rancher",
+      hint: "Person connected with a ranch."
+    },
+    {
+      lesson: "U3",
+      word: "witness",
+      meaning: "Zeuge/Zeugin",
+      category: "People in the West",
+      sentence: "A ___ saw what happened and told the judge.",
+      solution: "witness",
+      hint: "A person who saw an event."
+    },
+    {
+      lesson: "U3",
+      word: "boomtown",
+      meaning: "schnell wachsende Stadt",
+      category: "Tombstone",
+      sentence: "Tombstone became a ___ when many people arrived.",
+      solution: "boomtown",
+      hint: "A town that grows quickly because of money or jobs."
+    },
+    {
+      lesson: "U3",
+      word: "legendary",
+      meaning: "legendär / sagenumwoben",
+      category: "Tombstone",
+      sentence: "The ___ gunfight made the town famous.",
+      solution: "legendary",
+      hint: "Famous from stories or history."
+    },
+    {
+      lesson: "U3",
+      word: "adapt to",
+      meaning: "sich anpassen an",
+      category: "Verb + preposition",
+      sentence: "Desert animals adapt ___ extreme heat.",
+      solution: "to",
+      hint: "Verb chunk: adapt to."
+    },
+    {
+      lesson: "U3",
+      word: "accuse of",
+      meaning: "beschuldigen",
+      category: "Verb + preposition",
+      sentence: "They accused him ___ stealing plants.",
+      solution: "of",
+      hint: "Verb chunk: accuse someone of doing something."
+    },
+    {
+      lesson: "U3",
+      word: "warn about",
+      meaning: "warnen vor",
+      category: "Verb + preposition",
+      sentence: "Rangers warn visitors ___ flash floods.",
+      solution: "about",
+      hint: "Verb chunk: warn someone about something."
+    },
+    {
+      lesson: "U3",
+      word: "not work out",
+      meaning: "nicht klappen",
+      category: "Verb phrase",
+      sentence: "The plan did ___ because the weather changed.",
+      solution: "not work out",
+      hint: "Phrase meaning: did not succeed."
+    },
+    {
       lesson: "U4",
       word: "challenging",
       meaning: "herausfordernd",
@@ -1293,42 +1633,6 @@ const vocab = {
       hint: "Key word for reading/listening answers."
     },
     {
-      lesson: "U3",
-      word: "recruiter",
-      meaning: "Person, die neue Leute fuer eine Firma/Organisation sucht",
-      category: "School and work",
-      sentence: "A ___ looks for people to join a company.",
-      solution: "recruiter",
-      hint: "Person noun from recruit."
-    },
-    {
-      lesson: "U3",
-      word: "pressure",
-      meaning: "Druck",
-      category: "School and work",
-      sentence: "Parents should not put too much ___ on teenagers.",
-      solution: "pressure",
-      hint: "Common phrase: put pressure on someone."
-    },
-    {
-      lesson: "U3",
-      word: "adapt to",
-      meaning: "sich anpassen an",
-      category: "Verb + preposition",
-      sentence: "Desert animals adapt ___ extreme heat.",
-      solution: "to",
-      hint: "Verb chunk: adapt to."
-    },
-    {
-      lesson: "U3",
-      word: "accuse of",
-      meaning: "beschuldigen",
-      category: "Verb + preposition",
-      sentence: "They accused him ___ stealing plants.",
-      solution: "of",
-      hint: "Verb chunk: accuse someone of doing something."
-    },
-    {
       lesson: "U4",
       word: "robotics",
       meaning: "Robotik",
@@ -1420,11 +1724,11 @@ const paperTasks = [
     title: "Englisch: Wortfamilien auf Papier",
     steps: [
       "Zeichne vier Spalten: noun, verb, adjective, example sentence.",
-      "Trage acht Wortfamilien ein.",
+      "Trage acht U3-Woerter ein, zum Beispiel recruiter, pressure, struggle, witness, legendary.",
       "Schreibe zu jeder Familie einen kurzen englischen Satz.",
       "Markiere, welche Form im Satz wirklich gebraucht wird."
     ],
-    solution: "Beispiel: science -> scientist -> scientific. The scientist worked on robotics. Regel: Erst pruefen, welche Wortart die Luecke braucht."
+    solution: "Beispiel: legend -> legendary. The legendary gunfight made Tombstone famous. Regel: Erst pruefen, welche Wortart die Luecke braucht."
   },
   {
     title: "Englisch: Genre und Atmosphaere",
@@ -1490,7 +1794,7 @@ const conditionalSituations = [
     focus: "main clause",
     title: "Type 1: main clause",
     prompt: "Choose the correct ending for a realistic situation.",
-    sentence: "If I practise the U4 words every day, ...",
+    sentence: "If I practise the U3 words every day, ...",
     answer: "I will remember them in the test.",
     wrong: ["I would remembered them in the test.", "I had remembered them in the test."],
     ok: "Type 1 fits because daily practice is a realistic condition with a possible future result.",
@@ -1522,15 +1826,15 @@ const conditionalSituations = [
     focus: "if-clause",
     title: "Type 1: if-clause",
     prompt: "Choose the correct if-clause.",
-    sentence: "___, she will learn useful tech skills.",
-    answer: "If she joins the internship",
-    wrong: ["If she joined the internship", "If she had joined the internship"],
+    sentence: "___, she will learn useful work skills.",
+    answer: "If she joins the work experience programme",
+    wrong: ["If she joined the work experience programme", "If she had joined the work experience programme"],
     ok: "This is a realistic future possibility, so the if-clause uses simple present.",
     help: "For type 1, do not use would in the if-clause.",
     rule: "Type 1: If she joins ..., she will learn ... The if-clause uses simple present.",
     mistakes: {
-      "If she joined the internship": "joined ist simple past und macht daraus type 2. Der zweite Satzteil hat aber will learn, also braucht der if-Satz type 1: joins.",
-      "If she had joined the internship": "had joined ist past perfect und wuerde zu type 3 gehoeren. Hier steht will learn, also geht es um eine moegliche Zukunft."
+      "If she joined the work experience programme": "joined ist simple past und macht daraus type 2. Der zweite Satzteil hat aber will learn, also braucht der if-Satz type 1: joins.",
+      "If she had joined the work experience programme": "had joined ist past perfect und wuerde zu type 3 gehoeren. Hier steht will learn, also geht es um eine moegliche Zukunft."
     }
   },
   {
@@ -1538,15 +1842,15 @@ const conditionalSituations = [
     focus: "error repair",
     title: "Type 1: Fehler reparieren",
     prompt: "Which corrected sentence is right?",
-    sentence: "Wrong: If I will ask my cousin, he will help me get an internship.",
-    answer: "If I ask my cousin, he will help me get an internship.",
-    wrong: ["If I would ask my cousin, he will help me get an internship.", "If I asked my cousin, he will helps me get an internship."],
+    sentence: "Wrong: If I will ask my cousin, he will help me understand the text.",
+    answer: "If I ask my cousin, he will help me understand the text.",
+    wrong: ["If I would ask my cousin, he will help me understand the text.", "If I asked my cousin, he will helps me understand the text."],
     ok: "Correct. In a type 1 if-clause, use simple present, not will.",
     help: "The result can have will. The if-clause does not use will in type 1.",
     rule: "Type 1: If + simple present, will + infinitive. Do not put will into the if-clause.",
     mistakes: {
-      "If I would ask my cousin, he will help me get an internship.": "would darf in diesem type-1-if-Satz nicht stehen. Die Bedingung ist realistisch: If I ask ..., he will help ...",
-      "If I asked my cousin, he will helps me get an internship.": "asked macht den if-Satz zu type 2, aber will passt zu type 1. Ausserdem steht nach will der Infinitiv help, nicht helps."
+      "If I would ask my cousin, he will help me understand the text.": "would darf in diesem type-1-if-Satz nicht stehen. Die Bedingung ist realistisch: If I ask ..., he will help ...",
+      "If I asked my cousin, he will helps me understand the text.": "asked macht den if-Satz zu type 2, aber will passt zu type 1. Ausserdem steht nach will der Infinitiv help, nicht helps."
     }
   },
   {
@@ -1586,7 +1890,7 @@ const conditionalSituations = [
     focus: "if-clause",
     title: "Type 2: if-clause",
     prompt: "Choose the correct form for a hypothetical situation.",
-    sentence: "If I ___ in California, I would visit the desert.",
+    sentence: "If I ___ near Monument Valley, I would visit the desert.",
     answer: "lived",
     wrong: ["live", "will live"],
     ok: "Type 2 fits because the sentence imagines a situation that is not real now.",
@@ -1602,7 +1906,7 @@ const conditionalSituations = [
     focus: "main clause",
     title: "Type 2: main clause",
     prompt: "Choose the correct ending.",
-    sentence: "If more girls joined the coding club, ...",
+    sentence: "If more students joined the history project, ...",
     answer: "they would get more practice.",
     wrong: ["they will got more practice.", "they had got more practice."],
     ok: "The sentence imagines a possible change, so type 2 uses would + infinitive.",
@@ -1811,13 +2115,13 @@ const understandingTasks = [
   },
   {
     subject: "Englisch",
-    task: "Write a short paragraph about whether more girls should be encouraged to work in tech.",
+    task: "Write a short report about a work experience programme.",
     operator: "write",
     steps: [
       "Thema in eigene Worte fassen.",
-      "Meinung festlegen.",
-      "Grund und Beispiel notieren.",
-      "Mit opinion - reason - example - conclusion schreiben."
+      "Ort, Zeit und Aufgabe notieren.",
+      "Was gelernt wurde notieren.",
+      "Mit where/when - tasks - what I learned - short opinion schreiben."
     ]
   },
   {
@@ -1904,27 +2208,27 @@ const ruleTasks = [
   },
   {
     subject: "Englisch",
-    rule: "Gerund",
-    trigger: "enjoy, avoid, finish, practise, mind",
-    example: "Maya enjoys creating animations.",
-    why: "enjoy ist der Auslöser für die -ing-Form.",
-    transfer: "Schreibe einen eigenen Satz mit avoid + -ing."
+    rule: "Conditional 1",
+    trigger: "realistische Bedingung mit if",
+    example: "If I practise the U3 words, I will understand the text faster.",
+    why: "Die Bedingung ist realistisch. Deshalb steht im if-Satz simple present und im Hauptsatz will + Infinitiv.",
+    transfer: "Schreibe einen eigenen Type-1-Satz mit practise und test."
   },
   {
     subject: "Englisch",
-    rule: "to-infinitive",
-    trigger: "want, hope, decide, plan, learn",
-    example: "Leah wants to learn coding.",
-    why: "want ist der Auslöser für to + infinitive.",
-    transfer: "Schreibe einen eigenen Satz mit decide to ..."
+    rule: "Past perfect",
+    trigger: "zwei Handlungen in der Vergangenheit",
+    example: "After they had studied the map, they found the old trail.",
+    why: "had studied ist frueher passiert als found.",
+    transfer: "Schreibe einen eigenen Satz mit after + had + past participle."
   },
   {
     subject: "Englisch",
-    rule: "Linking word nach Funktion",
-    trigger: "Frage nach Beziehung: Warum, trotzdem, wozu, wann, falls?",
-    example: "The club was started in order to help younger students.",
-    why: "in order to zeigt ein Ziel.",
-    transfer: "Schreibe je einen Satz mit because und although."
+    rule: "Reading evidence",
+    trigger: "true/false, short answer oder give evidence",
+    example: "The answer is true because the paragraph says 'teenagers'.",
+    why: "Ein Belegwort macht die Antwort kontrollierbar.",
+    transfer: "Schreibe zu einer Reading-Antwort ein Belegwort auf."
   },
   {
     subject: "Mathe",
@@ -1956,38 +2260,38 @@ const helpCards = {
     paper: "Schreibe einen eigenen AcI mit spero und einem Infinitiv Perfekt."
   },
   gerund: {
-    title: "Englisch: Gerund/Infinitive",
-    rule: "Der Auslöser entscheidet: enjoy/avoid/finish -> -ing; want/hope/decide -> to + infinitive.",
-    example: "Maya enjoys creating animations. / Leah wants to learn coding.",
+    title: "Englisch: Conditional 1-3",
+    rule: "Der Typ entscheidet die Zeiten: type 1 realistisch, type 2 gedacht, type 3 unwirkliche Vergangenheit.",
+    example: "If I practise the U3 words, I will understand the text faster.",
     steps: [
-      "Wort vor der Lücke suchen.",
-      "Auslöser einer Regel zuordnen.",
-      "Form einsetzen.",
-      "Satz einmal laut lesen."
+      "Bedeutung klaeren: realistisch, gedacht oder vergangen?",
+      "if-clause markieren.",
+      "main clause markieren.",
+      "Zeiten vergleichen und Satz laut lesen."
     ],
     followUps: [
-      "She avoids ___ personal data. (share)",
-      "They decided ___ a club. (start)",
-      "After ___ the text, he answered. (read)"
+      "If I practise, I ___ remember more words. (will/would/would have)",
+      "If I had more time, I ___ write a better answer. (will/would/would have)",
+      "If she had checked the map, she ___ found the trail. (would have/would/will)"
     ],
-    paper: "Schreibe je einen Satz mit enjoy, want und after."
+    paper: "Schreibe je einen Satz zu type 1, type 2 und type 3."
   },
   linking: {
-    title: "Englisch: Linking Words",
-    rule: "Nicht das Wort raten, sondern die Beziehung bestimmen: Grund, Gegensatz, Ziel, Zeit oder Fall.",
-    example: "The club was started in order to help younger students.",
+    title: "Englisch: Past perfect",
+    rule: "Past perfect markiert, was frueher in der Vergangenheit passiert ist: had + past participle.",
+    example: "After they had studied the map, they found the old trail.",
     steps: [
-      "Satzteile lesen.",
-      "Beziehung bestimmen.",
-      "Passendes linking word wählen.",
-      "Prüfen, ob der Satz grammatisch passt."
+      "Zwei vergangene Handlungen finden.",
+      "Fruehere Handlung markieren.",
+      "Fruehere Handlung mit had + past participle bilden.",
+      "Spaetere Handlung im simple past lassen."
     ],
     followUps: [
-      "I joined the workshop ___ I wanted to learn coding.",
-      "___ it was difficult, I kept trying.",
-      "Bring notes ___ you forget the details."
+      "After Annie ___ the competition, she became famous. (win)",
+      "They found the trail after they ___ the map. (study)",
+      "She was nervous because she ___ the text. (not read)"
     ],
-    paper: "Schreibe fünf Sätze: Grund, Gegensatz, Ziel, Zeit, Fall."
+    paper: "Schreibe drei after/because-Saetze mit past perfect."
   },
   textproblem: {
     title: "Mathe: Lineare Textaufgabe decodieren",
@@ -2211,7 +2515,7 @@ function englishPaperPrompt(task, paperContext = null) {
         "Schreibe den richtigen Satz vollstaendig ab.",
         "Markiere den if-clause blau und den main clause gruen.",
         "Schreibe die Zeiten daneben: present + will, past + would oder past perfect + would have.",
-        "Erfinde einen zweiten Satz mit neuen Woertern aus U3/U4."
+        "Erfinde einen zweiten Satz mit neuen Woertern aus U3."
       ]
     };
   }
@@ -2301,7 +2605,7 @@ function stripFeedbackLead(text) {
 
 function renderGrammarTask() {
   const focus = document.getElementById("grammarFocus").value;
-  const pool = tasks.english.filter((task) => task.type === focus);
+  const pool = likelyEnglishTasks().filter((task) => task.type === focus);
   const task = pool[Math.floor(Math.random() * pool.length)];
   renderChoiceTaskNode(document.getElementById("grammarTask"), "english", task, renderGrammarTask);
 }
@@ -2386,7 +2690,7 @@ function loadConditionalData() {
         return response.json();
       })
       .then((data) => {
-        conditionalData[key] = normalizeConditionalEntries(data.entries || [], key);
+        conditionalData[key] = normalizeConditionalEntries(data.entries || [], key).filter(isEndU3ConditionalEntry);
       })
   ))).then(() => {
     conditionalDataLoaded = true;
@@ -2403,6 +2707,20 @@ function normalizeConditionalEntries(entries, set) {
       id: entry.id || `${set}-${index + 1}`
     };
   });
+}
+
+function isEndU3ConditionalEntry(entry) {
+  const text = [
+    entry.sentence,
+    entry.ifClause,
+    entry.mainClause,
+    entry.cloze,
+    entry.writingUseCase,
+    entry.writingTaskConnection,
+    entry.paragraphPrompt,
+    ...(entry.vocabularyFocus || [])
+  ].filter(Boolean).join(" ");
+  return !/\b(U4|California|low-income|housing|coding|technology|tech|robotics|robot|challenging|registered|Bay Area|Silicon Valley)\b/i.test(text);
 }
 
 function buildConditionalJsonTask() {
@@ -2531,14 +2849,14 @@ function conditionalTaskFromEntry(entry, task) {
 function renderConditionalTask(node, task) {
   node.innerHTML = `
     ${buildConditionalControls()}
-    <div class="taskMeta">${escapeHtml(task.title)} · ${escapeHtml(task.writingUseCase || "writing scaffold")} · ${escapeHtml(task.sourceId)}</div>
+    <div class="taskMeta">${escapeHtml(task.title)} · ${escapeHtml(task.writingUseCase || "writing scaffold")}</div>
     <div class="prompt">${escapeHtml(task.prompt)}</div>
     <div class="sentence">${escapeHtml(task.sentence)}</div>
     <div class="conditionalHintGrid">
       <span><strong>Typ</strong>${escapeHtml(conditionalTypeLabels[task.conditionalType])}</span>
       <span><strong>Buchsignal</strong>${escapeHtml(task.bookSignal)}</span>
       <span><strong>Writing</strong>${escapeHtml(task.writingFunction || "sentence building")}</span>
-      <span><strong>Vokabeln</strong>${escapeHtml(task.vocabularyFocus.length ? task.vocabularyFocus.join(", ") : "U3/U4")}</span>
+      <span><strong>Vokabeln</strong>${escapeHtml(task.vocabularyFocus.length ? task.vocabularyFocus.join(", ") : "U3")}</span>
     </div>
     <div class="answers">
       ${task.options.map((option) => `<button class="answerButton" data-answer="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join("")}
@@ -2653,14 +2971,14 @@ function conditionalPaperSteps(entry) {
     `Markiere den main clause: ${entry.mainClause}`,
     `Vergleiche mit dem Buchsignal: ${conditionalBookSignals[entry.conditionalType]}`,
     `Notiere die Struktur: ${entry.structure || conditionalStructures[entry.conditionalType]}`,
-    entry.paragraphPrompt || "Schreibe danach einen zweiten eigenen Satz mit anderem U3/U4-Wortschatz."
+    entry.paragraphPrompt || "Schreibe danach einen zweiten eigenen Satz mit anderem U3-Wortschatz."
   ];
 }
 
 function renderEnglishVocabModule() {
   const item = chooseVocab("english");
   const node = document.getElementById("englishTask");
-  node.innerHTML = `${buildChoiceTask("english", "VOCAB_FORM", item, "Welche Form oder Bedeutung passt?", item.sentence, item.solution)}
+  node.innerHTML = `${buildChoiceTask("english", "VOCAB_ACTIVE", item, "Welche Loesung passt?", item.sentence, item.solution)}
     <aside class="inlinePaper">
       <div>
         <span class="paperLabel">Papier</span>
@@ -2672,7 +2990,7 @@ function renderEnglishVocabModule() {
         <li>Schreibe einen eigenen Satz mit dem Wort.</li>
       </ol>
     </aside>`;
-  attachChoiceHandlers(node, "english", "VOCAB_FORM", item.solution, `Richtig. ${item.hint}`, item.hint, renderEnglishVocabModule, item.rule);
+  attachChoiceHandlers(node, "english", "VOCAB_ACTIVE", item.solution, `Richtig. ${item.hint}`, item.hint, renderEnglishVocabModule, item.rule);
 }
 
 function renderEnglishPaperModule() {
@@ -2763,8 +3081,10 @@ function renderPaperTask() {
 }
 
 function chooseVocab(subject) {
-  const type = subject === "latin" ? "VOCAB" : "VOCAB_FORM";
-  const words = vocab[subject];
+  const type = subject === "latin" ? "VOCAB" : "VOCAB_ACTIVE";
+  const words = subject === "english"
+    ? vocab.english.filter((item) => item.lesson === "U3")
+    : vocab[subject];
   const misses = scoreFor(subject, type).miss;
   const index = (loadState().completed + misses) % words.length;
   return words[index];
@@ -2775,7 +3095,7 @@ function renderVocabTask() {
   const mode = document.getElementById("vocabMode").value;
   const item = chooseVocab(subject);
   const node = document.getElementById("vocabTask");
-  const type = subject === "latin" ? "VOCAB" : "VOCAB_FORM";
+  const type = subject === "latin" ? "VOCAB" : "VOCAB_ACTIVE";
 
   if (mode === "card") {
     node.innerHTML = `
@@ -2834,7 +3154,10 @@ function renderVocabTask() {
 }
 
 function buildChoiceTask(subject, type, item, prompt, sentence, answer) {
-  const distractors = vocab[subject]
+  const sourceWords = subject === "english"
+    ? vocab.english.filter((candidate) => candidate.lesson === "U3")
+    : vocab[subject];
+  const distractors = sourceWords
     .filter((candidate) => candidate.word !== item.word)
     .slice(0, 8)
     .map((candidate) => prompt.includes("Aussage") ? candidate.hint : prompt.includes("Bedeutung") ? candidate.meaning : candidate.solution);
