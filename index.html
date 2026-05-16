@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lernsystem: Englisch, Latein & Mathe</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="label">Lernsystem</p>
+        <h1>Englisch, Latein & Mathe sicher trainieren</h1>
+      </div>
+      <div class="profile">
+        <label for="learner">Profil</label>
+        <select id="learner">
+          <option value="A">SchuelerIn A</option>
+          <option value="B">SchuelerIn B</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar" aria-label="Lernbereiche">
+        <button class="nav active" data-view="dashboard">Ueberblick</button>
+        <button class="nav" data-view="latin">Latein</button>
+        <button class="nav" data-view="english">Englisch</button>
+        <button class="nav" data-view="math">Mathe</button>
+        <button class="nav" data-view="grammar">Grammatik</button>
+        <button class="nav" data-view="vocabulary">Vokabeln</button>
+        <button class="nav" data-view="rules">Regeln verstehen</button>
+        <button class="nav" data-view="aihelp">Fragen & Hilfe</button>
+        <button class="nav" data-view="understanding">Aufgaben verstehen</button>
+        <button class="nav" data-view="paper">Papierauftraege</button>
+      </aside>
+
+      <section class="content">
+        <section id="dashboard" class="view active">
+          <div class="hero">
+            <div>
+              <h2>Heute nur der naechste sinnvolle Schritt.</h2>
+              <p>Das System merkt sich Fehlerarten lokal im Browser und schlaegt danach gezielt Wiederholungen vor.</p>
+            </div>
+            <button id="resetProgress" class="quiet">Fortschritt zuruecksetzen</button>
+          </div>
+          <div class="grid two">
+            <article class="panel">
+              <h3>Latein Ampel</h3>
+              <div id="latinStatus" class="statusGrid"></div>
+            </article>
+            <article class="panel">
+              <h3>Englisch Ampel</h3>
+              <div id="englishStatus" class="statusGrid"></div>
+            </article>
+            <article class="panel">
+              <h3>Mathe Ampel</h3>
+              <div id="mathStatus" class="statusGrid"></div>
+            </article>
+          </div>
+          <article class="panel">
+            <h3>Empfohlene naechste Uebung</h3>
+            <div id="recommendation" class="recommendation"></div>
+          </article>
+        </section>
+
+        <section id="latin" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Latein</p>
+              <h2>AcI, Pronomen, KNG und Uebersetzung</h2>
+            </div>
+            <button class="primary" data-start="latin">Naechste Aufgabe</button>
+          </div>
+          <div class="legend">
+            <span class="chip blue">Kopfverb</span>
+            <span class="chip orange">Akkusativ</span>
+            <span class="chip green">Infinitiv</span>
+            <span class="chip violet">Zeit</span>
+          </div>
+          <div id="latinTask" class="task"></div>
+        </section>
+
+        <section id="english" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Englisch Prüfung</p>
+              <h2>Grammatik, Wortschatz, Lesen, Schreiben</h2>
+            </div>
+            <button class="primary" data-start="english">Naechste Aufgabe</button>
+          </div>
+          <div id="englishTask" class="task"></div>
+        </section>
+
+        <section id="math" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Mathe</p>
+              <h2>Lineare Funktionen entschlüsseln</h2>
+            </div>
+            <button class="primary" data-start="math">Naechste Aufgabe</button>
+          </div>
+          <div class="legend">
+            <span class="chip blue">x</span>
+            <span class="chip orange">Startwert b</span>
+            <span class="chip green">Steigung m</span>
+            <span class="chip violet">Antwortsatz</span>
+          </div>
+          <div id="mathTask" class="task"></div>
+        </section>
+
+        <section id="vocabulary" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Vokabeln</p>
+              <h2>Auf mehreren Wegen lernen</h2>
+            </div>
+            <button class="primary" id="newVocabTask">Neue Vokabelaufgabe</button>
+          </div>
+          <div class="toolbar">
+            <label>
+              Fach
+              <select id="vocabSubject">
+                <option value="latin">Latein</option>
+                <option value="english">Englisch</option>
+              </select>
+            </label>
+            <label>
+              Lernweg
+              <select id="vocabMode">
+                <option value="card">Karte</option>
+                <option value="choice">Auswahl</option>
+                <option value="cloze">Luecke</option>
+                <option value="context">Kontext</option>
+                <option value="paper">Papier</option>
+              </select>
+            </label>
+          </div>
+          <div id="vocabTask" class="task"></div>
+        </section>
+
+        <section id="grammar" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Englisch U4</p>
+              <h2>Grammatik gezielt trainieren</h2>
+            </div>
+            <button class="primary" id="newGrammarTask">Neue Grammatikaufgabe</button>
+          </div>
+          <div class="toolbar">
+            <label>
+              Schwerpunkt
+              <select id="grammarFocus">
+                <option value="GRAMMAR_GERUND_INF">Gerund / Infinitive</option>
+                <option value="LINKING">Linking words</option>
+                <option value="VOCAB_FORM">Word families</option>
+              </select>
+            </label>
+          </div>
+          <div id="grammarTask" class="task"></div>
+        </section>
+
+        <section id="understanding" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Querschnitt</p>
+              <h2>Aufgaben knacken, bevor man loest</h2>
+            </div>
+            <button class="primary" id="newUnderstandingTask">Neue Aufgabe</button>
+          </div>
+          <div id="understandingTask" class="task"></div>
+        </section>
+
+        <section id="rules" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Kognitive Aktivierung</p>
+              <h2>Regel erkennen, begründen, übertragen</h2>
+            </div>
+            <button class="primary" id="newRuleTask">Neue Regelkarte</button>
+          </div>
+          <div id="ruleTask" class="task"></div>
+        </section>
+
+        <section id="aihelp" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Hilfesystem</p>
+              <h2>Regel erklären und ähnliche Übungen erzeugen</h2>
+            </div>
+            <button class="primary" id="generateHelp">Hilfe anzeigen</button>
+          </div>
+          <div class="toolbar">
+            <label>
+              Bereich
+              <select id="helpTopic">
+                <option value="aci">Latein: AcI-Übersetzung</option>
+                <option value="gerund">Englisch: Gerund/Infinitive</option>
+                <option value="linking">Englisch: Linking Words</option>
+                <option value="textproblem">Mathe: Textaufgabe decodieren</option>
+              </select>
+            </label>
+          </div>
+          <div id="helpOutput" class="task"></div>
+        </section>
+
+        <section id="paper" class="view">
+          <div class="sectionHead">
+            <div>
+              <p class="label">Handschrift</p>
+              <h2>Auf Papier schreiben</h2>
+            </div>
+            <button class="primary" id="newPaperTask">Neuer Auftrag</button>
+          </div>
+          <div id="paperTask" class="task"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

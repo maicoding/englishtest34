@@ -1,0 +1,128 @@
+{
+  "title": "Englisch U3/U4 Lernpfad",
+  "version": 1,
+  "language": "de",
+  "goal": "Sichere Vorbereitung auf moegliche U3/U4-Aufgaben ohne Originalaufgaben zu kopieren.",
+  "sections": [
+    {
+      "id": "startdiagnose",
+      "title": "Startdiagnose",
+      "cards": [
+        {
+          "type": "check",
+          "title": "Was klappt schon?",
+          "items": [
+            "Ich kann wichtige U3/U4-Woerter erklaeren.",
+            "Ich erkenne Verb + Preposition.",
+            "Ich finde im Reading eine passende Textstelle.",
+            "Ich plane ein Writing, bevor ich schreibe."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vocabulary",
+      "title": "Vocabulary",
+      "cards": [
+        {
+          "type": "practice",
+          "title": "Wortfelder sortieren",
+          "prompt": "Ordne Woerter in Wortfelder: school/work, technology, desert, emotions, jobs."
+        },
+        {
+          "type": "practice",
+          "title": "Word families",
+          "prompt": "Bilde passende Wortfamilien, z. B. science, scientist, scientific."
+        },
+        {
+          "type": "paper",
+          "title": "Writing-Vokabelbank",
+          "prompt": "Schreibe 20 Woerter mit deutscher Bedeutung und einem eigenen englischen Beispielsatz auf Papier."
+        }
+      ]
+    },
+    {
+      "id": "grammar",
+      "title": "Grammar U3/U4",
+      "cards": [
+        {
+          "type": "rule",
+          "title": "Conditional type 1",
+          "rule": "If + simple present, will + infinitive. Fuer reale/moegliche Folgen."
+        },
+        {
+          "type": "rule",
+          "title": "Conditional type 2",
+          "rule": "If + simple past, would + infinitive. Fuer unwahrscheinliche oder gedachte Situationen."
+        },
+        {
+          "type": "rule",
+          "title": "Past Perfect",
+          "rule": "had + past participle. Es zeigt, was vor einem anderen Ereignis in der Vergangenheit passiert war."
+        },
+        {
+          "type": "practice",
+          "title": "Gerund oder Infinitive",
+          "prompt": "Entscheide nach typischen Signalverben, ob -ing oder to-infinitive passt."
+        }
+      ]
+    },
+    {
+      "id": "reading",
+      "title": "Reading",
+      "cards": [
+        {
+          "type": "decoder",
+          "title": "Textfrage knacken",
+          "steps": [
+            "Operator unterstreichen.",
+            "Schluesselwort aus der Frage suchen.",
+            "Textstelle markieren.",
+            "Antwort formulieren und Beleg kontrollieren."
+          ]
+        },
+        {
+          "type": "practice",
+          "title": "Paralleltexte",
+          "prompt": "Bearbeite einen aehnlichen Text, aber mit neuen Namen, Orten und Details."
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "title": "Writing",
+      "cards": [
+        {
+          "type": "scaffold",
+          "title": "3-Teil-Plan",
+          "items": [
+            "Opening: Situation klar machen.",
+            "Middle: zwei bis drei passende Details.",
+            "Ending: sinnvolle Reaktion oder Ausblick."
+          ]
+        },
+        {
+          "type": "paper",
+          "title": "Papierfassung",
+          "prompt": "Schreibe eine vollstaendige Fassung auf Papier. Danach markiere drei gute Woerter und zwei Saetze, die verbessert werden koennen."
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "Feedback-Schleife",
+      "cards": [
+        {
+          "type": "feedback",
+          "title": "Bei falscher Antwort",
+          "steps": [
+            "Fehlertyp benennen.",
+            "Regel in einem Satz wiederholen.",
+            "Ein richtiges Beispiel zeigen.",
+            "Eine sehr aehnliche neue Aufgabe loesen."
+          ]
+        }
+      ]
+    }
+  ]
+}
