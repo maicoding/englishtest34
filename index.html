@@ -24,16 +24,27 @@
     <main class="layout">
       <aside class="sidebar" aria-label="Lernbereiche">
         <button class="nav active" data-view="start">Start</button>
-        <button class="nav" data-view="dashboard">Ueberblick</button>
-        <button class="nav" data-view="latin">Latein</button>
-        <button class="nav" data-view="english">Englisch</button>
-        <button class="nav" data-view="math">Mathe</button>
-        <button class="nav" data-view="grammar">Grammatik</button>
-        <button class="nav" data-view="vocabulary">Vokabeln</button>
-        <button class="nav" data-view="rules">Regeln verstehen</button>
-        <button class="nav" data-view="aihelp">Fragen & Hilfe</button>
-        <button class="nav" data-view="understanding">Aufgaben verstehen</button>
-        <button class="nav" data-view="paper">Papierauftraege</button>
+        <div class="subjectNav" data-subject-nav="english" hidden>
+          <p class="sideLabel">Englisch</p>
+          <button class="nav" data-view="english" data-subject="english" data-english-module="exam">Pruefung</button>
+          <button class="nav" data-view="english" data-subject="english" data-english-module="vocab">Vocabulary</button>
+          <button class="nav" data-view="english" data-subject="english" data-english-module="grammar">Grammar</button>
+          <button class="nav" data-view="english" data-subject="english" data-english-module="reading">Reading</button>
+          <button class="nav" data-view="english" data-subject="english" data-english-module="writing">Writing</button>
+          <button class="nav" data-view="english" data-subject="english" data-english-module="paper">Papier</button>
+        </div>
+        <div class="subjectNav" data-subject-nav="latin" hidden>
+          <p class="sideLabel">Latein</p>
+          <button class="nav" data-view="latin" data-subject="latin">Training</button>
+          <button class="nav" data-view="aihelp" data-subject="latin">Regelhilfe</button>
+          <button class="nav" data-view="paper" data-subject="latin">Papier</button>
+        </div>
+        <div class="subjectNav" data-subject-nav="math" hidden>
+          <p class="sideLabel">Mathe</p>
+          <button class="nav" data-view="math" data-subject="math">Lineare Funktionen</button>
+          <button class="nav" data-view="understanding" data-subject="math">Aufgaben verstehen</button>
+          <button class="nav" data-view="paper" data-subject="math">Papier</button>
+        </div>
       </aside>
 
       <section class="content">
@@ -46,46 +57,21 @@
             </div>
           </div>
 
-          <div class="choiceGrid">
-            <button class="choiceCard mainChoice" data-go-view="english" data-start-domain="english">
-              <span class="choiceKicker">Englisch U3/U4</span>
-              <strong>Pruefungstraining</strong>
-              <span>Vocabulary, grammar, reading und kurze Antworten automatisch festigen.</span>
-            </button>
-            <button class="choiceCard" data-go-view="grammar">
-              <span class="choiceKicker">Englisch</span>
-              <strong>Grammatik fuer Writing</strong>
-              <span>Gerund/infinitive, linking words und word families sicher anwenden.</span>
-            </button>
-            <button class="choiceCard" data-go-view="vocabulary">
-              <span class="choiceKicker">Vokabeln</span>
-              <strong>Mehrwege-Training</strong>
-              <span>Karte, Auswahl, Luecke, Kontext und Papierauftrag.</span>
-            </button>
-            <button class="choiceCard" data-go-view="paper">
-              <span class="choiceKicker">Writing</span>
-              <strong>Auf Papier schreiben</strong>
-              <span>Plan, useful phrases, Musterstruktur und Kontrollblick.</span>
+          <div class="choiceGrid homeChoices">
+            <button class="choiceCard" data-go-view="english" data-start-domain="english">
+              <span class="choiceKicker">Fach</span>
+              <strong>Englisch</strong>
+              <span>U3/U4, Vocabulary, Grammar, Reading und Writing.</span>
             </button>
             <button class="choiceCard" data-go-view="latin" data-start-domain="latin">
               <span class="choiceKicker">Latein</span>
-              <strong>AcI und Uebersetzung</strong>
-              <span>Kopfverb, Akkusativ, Infinitiv, Zeit und Satzbau wiederholen.</span>
+              <strong>Latein</strong>
+              <span>AcI, Grammatik, Vokabeln und Uebersetzung.</span>
             </button>
             <button class="choiceCard" data-go-view="math" data-start-domain="math">
-              <span class="choiceKicker">Mathe</span>
-              <strong>Lineare Funktionen</strong>
-              <span>Textaufgaben, Punktprobe, m und b sowie Antwortsaetze trainieren.</span>
-            </button>
-            <button class="choiceCard" data-go-view="understanding">
-              <span class="choiceKicker">Decoder</span>
-              <strong>Aufgaben verstehen</strong>
-              <span>Operator, Signalwort und Loesungsweg vor dem Rechnen oder Schreiben klaeren.</span>
-            </button>
-            <button class="choiceCard" data-go-view="rules">
-              <span class="choiceKicker">Regeln</span>
-              <strong>Erkennen und uebertragen</strong>
-              <span>Regeln nicht nur lesen, sondern mit neuen Beispielen anwenden.</span>
+              <span class="choiceKicker">Fach</span>
+              <strong>Mathe</strong>
+              <span>Lineare Funktionen und Textaufgaben.</span>
             </button>
           </div>
         </section>
@@ -142,14 +128,6 @@
               <h2>Grammatik, Wortschatz, Lesen, Schreiben</h2>
             </div>
             <button class="primary" data-start="english">Naechste Aufgabe</button>
-          </div>
-          <div class="moduleBar" aria-label="Englisch Uebungsbereiche">
-            <button class="moduleButton active" data-english-module="exam">Pruefung</button>
-            <button class="moduleButton" data-english-module="vocab">Vocabulary</button>
-            <button class="moduleButton" data-english-module="grammar">Grammar</button>
-            <button class="moduleButton" data-english-module="reading">Reading</button>
-            <button class="moduleButton" data-english-module="writing">Writing</button>
-            <button class="moduleButton" data-english-module="paper">Papier</button>
           </div>
           <div id="englishTask" class="task"></div>
         </section>

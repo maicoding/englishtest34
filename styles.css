@@ -111,6 +111,23 @@ select {
   gap: 8px;
 }
 
+.subjectNav {
+  display: grid;
+  gap: 8px;
+}
+
+.subjectNav[hidden] {
+  display: none;
+}
+
+.sideLabel {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  margin: 16px 12px 4px;
+  text-transform: uppercase;
+}
+
 .nav {
   text-align: left;
   border: 0;
@@ -180,6 +197,10 @@ select {
   gap: 16px;
 }
 
+.choiceGrid.homeChoices {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .choiceCard {
   min-height: 210px;
   display: grid;
@@ -223,6 +244,15 @@ select {
   grid-column: span 2;
   background: #e8f6ec;
   border-color: #b9dec5;
+}
+
+.homeChoices .choiceCard {
+  min-height: 260px;
+  align-content: center;
+}
+
+.homeChoices .choiceCard strong {
+  font-size: clamp(34px, 4vw, 54px);
 }
 
 .grid {
@@ -558,7 +588,8 @@ select {
 
   .layout,
   .grid.two,
-  .choiceGrid {
+  .choiceGrid,
+  .choiceGrid.homeChoices {
     grid-template-columns: 1fr;
   }
 

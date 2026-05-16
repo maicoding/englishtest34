@@ -1367,6 +1367,7 @@ const basics = {
 };
 
 let currentProfile = "A";
+let activeSubject = null;
 const STORAGE_VERSION = "v1";
 
 function key() {
@@ -1825,20 +1826,30 @@ function escapeHtml(value) {
 
 document.querySelectorAll(".nav").forEach((button) => {
   button.addEventListener("click", () => {
-    showView(button.dataset.view);
+    showView(button.dataset.view, button.dataset.subject || null);
+    if (button.dataset.englishModule) renderEnglishModule(button.dataset.englishModule);
   });
 });
 
 document.querySelectorAll("[data-go-view]").forEach((button) => {
   button.addEventListener("click", () => {
-    showView(button.dataset.goView);
+    const subject = button.dataset.startDomain || null;
+    showView(button.dataset.goView, subject);
     if (button.dataset.startDomain === "english") renderEnglishModule("exam");
     else if (button.dataset.startDomain) renderTask(button.dataset.startDomain);
   });
 });
 
-function showView(view) {
-  document.querySelectorAll(".nav").forEach((item) => item.classList.toggle("active", item.dataset.view === view));
+function showView(view, subject = activeSubject) {
+  activeSubject = view === "start" ? null : subject;
+  document.querySelectorAll("[data-subject-nav]").forEach((item) => {
+    item.hidden = item.dataset.subjectNav !== activeSubject;
+  });
+  document.querySelectorAll(".nav").forEach((item) => {
+    const sameView = item.dataset.view === view;
+    const sameSubject = !activeSubject || !item.dataset.subject || item.dataset.subject === activeSubject;
+    item.classList.toggle("active", sameView && sameSubject);
+  });
   document.querySelectorAll(".view").forEach((item) => item.classList.toggle("active", item.id === view));
 }
 
